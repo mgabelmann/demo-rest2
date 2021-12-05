@@ -2,9 +2,22 @@
 Spring Boot, Spring Data, REST and H2
 
 ## Project Information
-Simple project that enables a single REST endpoint to demonstrate
-a simple GET, PUT, POST, DELETE operation implementing a full
-stack server.
+Modularized Spring Boot project that uses Spring Data and Data REST.
+Also provides Actuator information like:
+    
+    localhost:8080/actuator/health
+
+Accessible endpoints using Data REST are:
+
+    localhost:8080/helloworld
+
+    localhost:8080/persons/
+
+    localhost:8080/persons/1/
+    localhost:8080/persons/2/
+
+    localhost:8080/persons/1/addresses/
+    localhost:8080/persons/2/addresses/
 
 ## Local Usage
 You will need to have the _maven_pom_ project installed into your
