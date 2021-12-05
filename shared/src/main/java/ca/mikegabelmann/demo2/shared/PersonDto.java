@@ -52,6 +52,7 @@ public class PersonDto {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("PersonDto{");
+
         sb.append("id=").append(id);
         sb.append(", firstName='").append(firstName).append('\'');
         sb.append(", lastName='").append(lastName).append('\'');
@@ -59,6 +60,7 @@ public class PersonDto {
         sb.append(", birthDt=").append(birthDt);
         sb.append(", sex='").append(sex).append('\'');
         sb.append('}');
+
         return sb.toString();
     }
 

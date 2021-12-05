@@ -1,5 +1,6 @@
 package ca.mikegabelmann.demo2.persistence.model;
 
+
 public enum Sex {
     MALE(1),
     FEMALE(2),

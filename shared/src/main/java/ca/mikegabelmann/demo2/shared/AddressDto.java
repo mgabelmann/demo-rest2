@@ -56,6 +56,7 @@ public class AddressDto {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("AddressDto{");
+
         sb.append("id=").append(id);
         sb.append(", attention='").append(attention).append('\'');
         sb.append(", streetAddress='").append(streetAddress).append('\'');
@@ -64,6 +65,7 @@ public class AddressDto {
         sb.append(", country='").append(country).append('\'');
         sb.append(", postal='").append(postal).append('\'');
         sb.append('}');
+
         return sb.toString();
     }
 
