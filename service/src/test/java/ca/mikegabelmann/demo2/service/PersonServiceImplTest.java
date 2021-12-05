@@ -46,4 +46,12 @@ class PersonServiceImplTest {
         Assertions.assertEquals(1, results.size());
     }
 
+    @Test
+    @DisplayName("findBySexAndBirthDt - without results")
+    void test2_findBySexAndBirthDt() {
+        List<PersonDto> results = service.findBySexAndBirthDt(Sex.FEMALE, LocalDate.now());
+
+        Assertions.assertNotNull(results);
+        Assertions.assertEquals(0, results.size());
+    }
 }

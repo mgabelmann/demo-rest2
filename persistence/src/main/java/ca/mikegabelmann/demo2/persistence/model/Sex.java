@@ -2,23 +2,23 @@ package ca.mikegabelmann.demo2.persistence.model;
 
 
 public enum Sex {
-    MALE(1),
-    FEMALE(2),
+    MALE("M"),
+    FEMALE("F"),
     ;
 
     /**
      * Constructor.
      * @param sex biological sex
      */
-    Sex(final int sex) {
+    Sex(final String sex) {
         this.sex = sex;
     }
 
-    private final int sex;
+    private final String sex;
 
     @Override
     public String toString() {
-        return "" + sex;
+        return sex;
     }
 
 }
