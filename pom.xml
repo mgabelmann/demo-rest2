@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>ca.mikegabelmann.maven</groupId>
+        <artifactId>parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>ca.mikegabelmann</groupId>
+    <artifactId>demo-rest2</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>Demo REST</name>
+    <description>Demonstration project using Spring Boot, REST, and H2 database.</description>
+
+    <scm>
+        <connection>scm:git:https://github.com/mgabelmann/demo-rest2.git</connection>
+        <developerConnection>scm:git:https://github.com/mgabelmann/demo-rest2.git</developerConnection>
+        <url>https://github.com/mgabelmann/demo-rest2</url>
+    </scm>
+
+    <properties>
+        <spring-boot-starter.version>2.6.1</spring-boot-starter.version>
+        <h2.version>1.4.200</h2.version>
+    </properties>
+
+    <modules>
+        <module>persistence</module>
+
+        <module>shared</module>
+        <module>service</module>
+
+        <!--<module>business</module>-->
+
+        <module>rest</module>
+        <module>client</module>
+    </modules>
+
+</project>
