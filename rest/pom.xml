@@ -13,7 +13,7 @@
     <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Demo REST - REST</name>
+    <name>Demo - Controller REST</name>
     <description>REST Layer</description>
 
     <properties>

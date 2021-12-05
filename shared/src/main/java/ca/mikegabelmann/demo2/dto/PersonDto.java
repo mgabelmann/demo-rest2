@@ -1,4 +1,4 @@
-package ca.mikegabelmann.demo2.shared;
+package ca.mikegabelmann.demo2.dto;
 
 import java.time.LocalDate;
 

@@ -15,7 +15,7 @@
     <version>0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>Demo REST</name>
+    <name>Demo</name>
     <description>Demonstration project using Spring Boot, REST, and H2 database.</description>
 
     <scm>
@@ -30,12 +30,10 @@
     </properties>
 
     <modules>
-        <module>persistence</module>
+        <module>model</module>
         <module>shared</module>
+        <module>persistence</module>
         <module>service</module>
-
-        <!--<module>business</module>-->
-
         <module>rest</module>
         <module>client</module>
     </modules>

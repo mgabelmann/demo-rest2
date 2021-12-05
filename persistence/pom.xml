@@ -13,7 +13,7 @@
     <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Demo REST - Persistence</name>
+    <name>Demo - Persistence</name>
     <description>Persistence Layer</description>
 
     <properties>
@@ -21,6 +21,12 @@
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>ca.mikegabelmann</groupId>
+            <artifactId>demo-rest2-model</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -1,8 +1,9 @@
 package ca.mikegabelmann.demo2.controller.rest;
 
 import ca.mikegabelmann.demo2.persistence.model.Sex;
+import ca.mikegabelmann.demo2.controller.search.PersonSearch1;
 import ca.mikegabelmann.demo2.service.PersonService;
-import ca.mikegabelmann.demo2.shared.PersonDto;
+import ca.mikegabelmann.demo2.dto.PersonDto;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,13 @@ public class PersonRestController {
     @GetMapping(path = "/persons/search")
     public ResponseEntity<List<PersonDto>> findBySexAndBirthDt(Sex sex, LocalDate date) {
         List<PersonDto> results = personService.findBySexAndBirthDt(sex, date);
+
+        return ResponseEntity.ok(results);
+    }
+
+    @GetMapping(path = "/persons/search1")
+    public ResponseEntity<List<PersonDto>> findBySexAndBirthDt(PersonSearch1 search) {
+        List<PersonDto> results = personService.findBySexAndBirthDt(search.getSex(), search.getDate());
 
         return ResponseEntity.ok(results);
     }

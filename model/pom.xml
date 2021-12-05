@@ -9,18 +9,25 @@
         <version>0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>demo-rest2-shared</artifactId>
+    <artifactId>demo-rest2-model</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Demo - Shared</name>
-    <description>Shared API</description>
+    <name>Demo - Model</name>
+    <description>Database Layer</description>
 
     <properties>
 
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <version>2.2.3</version>
+            <scope>compile</scope>
+        </dependency>
 
     </dependencies>
 
