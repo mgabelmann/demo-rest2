@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -27,11 +28,12 @@ public class PersonServiceImpl implements PersonService {
         this.personRepository = personRepository;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<PersonDto> findBySexAndBirthDt(Sex sex, LocalDate date) {
         List<Person> records = personRepository.findBySexAndBirthDt(sex, date);
 
-        return records.stream().map(a -> map(a)).collect(Collectors.toList());
+        return records.stream().map(PersonServiceImpl::map).collect(Collectors.toList());
     }
 
     /**

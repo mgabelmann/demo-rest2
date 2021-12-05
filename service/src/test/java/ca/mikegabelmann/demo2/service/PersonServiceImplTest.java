@@ -1,6 +1,5 @@
 package ca.mikegabelmann.demo2.service;
 
-
 import ca.mikegabelmann.demo2.persistence.model.Person;
 import ca.mikegabelmann.demo2.persistence.model.Sex;
 import ca.mikegabelmann.demo2.persistence.repository.PersonRepository;
@@ -15,9 +14,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import javax.persistence.MapKeyColumn;
 import java.time.LocalDate;
 import java.util.List;
+
 
 @ExtendWith(MockitoExtension.class)
 class PersonServiceImplTest {
@@ -49,9 +48,10 @@ class PersonServiceImplTest {
     @Test
     @DisplayName("findBySexAndBirthDt - without results")
     void test2_findBySexAndBirthDt() {
-        List<PersonDto> results = service.findBySexAndBirthDt(Sex.FEMALE, LocalDate.now());
+        List<PersonDto> results = service.findBySexAndBirthDt(Sex.FEMALE, p.getBirthDt());
 
         Assertions.assertNotNull(results);
         Assertions.assertEquals(0, results.size());
     }
+
 }
