@@ -37,7 +37,7 @@ class PersonRestControllerTest {
 
     @BeforeEach
     void beforeEach() {
-        this.personDto = new PersonDto(1L, "lastName", "firstName", "middleName", LocalDate.of(2000, 1, 15), Sex.MALE.name());
+        this.personDto = new PersonDto(1L, "firstName", "lastName", "middleName", LocalDate.of(2000, 1, 15), Sex.MALE.name());
     }
 
     @Test
@@ -53,7 +53,7 @@ class PersonRestControllerTest {
         //).andDo(print()
         ).andExpectAll(
                 status().isOk(),
-                content().string(startsWith("[{\"id\":1,\"firstName\":\"lastName\",\"lastName\":\"firstName\",\"middleName\":\"middleName\",\"birthDt\":\"2000-01-15\",\"sex\":\"MALE\"}]"))
+                content().string(startsWith("[{\"id\":1,\"firstName\":\"firstName\",\"lastName\":\"lastName\",\"middleName\":\"middleName\",\"birthDt\":\"2000-01-15\",\"sex\":\"MALE\"}]"))
         );
     }
 
@@ -86,7 +86,7 @@ class PersonRestControllerTest {
         //).andDo(print()
         ).andExpectAll(
                 status().isOk(),
-                content().string(startsWith("[{\"id\":1,\"firstName\":\"lastName\",\"lastName\":\"firstName\",\"middleName\":\"middleName\",\"birthDt\":\"2000-01-15\",\"sex\":\"MALE\"}]"))
+                content().string(startsWith("[{\"id\":1,\"firstName\":\"firstName\",\"lastName\":\"lastName\",\"middleName\":\"middleName\",\"birthDt\":\"2000-01-15\",\"sex\":\"MALE\"}]"))
         );
     }
 
