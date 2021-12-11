@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "ADDRESS")
 public class Address {
+
     @Id
     @SequenceGenerator(name = "seq_address", sequenceName = "address_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_address")
