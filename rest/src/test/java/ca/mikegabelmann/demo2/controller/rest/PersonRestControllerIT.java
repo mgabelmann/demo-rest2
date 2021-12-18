@@ -1,8 +1,10 @@
 package ca.mikegabelmann.demo2.controller.rest;
 
 import ca.mikegabelmann.demo2.persistence.model.Person;
-import ca.mikegabelmann.demo2.persistence.model.Sex;
+import ca.mikegabelmann.demo2.codes.Sex;
+import ca.mikegabelmann.demo2.persistence.model.SexCode;
 import ca.mikegabelmann.demo2.persistence.repository.PersonRepository;
+import ca.mikegabelmann.demo2.persistence.repository.SexCodeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -26,8 +28,12 @@ public class PersonRestControllerIT {
     private MockMvc mvc;
 
     @Autowired
+    private SexCodeRepository sexCodeRepository;
+
+    @Autowired
     private PersonRepository personRepository;
 
+    private SexCode s;
     private Person p;
     private LocalDate now;
 
@@ -36,22 +42,25 @@ public class PersonRestControllerIT {
     void beforeEach() {
         this.now = LocalDate.now();
 
-        Person tmp = new Person(null, "firstName", "lastName", now, Sex.FEMALE);
-        this.p = personRepository.save(tmp);
+        SexCode sTmp = new SexCode(Sex.F.name(), Sex.F.toString());
+        this.s = sexCodeRepository.save(sTmp);
+
+        Person pTmp = new Person(null, "firstName", "lastName", now, s);
+        this.p = personRepository.save(pTmp);
     }
 
     @Test
     @DisplayName("findBySexAndBirthDt - Sex/LocalDate - with results")
     void test1_findBySexAndBirthDt() throws Exception {
         mvc.perform(
-                get("/persons/search")
-                        .param("sex", "FEMALE")
+                get(PersonRestController.PATH_PERSONS_SEARCH)
+                        .param("sex", "F")
                         .param("date", now.toString())
 
                 //).andDo(print()
         ).andExpectAll(
                 status().isOk(),
-                content().string(startsWith("[{\"id\":" + p.getId() + ",\"firstName\":\"firstName\",\"lastName\":\"lastName\",\"middleName\":null,\"birthDt\":\"" + now.toString() + "\",\"sex\":\"FEMALE\"}]"))
+                content().string(startsWith("[{\"id\":" + p.getId() + ",\"firstName\":\"firstName\",\"lastName\":\"lastName\",\"middleName\":null,\"birthDt\":\"" + now.toString() + "\",\"sex\":\"F\"}]"))
         );
     }
 
@@ -59,8 +68,8 @@ public class PersonRestControllerIT {
     @DisplayName("findBySexAndBirthDt - PersonSearch1 - with results")
     void test3_findBySexAndBirthDt() throws Exception {
         mvc.perform(
-                get("/persons/search1")
-                        .param("sex", "FEMALE")
+                get(PersonRestController.PATH_PERSONS_SEARCH1)
+                        .param("sex", "F")
                         .param("date", now.toString())
 
                 //).andDo(print()

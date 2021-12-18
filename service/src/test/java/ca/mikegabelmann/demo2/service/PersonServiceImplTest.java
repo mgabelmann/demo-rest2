@@ -1,7 +1,8 @@
 package ca.mikegabelmann.demo2.service;
 
 import ca.mikegabelmann.demo2.persistence.model.Person;
-import ca.mikegabelmann.demo2.persistence.model.Sex;
+import ca.mikegabelmann.demo2.codes.Sex;
+import ca.mikegabelmann.demo2.persistence.model.SexCode;
 import ca.mikegabelmann.demo2.persistence.repository.PersonRepository;
 import ca.mikegabelmann.demo2.dto.PersonDto;
 import org.junit.jupiter.api.Assertions;
@@ -31,15 +32,16 @@ class PersonServiceImplTest {
 
     @BeforeEach
     void beforeEach() {
-        this.p = new Person(1L, "firstName", "lastName", LocalDate.now(), Sex.MALE);
+        SexCode sex = new SexCode(Sex.M.name(), Sex.M.toString());
+        this.p = new Person(1L, "firstName", "lastName", LocalDate.now(), sex);
     }
 
     @Test
     @DisplayName("findBySexAndBirthDt - with results")
     void test1_findBySexAndBirthDt() {
-        Mockito.when(personRepository.findBySexAndBirthDt(Sex.MALE, p.getBirthDt())).thenReturn(List.of(p));
+        Mockito.when(personRepository.findBySexCodeIdAndBirthDt(Sex.M.name(), p.getBirthDt())).thenReturn(List.of(p));
 
-        List<PersonDto> results = service.findBySexAndBirthDt(Sex.MALE, LocalDate.now());
+        List<PersonDto> results = service.findBySexAndBirthDt(Sex.M.name(), LocalDate.now());
 
         Assertions.assertNotNull(results);
         Assertions.assertEquals(1, results.size());
@@ -48,7 +50,7 @@ class PersonServiceImplTest {
     @Test
     @DisplayName("findBySexAndBirthDt - without results")
     void test2_findBySexAndBirthDt() {
-        List<PersonDto> results = service.findBySexAndBirthDt(Sex.FEMALE, p.getBirthDt());
+        List<PersonDto> results = service.findBySexAndBirthDt(Sex.F.name(), p.getBirthDt());
 
         Assertions.assertNotNull(results);
         Assertions.assertEquals(0, results.size());

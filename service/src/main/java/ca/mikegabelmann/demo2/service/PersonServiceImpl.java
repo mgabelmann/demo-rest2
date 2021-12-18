@@ -1,7 +1,6 @@
 package ca.mikegabelmann.demo2.service;
 
 import ca.mikegabelmann.demo2.persistence.model.Person;
-import ca.mikegabelmann.demo2.persistence.model.Sex;
 import ca.mikegabelmann.demo2.persistence.repository.PersonRepository;
 import ca.mikegabelmann.demo2.dto.PersonDto;
 import org.apache.logging.log4j.LogManager;
@@ -30,8 +29,8 @@ public class PersonServiceImpl implements PersonService {
 
     @Transactional(readOnly = true)
     @Override
-    public List<PersonDto> findBySexAndBirthDt(Sex sex, LocalDate date) {
-        List<Person> records = personRepository.findBySexAndBirthDt(sex, date);
+    public List<PersonDto> findBySexAndBirthDt(String sex, LocalDate date) {
+        List<Person> records = personRepository.findBySexCodeIdAndBirthDt(sex, date);
 
         return records.stream().map(PersonServiceImpl::map).collect(Collectors.toList());
     }
@@ -42,7 +41,7 @@ public class PersonServiceImpl implements PersonService {
      * @return mapped record
      */
     public static PersonDto map(Person p) {
-        return new PersonDto(p.getId(), p.getFirstName(), p.getLastName(), p.getMiddleName(), p.getBirthDt(), p.getSex().name());
+        return new PersonDto(p.getId(), p.getFirstName(), p.getLastName(), p.getMiddleName(), p.getBirthDt(), p.getSexCode().getId());
     }
 
 }

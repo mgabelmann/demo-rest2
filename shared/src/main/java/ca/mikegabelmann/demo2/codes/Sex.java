@@ -1,9 +1,9 @@
-package ca.mikegabelmann.demo2.persistence.model;
+package ca.mikegabelmann.demo2.codes;
 
 
 public enum Sex {
-    MALE("Male"),
-    FEMALE("Female"),
+    M("Male"),
+    F("Female"),
     ;
 
     /**

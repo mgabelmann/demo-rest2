@@ -1,8 +1,7 @@
 package ca.mikegabelmann.demo2.controller.rest;
 
-
 import ca.mikegabelmann.demo2.dto.PersonDto;
-import ca.mikegabelmann.demo2.persistence.model.Sex;
+import ca.mikegabelmann.demo2.codes.Sex;
 import ca.mikegabelmann.demo2.service.PersonService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -37,23 +36,23 @@ class PersonRestControllerTest {
 
     @BeforeEach
     void beforeEach() {
-        this.personDto = new PersonDto(1L, "firstName", "lastName", "middleName", LocalDate.of(2000, 1, 15), Sex.MALE.name());
+        this.personDto = new PersonDto(1L, "firstName", "lastName", "middleName", LocalDate.of(2000, 1, 15), Sex.M.name());
     }
 
     @Test
     @DisplayName("findBySexAndBirthDt - Sex/LocalDate - with results")
     void test1_findBySexAndBirthDt() throws Exception {
-        Mockito.when(personService.findBySexAndBirthDt(Sex.MALE, personDto.getBirthDt())).thenReturn(List.of(personDto));
+        Mockito.when(personService.findBySexAndBirthDt(Sex.M.name(), personDto.getBirthDt())).thenReturn(List.of(personDto));
 
         mvc.perform(
-                get("/persons/search")
-                    .param("sex", "MALE")
+                get(PersonRestController.PATH_PERSONS_SEARCH)
+                    .param("sex", "M")
                     .param("date", "2000-01-15")
 
         //).andDo(print()
         ).andExpectAll(
                 status().isOk(),
-                content().string(startsWith("[{\"id\":1,\"firstName\":\"firstName\",\"lastName\":\"lastName\",\"middleName\":\"middleName\",\"birthDt\":\"2000-01-15\",\"sex\":\"MALE\"}]"))
+                content().string(startsWith("[{\"id\":1,\"firstName\":\"firstName\",\"lastName\":\"lastName\",\"middleName\":\"middleName\",\"birthDt\":\"2000-01-15\",\"sex\":\"M\"}]"))
         );
     }
 
@@ -61,8 +60,8 @@ class PersonRestControllerTest {
     @DisplayName("findBySexAndBirthDt - Sex/LocalDate - without results")
     void test2_findBySexAndBirthDt() throws Exception {
         mvc.perform(
-                get("/persons/search")
-                        .param("sex", "MALE")
+                get(PersonRestController.PATH_PERSONS_SEARCH)
+                        .param("sex", "M")
                         .param("date", "2000-01-15")
 
         //).andDo(print()
@@ -76,17 +75,17 @@ class PersonRestControllerTest {
     @Test
     @DisplayName("findBySexAndBirthDt - PersonSearch1 - with results")
     void test3_findBySexAndBirthDt() throws Exception {
-        Mockito.when(personService.findBySexAndBirthDt(Sex.MALE, personDto.getBirthDt())).thenReturn(List.of(personDto));
+        Mockito.when(personService.findBySexAndBirthDt(Sex.M.name(), personDto.getBirthDt())).thenReturn(List.of(personDto));
 
         mvc.perform(
-                get("/persons/search1")
-                        .param("sex", "MALE")
+                get(PersonRestController.PATH_PERSONS_SEARCH1)
+                        .param("sex", "M")
                         .param("date", "2000-01-15")
 
         //).andDo(print()
         ).andExpectAll(
                 status().isOk(),
-                content().string(startsWith("[{\"id\":1,\"firstName\":\"firstName\",\"lastName\":\"lastName\",\"middleName\":\"middleName\",\"birthDt\":\"2000-01-15\",\"sex\":\"MALE\"}]"))
+                content().string(startsWith("[{\"id\":1,\"firstName\":\"firstName\",\"lastName\":\"lastName\",\"middleName\":\"middleName\",\"birthDt\":\"2000-01-15\",\"sex\":\"M\"}]"))
         );
     }
 
@@ -94,8 +93,8 @@ class PersonRestControllerTest {
     @DisplayName("findBySexAndBirthDt - PersonSearch1 - without results")
     void test4_findBySexAndBirthDt() throws Exception {
         mvc.perform(
-                get("/persons/search1")
-                        .param("sex", "MALE")
+                get(PersonRestController.PATH_PERSONS_SEARCH1)
+                        .param("sex", "M")
                         .param("date", "2000-01-15")
 
         //).andDo(print()

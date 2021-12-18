@@ -28,9 +28,9 @@ public class Person {
     @Column(name = "BIRTH_DT", nullable = false)
     private LocalDate birthDt;
 
-    @Enumerated(EnumType.ORDINAL)
-    @Column(name = "SEX", length = 1, nullable = false)
-    private Sex sex;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "SEX_CODE", nullable = false)
+    private SexCode sexCode;
 
     @OneToMany(mappedBy = "person")
     private final List<Address> addresses = new ArrayList<>();
@@ -40,12 +40,12 @@ public class Person {
     public Person() {}
 
     /** Constructor. */
-    public Person(Long id, String firstName, String lastName, LocalDate birthDt, Sex sex) {
+    public Person(Long id, String firstName, String lastName, LocalDate birthDt, SexCode sexCode) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDt = birthDt;
-        this.sex = sex;
+        this.sexCode = sexCode;
     }
 
     public Long getId() {
@@ -88,12 +88,12 @@ public class Person {
         this.birthDt = birthDt;
     }
 
-    public Sex getSex() {
-        return sex;
+    public SexCode getSexCode() {
+        return sexCode;
     }
 
-    public void setSex(Sex sex) {
-        this.sex = sex;
+    public void setSexCode(SexCode sexCode) {
+        this.sexCode = sexCode;
     }
 
 }
