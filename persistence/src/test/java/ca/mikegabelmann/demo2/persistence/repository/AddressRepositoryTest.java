@@ -2,7 +2,6 @@ package ca.mikegabelmann.demo2.persistence.repository;
 
 import ca.mikegabelmann.demo2.persistence.model.Address;
 import ca.mikegabelmann.demo2.persistence.model.Person;
-import ca.mikegabelmann.demo2.persistence.model.Sex;
 import ca.mikegabelmann.demo2.persistence.model.SexCode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,7 +31,7 @@ public class AddressRepositoryTest {
 
     @BeforeEach
     void beforeEach() {
-        SexCode sTmp = new SexCode(Sex.M.name(), Sex.M.toString());
+        SexCode sTmp = new SexCode("M", "Male");
         Person pTmp = new Person(null, "firstName", "lastName", LocalDate.now(), sTmp);
         Address aTmp = new Address(null, "streetAddress", "city", "prov", "country", "postal", pTmp);
 

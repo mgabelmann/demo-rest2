@@ -6,9 +6,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-public class HelloWorldRestController {
+public final class HelloWorldRestController {
+    public static final String PATH_HELLOWORLD = "/helloworld";
 
-    @GetMapping(path = "/helloworld")
+    @GetMapping(path = HelloWorldRestController.PATH_HELLOWORLD)
     public ResponseEntity<String> helloWorld() {
         return ResponseEntity.ok("hello world");
     }

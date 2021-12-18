@@ -1,4 +1,4 @@
-package ca.mikegabelmann.demo2.persistence.model;
+package ca.mikegabelmann.demo2.codes;
 
 
 public enum Sex {

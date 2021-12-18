@@ -1,7 +1,6 @@
 package ca.mikegabelmann.demo2.persistence.repository;
 
 import ca.mikegabelmann.demo2.persistence.model.Person;
-import ca.mikegabelmann.demo2.persistence.model.Sex;
 import ca.mikegabelmann.demo2.persistence.model.SexCode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,7 +27,7 @@ public class PersonRepositoryTest {
 
     @BeforeEach
     void beforeEach() {
-        SexCode sTmp = new SexCode(Sex.M.name(), Sex.M.toString());
+        SexCode sTmp = new SexCode("M", "Male");
         this.s = sexCodeRepository.save(sTmp);
 
         Person pTmp = new Person(null, "firstName", "lastName", LocalDate.now(), s);
@@ -48,7 +47,7 @@ public class PersonRepositoryTest {
     @Test
     @DisplayName("findBySexAndBirthDt - with results")
     void test1_findBySexAndBirthDt() {
-        List<Person> records = personRepository.findBySexCodeIdAndBirthDt(Sex.M.name(), LocalDate.now());
+        List<Person> records = personRepository.findBySexCodeIdAndBirthDt("M", LocalDate.now());
 
         Assertions.assertNotNull(records);
         Assertions.assertEquals(1, records.size());
@@ -57,7 +56,7 @@ public class PersonRepositoryTest {
     @Test
     @DisplayName("findBySexAndBirthDt - without results")
     void test2_findBySexAndBirthDt() {
-        List<Person> records = personRepository.findBySexCodeIdAndBirthDt(Sex.F.name(), LocalDate.now());
+        List<Person> records = personRepository.findBySexCodeIdAndBirthDt("F", LocalDate.now());
 
         Assertions.assertNotNull(records);
         Assertions.assertEquals(0, records.size());

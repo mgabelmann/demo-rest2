@@ -1,7 +1,7 @@
-package ca.mikegabelmann.demo2.controller.search;
+package ca.mikegabelmann.demo2.search;
 
 
-import ca.mikegabelmann.demo2.persistence.model.Sex;
+import ca.mikegabelmann.demo2.codes.Sex;
 
 import java.time.LocalDate;
 

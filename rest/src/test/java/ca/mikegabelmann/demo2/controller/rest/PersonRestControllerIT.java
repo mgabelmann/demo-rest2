@@ -1,7 +1,7 @@
 package ca.mikegabelmann.demo2.controller.rest;
 
 import ca.mikegabelmann.demo2.persistence.model.Person;
-import ca.mikegabelmann.demo2.persistence.model.Sex;
+import ca.mikegabelmann.demo2.codes.Sex;
 import ca.mikegabelmann.demo2.persistence.model.SexCode;
 import ca.mikegabelmann.demo2.persistence.repository.PersonRepository;
 import ca.mikegabelmann.demo2.persistence.repository.SexCodeRepository;
@@ -53,7 +53,7 @@ public class PersonRestControllerIT {
     @DisplayName("findBySexAndBirthDt - Sex/LocalDate - with results")
     void test1_findBySexAndBirthDt() throws Exception {
         mvc.perform(
-                get("/persons/search")
+                get(PersonRestController.PATH_PERSONS_SEARCH)
                         .param("sex", "F")
                         .param("date", now.toString())
 
@@ -68,7 +68,7 @@ public class PersonRestControllerIT {
     @DisplayName("findBySexAndBirthDt - PersonSearch1 - with results")
     void test3_findBySexAndBirthDt() throws Exception {
         mvc.perform(
-                get("/persons/search1")
+                get(PersonRestController.PATH_PERSONS_SEARCH1)
                         .param("sex", "F")
                         .param("date", now.toString())
 

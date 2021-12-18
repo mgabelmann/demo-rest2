@@ -19,10 +19,10 @@ public class HelloWorldRestControllerTest {
 
 
     @Test
-    @DisplayName("findBySexAndBirthDt - Sex/LocalDate - with results")
+    @DisplayName("helloWorld - with results")
     void test1_helloWorld() throws Exception {
         mvc.perform(
-                get("/helloworld")
+                get(HelloWorldRestController.PATH_HELLOWORLD)
 
                 //).andDo(print()
         ).andExpectAll(

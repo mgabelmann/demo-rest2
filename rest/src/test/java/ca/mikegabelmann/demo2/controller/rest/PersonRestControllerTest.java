@@ -1,8 +1,7 @@
 package ca.mikegabelmann.demo2.controller.rest;
 
-
 import ca.mikegabelmann.demo2.dto.PersonDto;
-import ca.mikegabelmann.demo2.persistence.model.Sex;
+import ca.mikegabelmann.demo2.codes.Sex;
 import ca.mikegabelmann.demo2.service.PersonService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -46,7 +45,7 @@ class PersonRestControllerTest {
         Mockito.when(personService.findBySexAndBirthDt(Sex.M.name(), personDto.getBirthDt())).thenReturn(List.of(personDto));
 
         mvc.perform(
-                get("/persons/search")
+                get(PersonRestController.PATH_PERSONS_SEARCH)
                     .param("sex", "M")
                     .param("date", "2000-01-15")
 
@@ -61,7 +60,7 @@ class PersonRestControllerTest {
     @DisplayName("findBySexAndBirthDt - Sex/LocalDate - without results")
     void test2_findBySexAndBirthDt() throws Exception {
         mvc.perform(
-                get("/persons/search")
+                get(PersonRestController.PATH_PERSONS_SEARCH)
                         .param("sex", "M")
                         .param("date", "2000-01-15")
 
@@ -79,7 +78,7 @@ class PersonRestControllerTest {
         Mockito.when(personService.findBySexAndBirthDt(Sex.M.name(), personDto.getBirthDt())).thenReturn(List.of(personDto));
 
         mvc.perform(
-                get("/persons/search1")
+                get(PersonRestController.PATH_PERSONS_SEARCH1)
                         .param("sex", "M")
                         .param("date", "2000-01-15")
 
@@ -94,7 +93,7 @@ class PersonRestControllerTest {
     @DisplayName("findBySexAndBirthDt - PersonSearch1 - without results")
     void test4_findBySexAndBirthDt() throws Exception {
         mvc.perform(
-                get("/persons/search1")
+                get(PersonRestController.PATH_PERSONS_SEARCH1)
                         .param("sex", "M")
                         .param("date", "2000-01-15")
 

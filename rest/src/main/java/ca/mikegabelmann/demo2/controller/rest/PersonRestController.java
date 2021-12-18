@@ -1,7 +1,7 @@
 package ca.mikegabelmann.demo2.controller.rest;
 
-import ca.mikegabelmann.demo2.persistence.model.Sex;
-import ca.mikegabelmann.demo2.controller.search.PersonSearch1;
+import ca.mikegabelmann.demo2.codes.Sex;
+import ca.mikegabelmann.demo2.search.PersonSearch1;
 import ca.mikegabelmann.demo2.service.PersonService;
 import ca.mikegabelmann.demo2.dto.PersonDto;
 import org.apache.logging.log4j.LogManager;
@@ -17,7 +17,10 @@ import java.util.List;
 
 
 @RestController
-public class PersonRestController {
+public final class PersonRestController {
+    public static final String PATH_PERSONS_SEARCH = "/persons/search";
+    public static final String PATH_PERSONS_SEARCH1 = "/persons/search1";
+
     /** Logger. */
     private static final Logger LOG = LogManager.getLogger(PersonRestController.class);
 
@@ -29,7 +32,7 @@ public class PersonRestController {
         this.personService = personService;
     }
 
-    @GetMapping(path = "/persons/search")
+    @GetMapping(path = PersonRestController.PATH_PERSONS_SEARCH)
     public ResponseEntity<List<PersonDto>> findBySexAndBirthDt(
         @RequestParam(value="sex") Sex sex,
         @RequestParam(value="date") LocalDate date) {
@@ -44,7 +47,7 @@ public class PersonRestController {
      *
      * NOTE: can't use a @RequestParam here since Spring is doing some magic here
      */
-    @GetMapping(path = "/persons/search1")
+    @GetMapping(path = PersonRestController.PATH_PERSONS_SEARCH1)
     public ResponseEntity<List<PersonDto>> findBySexAndBirthDt(
         PersonSearch1 search) {
 

@@ -1,6 +1,5 @@
 package ca.mikegabelmann.demo2.persistence.repository;
 
-import ca.mikegabelmann.demo2.persistence.model.Sex;
 import ca.mikegabelmann.demo2.persistence.model.SexCode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,7 +19,7 @@ public class SexCodeRepositoryTest {
 
     @BeforeEach
     void beforeEach() {
-        SexCode sTmp = new SexCode(Sex.M.name(), Sex.M.toString());
+        SexCode sTmp = new SexCode("M", "Male");
 
         this.s = sexCodeRepository.save(sTmp);
     }
