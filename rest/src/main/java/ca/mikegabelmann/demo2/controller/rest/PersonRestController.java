@@ -41,10 +41,11 @@ public class PersonRestController {
 
     /* NOTE: Spring converts values inside PersonSearch1 into a PersonSearch1 for us which makes adding new parameters
      *       easier since we don't have to change our method signature, versioning API, etc.
+     *
+     * NOTE: can't use a @RequestParam here since Spring is doing some magic here
      */
     @GetMapping(path = "/persons/search1")
     public ResponseEntity<List<PersonDto>> findBySexAndBirthDt(
-        //NOTE: can't use a @RequestParam here since Spring is doing some magic here
         PersonSearch1 search) {
 
         List<PersonDto> results = personService.findBySexAndBirthDt(search.getSex(), search.getDate());

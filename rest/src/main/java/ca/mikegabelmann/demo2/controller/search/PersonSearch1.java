@@ -16,7 +16,9 @@ public class PersonSearch1 {
     private LocalDate date;
 
 
-    public PersonSearch1() {}
+    public PersonSearch1() {
+
+    }
 
     public Sex getSex() {
         return sex;

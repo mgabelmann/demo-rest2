@@ -23,7 +23,7 @@ public class PersonRepositoryTest {
 
     @BeforeEach
     void beforeEach() {
-        Person pTmp = new Person(null, "firstName", "lastName", LocalDate.now(), Sex.MALE);
+        Person pTmp = new Person(null, "firstName", "lastName", LocalDate.now(), Sex.M);
         this.p = personRepository.save(pTmp);
 
         Assertions.assertNotNull(p.getId());
@@ -40,7 +40,7 @@ public class PersonRepositoryTest {
     @Test
     @DisplayName("findBySexAndBirthDt - with results")
     void test1_findBySexAndBirthDt() {
-        List<Person> records = personRepository.findBySexAndBirthDt(Sex.MALE, LocalDate.now());
+        List<Person> records = personRepository.findBySexAndBirthDt(Sex.M, LocalDate.now());
 
         Assertions.assertNotNull(records);
         Assertions.assertEquals(1, records.size());
@@ -49,7 +49,7 @@ public class PersonRepositoryTest {
     @Test
     @DisplayName("findBySexAndBirthDt - without results")
     void test2_findBySexAndBirthDt() {
-        List<Person> records = personRepository.findBySexAndBirthDt(Sex.FEMALE, LocalDate.now());
+        List<Person> records = personRepository.findBySexAndBirthDt(Sex.F, LocalDate.now());
 
         Assertions.assertNotNull(records);
         Assertions.assertEquals(0, records.size());
