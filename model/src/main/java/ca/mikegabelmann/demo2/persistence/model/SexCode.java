@@ -1,31 +1,28 @@
 package ca.mikegabelmann.demo2.persistence.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "SEX_CODE")
 public class SexCode {
 
     @Id
-    @Column(name = "SEX_CODE", length = 1, nullable = false, unique = true)
+    @Column(name = "ID", length = 1, nullable = false, unique = true)
     private String id;
 
-    @Column(name = "VALUE", length = 24, nullable = false)
-    private String value;
-
-    @OneToMany(mappedBy = "person")
-    private final List<Person> person = new ArrayList<>();
+    @Column(name = "DESCRIPTION", length = 24, nullable = false)
+    private String description;
 
 
+    /** No args constructor. */
     public SexCode() {
 
     }
 
-    public SexCode(String id, String value) {
+    /** Required args constructor. */
+    public SexCode(String id, String description) {
         this.id = id;
-        this.value = value;
+        this.description = description;
     }
 
     public String getId() {
@@ -36,12 +33,12 @@ public class SexCode {
         this.id = id;
     }
 
-    public String getValue() {
-        return value;
+    public String getDescription() {
+        return description;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 }

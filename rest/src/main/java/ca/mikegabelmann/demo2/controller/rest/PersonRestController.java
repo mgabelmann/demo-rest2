@@ -34,7 +34,7 @@ public class PersonRestController {
         @RequestParam(value="sex") Sex sex,
         @RequestParam(value="date") LocalDate date) {
 
-        List<PersonDto> results = personService.findBySexAndBirthDt(sex, date);
+        List<PersonDto> results = personService.findBySexAndBirthDt(sex.name(), date);
 
         return ResponseEntity.ok(results);
     }
@@ -48,7 +48,7 @@ public class PersonRestController {
     public ResponseEntity<List<PersonDto>> findBySexAndBirthDt(
         PersonSearch1 search) {
 
-        List<PersonDto> results = personService.findBySexAndBirthDt(search.getSex(), search.getDate());
+        List<PersonDto> results = personService.findBySexAndBirthDt(search.getSex().name(), search.getDate());
 
         return ResponseEntity.ok(results);
     }

@@ -2,6 +2,7 @@ package ca.mikegabelmann.demo2.persistence.repository;
 
 import ca.mikegabelmann.demo2.persistence.model.Person;
 import ca.mikegabelmann.demo2.persistence.model.Sex;
+import ca.mikegabelmann.demo2.persistence.model.SexCode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -16,14 +17,21 @@ import java.util.List;
 @DataJpaTest
 public class PersonRepositoryTest {
     @Autowired
+    private SexCodeRepository sexCodeRepository;
+
+    @Autowired
     private PersonRepository personRepository;
 
+    private SexCode s;
     private Person p;
 
 
     @BeforeEach
     void beforeEach() {
-        Person pTmp = new Person(null, "firstName", "lastName", LocalDate.now(), Sex.M);
+        SexCode sTmp = new SexCode(Sex.M.name(), Sex.M.toString());
+        this.s = sexCodeRepository.save(sTmp);
+
+        Person pTmp = new Person(null, "firstName", "lastName", LocalDate.now(), s);
         this.p = personRepository.save(pTmp);
 
         Assertions.assertNotNull(p.getId());
@@ -40,7 +48,7 @@ public class PersonRepositoryTest {
     @Test
     @DisplayName("findBySexAndBirthDt - with results")
     void test1_findBySexAndBirthDt() {
-        List<Person> records = personRepository.findBySexAndBirthDt(Sex.M, LocalDate.now());
+        List<Person> records = personRepository.findBySexCodeIdAndBirthDt(Sex.M.name(), LocalDate.now());
 
         Assertions.assertNotNull(records);
         Assertions.assertEquals(1, records.size());
@@ -49,7 +57,7 @@ public class PersonRepositoryTest {
     @Test
     @DisplayName("findBySexAndBirthDt - without results")
     void test2_findBySexAndBirthDt() {
-        List<Person> records = personRepository.findBySexAndBirthDt(Sex.F, LocalDate.now());
+        List<Person> records = personRepository.findBySexCodeIdAndBirthDt(Sex.F.name(), LocalDate.now());
 
         Assertions.assertNotNull(records);
         Assertions.assertEquals(0, records.size());
