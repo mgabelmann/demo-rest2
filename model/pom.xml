@@ -14,7 +14,9 @@
     <packaging>jar</packaging>
 
     <name>Demo - Model</name>
-    <description>Database Layer</description>
+    <description>
+        Files in this module map database tables to Java using JPA.
+    </description>
 
     <properties>
 

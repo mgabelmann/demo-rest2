@@ -15,7 +15,10 @@
     <packaging>jar</packaging>
 
     <name>Demo - Service</name>
-    <description>Service Layer</description>
+    <description>
+        This module provides business logic, validation and access to a persistence module. In cases where
+        multiple persistence modules are required, a "manager" can be used as a facade to provide access between them.
+    </description>
 
     <properties>
 

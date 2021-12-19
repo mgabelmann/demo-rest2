@@ -14,7 +14,9 @@
     <packaging>jar</packaging>
 
     <name>Demo - Persistence</name>
-    <description>Persistence Layer</description>
+    <description>
+        This module provides a way to query the database using the JPA entities provided by the model module.
+    </description>
 
     <properties>
 

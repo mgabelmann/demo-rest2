@@ -14,7 +14,9 @@
     <packaging>jar</packaging>
 
     <name>Demo - Client</name>
-    <description>Client</description>
+    <description>
+        Contains files that support connecting from a remote application (client) to rest module.
+    </description>
 
     <properties>
 
