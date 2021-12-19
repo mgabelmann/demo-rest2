@@ -44,6 +44,21 @@
             <scope>compile</scope>
         </dependency>
 
+        <!-- NOTE: how to exclude spring-boot-starter-logging from all modules
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>${spring-boot-starter.version}</version>
+            <scope>compile</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        -->
+
         <!-- NOTE: returns diagnostics, health information -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -59,7 +74,7 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- FIXME: need these to get Java 9+ working since module no longer included, find proper lib versions! -->
+        <!-- FIXME: need these to get Java 9+ working since module no longer included, find proper lib versions -->
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
             <artifactId>jakarta.xml.bind-api</artifactId>
