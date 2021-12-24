@@ -18,6 +18,8 @@
         This module contains all the objects, validators, mappers, and exceptions that are shared between the service,
         rest and client modules. This simplifies the project and allows reuse of objects and is considered the "API".
         At the heart of this are the Domain Transfer Objects (DTO).
+
+        Little or no testing is required since more objects are POJOs.
     </description>
 
     <properties>

@@ -18,6 +18,9 @@
         This module provides the transport layer and access to the services via REST endpoints. It handles security,
         and validation of objects received but only at a high level. All "business" related validation and logic will
         be handled in the service module.
+
+        Unit tests "mock" the service layer.
+        Integration tests use the entire stack as you would expect.
     </description>
 
     <properties>

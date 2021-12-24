@@ -15,7 +15,9 @@
 
     <name>Demo - Persistence</name>
     <description>
-        This module provides a way to query the database using the JPA entities provided by the model module.
+        This module provides a way to query the database using the JPA entities provided by the model module. Unit tests
+        use an in-memory H2 database. IF you need data added to it you can add it via import.sql and/or use your test
+        code.
     </description>
 
     <properties>
