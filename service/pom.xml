@@ -18,6 +18,7 @@
     <description>
         This module provides business logic, validation and access to a persistence module. In cases where
         multiple persistence modules are required, a "manager" can be used as a facade to provide access between them.
+        
         For testing the service layer, the model and persistence layer are "mocked", since we have already tested
         them separately.
     </description>
