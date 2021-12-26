@@ -1,4 +1,6 @@
 HELP.md
+
+### Maven ###
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
@@ -39,7 +41,9 @@ yarn-error.log*
 pnpm-debug.log*
 
 ### Node files ###
-
+/app/node/
+/app/node_modules/
+/app/package-lock.json
 
 ### Mac files ###
 .DS_Store
