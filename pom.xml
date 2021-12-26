@@ -35,6 +35,7 @@
         <module>service</module>
         <module>rest</module>
         <module>client</module>
+        <module>app</module>
     </modules>
 
 </project>
