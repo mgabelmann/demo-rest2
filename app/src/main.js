@@ -11,6 +11,6 @@ import 'primeicons/primeicons.css'
 
 const app = createApp(App)
 
-app.use(PrimeVue);
+app.use(PrimeVue)
 
-app.mount('#app');
+app.mount('#app')
