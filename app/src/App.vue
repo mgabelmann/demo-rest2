@@ -3,8 +3,8 @@
     <img alt="Vue logo" src="./assets/logo.png">
   </div>
 
-<!--
-<HelloWorld msg="Welcome to Your Vue.js App."/>
+  <!--
+  <HelloWorld msg="Welcome to Your Vue.js App."/>
   -->
   <Person/>
 

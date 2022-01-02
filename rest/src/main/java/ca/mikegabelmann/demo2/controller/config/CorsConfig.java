@@ -67,15 +67,22 @@ public class CorsConfig implements RepositoryRestConfigurer {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping(HelloWorldRestController.PATH_HELLOWORLD)
-                    //.allowedMethods("GET")
+            registry.addMapping(HelloWorldRestController.PATH_HELLOWORLD)
+                    .allowedMethods(
+                        RequestMethod.GET.name()
+                    )
                     .allowedOrigins(corsUrl)
                     ;
 
-                registry.addMapping("/persons/**")
-                    //.allowedMethods("DELETE", "GET", "HEAD", "PATCH", "POST", "PUT")
+            registry.addMapping("/persons/**")
+                    .allowedMethods(
+                        RequestMethod.GET.name(),
+                        RequestMethod.PUT.name(),
+                        RequestMethod.DELETE.name(),
+                        RequestMethod.POST.name()
+                    )
                     .allowedOrigins(corsUrl)
-                    ;
+                ;
             }
         };
     }
