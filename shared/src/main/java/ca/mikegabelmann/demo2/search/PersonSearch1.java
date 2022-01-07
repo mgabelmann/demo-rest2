@@ -1,6 +1,5 @@
 package ca.mikegabelmann.demo2.search;
 
-
 import ca.mikegabelmann.demo2.codes.Sex;
 
 import java.time.LocalDate;

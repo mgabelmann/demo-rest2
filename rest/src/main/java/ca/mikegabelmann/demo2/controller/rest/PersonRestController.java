@@ -8,9 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -18,12 +16,16 @@ import java.util.List;
 
 @RestController
 public final class PersonRestController {
+    /** Path for REST endpoint. */
     public static final String PATH_PERSONS_SEARCH = "/persons/search";
+
+    /** Path for REST endpoint. */
     public static final String PATH_PERSONS_SEARCH1 = "/persons/search1";
 
     /** Logger. */
     private static final Logger LOG = LogManager.getLogger(PersonRestController.class);
 
+    /** Person service. */
     private final PersonService personService;
 
 
