@@ -15,15 +15,20 @@ import java.util.List;
 
 @DataJpaTest
 public class PersonRepositoryTest {
-    @Autowired
-    private SexCodeRepository sexCodeRepository;
 
-    @Autowired
-    private PersonRepository personRepository;
+    private final SexCodeRepository sexCodeRepository;
+    private final PersonRepository personRepository;
 
     private SexCode s;
     private Person p;
 
+
+    @SuppressWarnings("SpringJavaAutowiredMembersInspection")
+    @Autowired
+    public PersonRepositoryTest(SexCodeRepository sexCodeRepository, PersonRepository personRepository) {
+        this.sexCodeRepository = sexCodeRepository;
+        this.personRepository = personRepository;
+    }
 
     @BeforeEach
     void beforeEach() {
@@ -33,6 +38,7 @@ public class PersonRepositoryTest {
         Person pTmp = new Person(null, "firstName", "lastName", LocalDate.now(), s);
         this.p = personRepository.save(pTmp);
 
+        //sexcode does not have a generated ID
         Assertions.assertNotNull(p.getId());
     }
 
