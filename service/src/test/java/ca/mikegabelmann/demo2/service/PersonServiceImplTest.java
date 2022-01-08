@@ -30,6 +30,7 @@ class PersonServiceImplTest {
 
     private Person p;
 
+
     @BeforeEach
     void beforeEach() {
         SexCode sex = new SexCode(Sex.M.name(), Sex.M.toString());

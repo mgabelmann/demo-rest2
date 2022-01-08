@@ -15,33 +15,36 @@ import java.time.LocalDate;
 
 @DataJpaTest
 public class AddressRepositoryTest {
-    @Autowired
-    private SexCodeRepository sexCodeRepository;
 
-    @Autowired
-    private PersonRepository personRepository;
-
-    @Autowired
-    private AddressRepository addressRepository;
+    private final SexCodeRepository sexCodeRepository;
+    private final PersonRepository personRepository;
+    private final AddressRepository addressRepository;
 
     private SexCode s;
     private Person p;
     private Address a;
 
 
+    @SuppressWarnings("SpringJavaAutowiredMembersInspection")
+    @Autowired
+    public AddressRepositoryTest(SexCodeRepository sexCodeRepository, PersonRepository personRepository, AddressRepository addressRepository) {
+        this.sexCodeRepository = sexCodeRepository;
+        this.personRepository = personRepository;
+        this.addressRepository = addressRepository;
+    }
+
     @BeforeEach
     void beforeEach() {
         SexCode sTmp = new SexCode("M", "Male");
-        Person pTmp = new Person(null, "firstName", "lastName", LocalDate.now(), sTmp);
-        Address aTmp = new Address(null, "streetAddress", "city", "prov", "country", "postal", pTmp);
-
         this.s = sexCodeRepository.save(sTmp);
-        sexCodeRepository.flush();
 
+        Person pTmp = new Person(null, "firstName", "lastName", LocalDate.now(), s);
         this.p = personRepository.save(pTmp);
+
+        Address aTmp = new Address(null, "streetAddress", "city", "prov", "country", "postal", p);
         this.a = addressRepository.save(aTmp);
 
-        Assertions.assertNotNull(s);
+        //sexcode does not have a generated ID
         Assertions.assertNotNull(p.getId());
         Assertions.assertNotNull(a.getId());
     }

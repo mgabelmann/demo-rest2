@@ -11,11 +11,17 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 @DataJpaTest
 public class SexCodeRepositoryTest {
-    @Autowired
-    private SexCodeRepository sexCodeRepository;
+
+    private final SexCodeRepository sexCodeRepository;
 
     private SexCode s;
 
+
+    @SuppressWarnings("SpringJavaAutowiredMembersInspection")
+    @Autowired
+    public SexCodeRepositoryTest(SexCodeRepository sexCodeRepository) {
+        this.sexCodeRepository = sexCodeRepository;
+    }
 
     @BeforeEach
     void beforeEach() {
@@ -31,4 +37,5 @@ public class SexCodeRepositoryTest {
 
         Assertions.assertNotNull(result);
     }
+
 }
