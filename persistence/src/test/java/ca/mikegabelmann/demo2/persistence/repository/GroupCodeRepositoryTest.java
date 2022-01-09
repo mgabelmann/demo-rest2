@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import javax.persistence.EntityNotFoundException;
+
 
 @DataJpaTest
 public class GroupCodeRepositoryTest {
@@ -35,14 +37,18 @@ public class GroupCodeRepositoryTest {
         Assertions.assertNotNull(result);
     }
 
-    //FIXME: why doesnt this catch the error? The commented code throws it?
+    //NOTE: assertThrows is not working unless we include internal check. Why?
     @Test
     @DisplayName("getById - without result")
     void test2_getById() {
-        //GroupCode result = groupCodeRepository.getById("code");
-        //Assertions.assertNull(result);
+        Assertions.assertThrows(EntityNotFoundException.class, () -> {
+            GroupCode result = this.getRecord("XXXX");
+            Assertions.assertNull(result);
+        });
+    }
 
-        //Assertions.assertThrows(EntityNotFoundException.class, () -> groupCodeRepository.getById("xxxx"));
+    GroupCode getRecord(String id) throws Exception {
+        return groupCodeRepository.getById(id);
     }
 
 }
