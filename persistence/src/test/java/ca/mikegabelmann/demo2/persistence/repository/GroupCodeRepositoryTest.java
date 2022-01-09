@@ -45,20 +45,4 @@ public class GroupCodeRepositoryTest {
         //Assertions.assertThrows(EntityNotFoundException.class, () -> groupCodeRepository.getById("xxxx"));
     }
 
-/*
-create table address (address_id bigint not null, attention varchar(100), city varchar(100) not null, country varchar(100) not null, postal varchar(25) not null, prov varchar(100) not null, street_address varchar(100) not null, person_id bigint, primary key (address_id))
-create table group_code (group_id varchar(5) not null, description varchar(64) not null, primary key (group_id))
-create table group_type_code (
-    group_id varchar(5) not null,
-    type_id varchar(5) not null,
-    description varchar(255) not null,
-    effective char(1) not null,
-    position integer not null,
-    p_group_id varchar(5),
-    p_type_id varchar(5),
-    primary key (group_id, type_id))
-create table person (person_id bigint not null, birth_dt date not null, first_name varchar(75) not null, last_name varchar(75) not null, middle_name varchar(75), sex_code varchar(1) not null, primary key (person_id))
-create table sex_code (id varchar(1) not null, description varchar(24) not null, primary key (id))
-*/
-
 }

@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import java.util.List;
+
 @DataJpaTest
 public class GroupTypeCodeRepositoryTest {
     private GroupCodeRepository groupCodeRepository;
@@ -55,6 +57,35 @@ public class GroupTypeCodeRepositoryTest {
         Assertions.assertEquals("Canbodia", gtc1.getDescription());
         Assertions.assertEquals(2, gtc1.getPosition());
         Assertions.assertEquals(Boolean.FALSE, gtc1.getEffective());
+    }
+
+    @Test
+    @DisplayName("findGroupTypeCodesByParentType - with result")
+    void test1_findGroupTypeCodesByParentType() {
+        GroupCode gc2 = groupCodeRepository.save(new GroupCode("PRO", "Province or State"));
+
+        //link this record to another GroupTypeCode
+        GroupTypeCode tmpGtc2 = new GroupTypeCode(new GroupTypeCodeId("PRO", "BC"), "British Columbia", 2, Boolean.TRUE, gc2, gtc1);
+        groupTypeCodeRepository.save(tmpGtc2);
+
+        GroupTypeCode tmpGtc3 = new GroupTypeCode(new GroupTypeCodeId("CNTRY", "USA"), "United States", 2, Boolean.TRUE, gc1, null);
+        groupTypeCodeRepository.save(tmpGtc3);
+
+        GroupTypeCode tmpGtc4 = new GroupTypeCode(new GroupTypeCodeId("PRO", "CA"), "California", 3, Boolean.TRUE, gc2, tmpGtc3);
+        groupTypeCodeRepository.save(tmpGtc4);
+
+        {
+            List<GroupTypeCode> results = groupTypeCodeRepository.findGroupTypeCodesByParentType("CNTRY", "CAN", "PRO");
+            Assertions.assertNotNull(results);
+            Assertions.assertEquals(1, results.size());
+            Assertions.assertEquals(tmpGtc2.getId(), results.get(0).getId());
+        }
+        {
+            List<GroupTypeCode> results = groupTypeCodeRepository.findGroupTypeCodesByParentType("CNTRY", "USA", "PRO");
+            Assertions.assertNotNull(results);
+            Assertions.assertEquals(1, results.size());
+            Assertions.assertEquals(tmpGtc4.getId(), results.get(0).getId());
+        }
     }
 
 }
