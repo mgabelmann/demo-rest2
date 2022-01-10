@@ -122,4 +122,20 @@ public class Address {
         this.person = person;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Address{");
+        sb.append("id=").append(id);
+        sb.append(", attention='").append(attention).append('\'');
+        sb.append(", streetAddress='").append(streetAddress).append('\'');
+        sb.append(", city='").append(city).append('\'');
+        sb.append(", prov='").append(prov).append('\'');
+        sb.append(", country='").append(country).append('\'');
+        sb.append(", postal='").append(postal).append('\'');
+        sb.append(", person=").append(person);
+        sb.append('}');
+
+        return sb.toString();
+    }
+
 }

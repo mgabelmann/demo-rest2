@@ -102,4 +102,18 @@ public class Person {
         this.sexCode = sexCode;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Person{");
+        sb.append("id=").append(id);
+        sb.append(", firstName='").append(firstName).append('\'');
+        sb.append(", lastName='").append(lastName).append('\'');
+        sb.append(", middleName='").append(middleName).append('\'');
+        sb.append(", birthDt=").append(birthDt);
+        sb.append(", sexCode=").append(sexCode);
+        sb.append('}');
+
+        return sb.toString();
+    }
+
 }
