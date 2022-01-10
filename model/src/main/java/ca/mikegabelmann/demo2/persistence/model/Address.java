@@ -36,11 +36,19 @@ public class Address {
     private Person person;
 
 
-    /** Constructor. */
+    /** No args constructor. */
     public Address() {}
 
-    /** Constructor. */
-    public Address(Long id, String streetAddress, String city, String prov, String country, String postal, Person person) {
+    /** Required args constructor. */
+    public Address(
+        final Long id,
+        final String streetAddress,
+        final String city,
+        final String prov,
+        final String country,
+        final String postal,
+        final Person person) {
+
         this.id = id;
         this.streetAddress = streetAddress;
         this.city = city;

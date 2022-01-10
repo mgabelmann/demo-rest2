@@ -16,7 +16,7 @@ public class SexCode {
 
     /** No args constructor. */
     public SexCode() {
-
+        this(null, null);
     }
 
     /** Required args constructor. */

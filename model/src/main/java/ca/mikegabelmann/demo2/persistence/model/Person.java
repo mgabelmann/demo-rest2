@@ -36,11 +36,17 @@ public class Person {
     private final List<Address> addresses = new ArrayList<>();
 
 
-    /** Constructor. */
+    /** No args constructor. */
     public Person() {}
 
-    /** Constructor. */
-    public Person(Long id, String firstName, String lastName, LocalDate birthDt, SexCode sexCode) {
+    /** Required args constructor. */
+    public Person(
+        final Long id,
+        final String firstName,
+        final String lastName,
+        final LocalDate birthDt,
+        final SexCode sexCode) {
+
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
