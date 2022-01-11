@@ -20,7 +20,7 @@ public class SexCode {
     }
 
     /** Required args constructor. */
-    public SexCode(String id, String description) {
+    public SexCode(final String id, final String description) {
         this.id = id;
         this.description = description;
     }
@@ -39,6 +39,11 @@ public class SexCode {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("SexCode{id='%s', description='%s'}", id, description);
     }
 
 }

@@ -59,6 +59,7 @@ public class GroupTypeCodeId implements Serializable {
         GroupTypeCodeId that = (GroupTypeCodeId) o;
 
         if (!groupId.equals(that.groupId)) return false;
+
         return typeId.equals(that.typeId);
     }
 
@@ -66,6 +67,7 @@ public class GroupTypeCodeId implements Serializable {
     public int hashCode() {
         int result = groupId.hashCode();
         result = 31 * result + typeId.hashCode();
+
         return result;
     }
 

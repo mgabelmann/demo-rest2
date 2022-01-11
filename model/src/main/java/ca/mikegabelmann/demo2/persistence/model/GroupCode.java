@@ -28,7 +28,7 @@ public class GroupCode {
      * @param groupId group id
      * @param description description
      */
-    public GroupCode(String groupId, String description) {
+    public GroupCode(final String groupId, final String description) {
         this.groupId = groupId;
         this.description = description;
     }
