@@ -11,6 +11,12 @@ import java.util.List;
 @Repository
 public interface PersonRepository extends JpaRepository<Person, Long> {
 
+    /**
+     * Get people by sex and birth date.
+     * @param sexcode sex
+     * @param date birth date
+     * @return records
+     */
     List<Person> findBySexCodeIdAndBirthDt(String sexcode, LocalDate date);
 
 }

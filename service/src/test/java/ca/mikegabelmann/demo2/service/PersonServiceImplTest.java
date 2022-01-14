@@ -49,12 +49,24 @@ class PersonServiceImplTest {
     }
 
     @Test
-    @DisplayName("findBySexAndBirthDt - without results")
-    void test2_findBySexAndBirthDt() {
-        List<PersonDto> results = service.findBySexAndBirthDt(Sex.F.name(), p.getBirthDt());
+    @DisplayName("map - null")
+    void test1_map() {
+        Assertions.assertNull(PersonServiceImpl.map(null));
+    }
 
-        Assertions.assertNotNull(results);
-        Assertions.assertEquals(0, results.size());
+    @Test
+    @DisplayName("map - value")
+    void test2_map() {
+        PersonDto result = PersonServiceImpl.map(p);
+
+        Assertions.assertNotNull(result);
+
+        Assertions.assertEquals(p.getId(), result.getId());
+        Assertions.assertEquals(p.getFirstName(), result.getFirstName());
+        Assertions.assertEquals(p.getLastName(), result.getLastName());
+        Assertions.assertEquals(p.getMiddleName(), result.getMiddleName());
+        Assertions.assertEquals(p.getBirthDt(), result.getBirthDt());
+        Assertions.assertEquals(p.getSexCode().getId(), result.getSex());
     }
 
 }

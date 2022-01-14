@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @DataJpaTest
@@ -55,6 +56,24 @@ public class AddressRepositoryTest {
         Address result = addressRepository.getById(a.getId());
 
         Assertions.assertNotNull(result);
+    }
+
+    @Test
+    @DisplayName("getAddressByCountryAndProvAndCity - with results")
+    void test1_getAddressByCountryAndProvAndCity() {
+        List<Address> results = addressRepository.getAddressByCountryAndProvAndCity("country", "prov", "city");
+
+        Assertions.assertNotNull(results);
+        Assertions.assertEquals(1, results.size());
+    }
+
+    @Test
+    @DisplayName("getAddressByCountryAndProvAndCity - without results")
+    void test2_getAddressByCountryAndProvAndCity() {
+        List<Address> results = addressRepository.getAddressByCountryAndProvAndCity("", "", "");
+
+        Assertions.assertNotNull(results);
+        Assertions.assertEquals(0, results.size());
     }
 
 }

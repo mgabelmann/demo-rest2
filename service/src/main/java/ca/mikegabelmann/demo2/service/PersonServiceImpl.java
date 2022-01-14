@@ -41,7 +41,16 @@ public class PersonServiceImpl implements PersonService {
      * @return mapped record
      */
     public static PersonDto map(Person p) {
-        return new PersonDto(p.getId(), p.getFirstName(), p.getLastName(), p.getMiddleName(), p.getBirthDt(), p.getSexCode().getId());
+        PersonDto tmp;
+
+        if (p != null) {
+            tmp = new PersonDto(p.getId(), p.getFirstName(), p.getLastName(), p.getMiddleName(), p.getBirthDt(), p.getSexCode().getId());
+
+        } else {
+            tmp = null;
+        }
+
+        return tmp;
     }
 
 }
