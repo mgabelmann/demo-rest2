@@ -36,6 +36,12 @@
             <version>${project.parent.version}</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>ca.mikegabelmann</groupId>
+            <artifactId>demo-rest2-shared</artifactId>
+            <version>${project.parent.version}</version>
+            <scope>compile</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -49,13 +55,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>
             <version>${spring-boot-starter.version}</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>ca.mikegabelmann</groupId>
-            <artifactId>demo-rest2-shared</artifactId>
-            <version>${project.parent.version}</version>
             <scope>compile</scope>
         </dependency>
 
