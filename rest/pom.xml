@@ -52,6 +52,13 @@
             <scope>compile</scope>
         </dependency>
 
+        <dependency>
+            <groupId>ca.mikegabelmann</groupId>
+            <artifactId>demo-rest2-shared</artifactId>
+            <version>${project.parent.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
         <!-- NOTE: how to exclude spring-boot-starter-logging from all modules
         <dependency>
             <groupId>org.springframework.boot</groupId>

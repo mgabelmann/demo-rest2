@@ -2,7 +2,10 @@ package ca.mikegabelmann.demo2.controller.rest;
 
 import ca.mikegabelmann.demo2.dto.PersonDto;
 import ca.mikegabelmann.demo2.codes.Sex;
+import ca.mikegabelmann.demo2.persistence.model.Person;
+import ca.mikegabelmann.demo2.persistence.model.SexCode;
 import ca.mikegabelmann.demo2.service.PersonService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -31,18 +34,47 @@ class PersonRestControllerTest {
     @MockBean
     private PersonService personService;
 
-    private PersonDto personDto;
+    private Person person;
 
 
     @BeforeEach
     void beforeEach() {
-        this.personDto = new PersonDto(1L, "firstName", "lastName", "middleName", LocalDate.of(2000, 1, 15), Sex.M.name());
+        SexCode sexCode = new SexCode(Sex.M.name(), Sex.M.toString());
+        this.person = new Person(1L, "firstName", "lastName", LocalDate.of(2000, 1, 15), sexCode);
     }
+
+    @Test
+    @DisplayName("map record - null")
+    void test1_map() {
+        Assertions.assertNull(PersonRestController.map((Person) null));
+    }
+
+    @Test
+    @DisplayName("map list - null")
+    void test2_map() {
+        Assertions.assertNull(PersonRestController.map((List<Person>) null));
+    }
+
+    @Test
+    @DisplayName("map - value")
+    void test3_map() {
+        PersonDto result = PersonRestController.map(person);
+
+        Assertions.assertNotNull(result);
+
+        Assertions.assertEquals(person.getId(), result.getId());
+        Assertions.assertEquals(person.getFirstName(), result.getFirstName());
+        Assertions.assertEquals(person.getLastName(), result.getLastName());
+        Assertions.assertEquals(person.getMiddleName(), result.getMiddleName());
+        Assertions.assertEquals(person.getBirthDt(), result.getBirthDt());
+        Assertions.assertEquals(person.getSexCode().getId(), result.getSex());
+    }
+
 
     @Test
     @DisplayName("findBySexAndBirthDt - Sex/LocalDate - with results")
     void test1_findBySexAndBirthDt() throws Exception {
-        Mockito.when(personService.findBySexAndBirthDt(Sex.M.name(), personDto.getBirthDt())).thenReturn(List.of(personDto));
+        Mockito.when(personService.findBySexAndBirthDt(Sex.M.name(), person.getBirthDt())).thenReturn(List.of(person));
 
         mvc.perform(
                 get(PersonRestController.PATH_PERSONS_SEARCH)
@@ -52,7 +84,7 @@ class PersonRestControllerTest {
         //).andDo(print()
         ).andExpectAll(
                 status().isOk(),
-                content().string(startsWith("[{\"id\":1,\"firstName\":\"firstName\",\"lastName\":\"lastName\",\"middleName\":\"middleName\",\"birthDt\":\"2000-01-15\",\"sex\":\"M\"}]"))
+                content().string(startsWith("[{\"id\":1,\"firstName\":\"firstName\",\"lastName\":\"lastName\",\"middleName\":null,\"birthDt\":\"2000-01-15\",\"sex\":\"M\"}]"))
         );
     }
 
@@ -75,7 +107,7 @@ class PersonRestControllerTest {
     @Test
     @DisplayName("findBySexAndBirthDt - PersonSearch1 - with results")
     void test3_findBySexAndBirthDt() throws Exception {
-        Mockito.when(personService.findBySexAndBirthDt(Sex.M.name(), personDto.getBirthDt())).thenReturn(List.of(personDto));
+        Mockito.when(personService.findBySexAndBirthDt(Sex.M.name(), person.getBirthDt())).thenReturn(List.of(person));
 
         mvc.perform(
                 get(PersonRestController.PATH_PERSONS_SEARCH1)
@@ -85,7 +117,7 @@ class PersonRestControllerTest {
         //).andDo(print()
         ).andExpectAll(
                 status().isOk(),
-                content().string(startsWith("[{\"id\":1,\"firstName\":\"firstName\",\"lastName\":\"lastName\",\"middleName\":\"middleName\",\"birthDt\":\"2000-01-15\",\"sex\":\"M\"}]"))
+                content().string(startsWith("[{\"id\":1,\"firstName\":\"firstName\",\"lastName\":\"lastName\",\"middleName\":null,\"birthDt\":\"2000-01-15\",\"sex\":\"M\"}]"))
         );
     }
 
@@ -103,4 +135,5 @@ class PersonRestControllerTest {
                 content().string(startsWith("[]"))
         );
     }
+
 }

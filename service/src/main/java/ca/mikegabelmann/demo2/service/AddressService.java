@@ -1,13 +1,12 @@
 package ca.mikegabelmann.demo2.service;
 
-
-import ca.mikegabelmann.demo2.dto.AddressDto;
+import ca.mikegabelmann.demo2.persistence.model.Address;
 
 import java.util.List;
 
 
 public interface AddressService {
 
-    List<AddressDto> getAddressByCountryAndProvAndCity(String country, String prov, String city);
+    List<Address> getAddressByCountryAndProvAndCity(String country, String prov, String city);
 
 }
