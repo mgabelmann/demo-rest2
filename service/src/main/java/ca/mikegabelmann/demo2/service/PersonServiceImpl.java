@@ -2,7 +2,6 @@ package ca.mikegabelmann.demo2.service;
 
 import ca.mikegabelmann.demo2.persistence.model.Person;
 import ca.mikegabelmann.demo2.persistence.repository.PersonRepository;
-import ca.mikegabelmann.demo2.dto.PersonDto;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 @Service
@@ -29,28 +27,8 @@ public class PersonServiceImpl implements PersonService {
 
     @Transactional(readOnly = true)
     @Override
-    public List<PersonDto> findBySexAndBirthDt(String sex, LocalDate date) {
-        List<Person> records = personRepository.findBySexCodeIdAndBirthDt(sex, date);
-
-        return records.stream().map(PersonServiceImpl::map).collect(Collectors.toList());
-    }
-
-    /**
-     * Convert Person to PersonDto.
-     * @param p record
-     * @return mapped record
-     */
-    public static PersonDto map(Person p) {
-        PersonDto tmp;
-
-        if (p != null) {
-            tmp = new PersonDto(p.getId(), p.getFirstName(), p.getLastName(), p.getMiddleName(), p.getBirthDt(), p.getSexCode().getId());
-
-        } else {
-            tmp = null;
-        }
-
-        return tmp;
+    public List<Person> findBySexAndBirthDt(String sex, LocalDate date) {
+        return personRepository.findBySexCodeIdAndBirthDt(sex, date);
     }
 
 }

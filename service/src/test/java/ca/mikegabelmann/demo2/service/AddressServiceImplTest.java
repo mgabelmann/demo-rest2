@@ -1,8 +1,5 @@
 package ca.mikegabelmann.demo2.service;
 
-import ca.mikegabelmann.demo2.codes.Sex;
-import ca.mikegabelmann.demo2.dto.AddressDto;
-import ca.mikegabelmann.demo2.dto.PersonDto;
 import ca.mikegabelmann.demo2.persistence.model.Address;
 import ca.mikegabelmann.demo2.persistence.model.Person;
 import ca.mikegabelmann.demo2.persistence.model.SexCode;
@@ -35,7 +32,7 @@ class AddressServiceImplTest {
 
     @BeforeEach
     void beforeEach() {
-        SexCode sex = new SexCode(Sex.M.name(), Sex.M.toString());
+        SexCode sex = new SexCode("M", "Male");
         this.p = new Person(1L, "firstName", "lastName", LocalDate.now(), sex);
         this.a = new Address(1L, "streetAddress", "city", "prov", "country", "postal", p);
     }
@@ -45,31 +42,9 @@ class AddressServiceImplTest {
     void test1_getAddressByCountryAndProvAndCity() {
         Mockito.when(addressRepository.getAddressByCountryAndProvAndCity("country", "prov", "city")).thenReturn(List.of(a));
 
-        List<AddressDto> results = addressService.getAddressByCountryAndProvAndCity("country", "prov", "city");
+        List<Address> results = addressService.getAddressByCountryAndProvAndCity("country", "prov", "city");
         Assertions.assertNotNull(results);
         Assertions.assertEquals(1, results.size());
-    }
-
-    @Test
-    @DisplayName("map - null")
-    void test1_map() {
-        Assertions.assertNull(AddressServiceImpl.map(null));
-    }
-
-    @Test
-    @DisplayName("map - value")
-    void test2_map() {
-        AddressDto result = AddressServiceImpl.map(a);
-
-        Assertions.assertNotNull(result);
-
-        Assertions.assertEquals(a.getId(), result.getId());
-        Assertions.assertEquals(a.getAttention(), result.getAttention());
-        Assertions.assertEquals(a.getStreetAddress(), result.getStreetAddress());
-        Assertions.assertEquals(a.getCity(), result.getCity());
-        Assertions.assertEquals(a.getProv(), result.getProv());
-        Assertions.assertEquals(a.getCountry(), result.getCountry());
-        Assertions.assertEquals(a.getPostal(), result.getPostal());
     }
 
 }
