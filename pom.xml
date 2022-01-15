@@ -26,8 +26,19 @@
     </scm>
 
     <properties>
-        <spring-boot-starter.version>2.6.1</spring-boot-starter.version>
+        <spring-boot-starter.version>2.6.2</spring-boot-starter.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- NOTE: remove when spring-boot-starter is updated to work with latest spring-beans -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>5.3.15</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <modules>
         <module>model</module>
