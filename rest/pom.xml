@@ -12,7 +12,7 @@
 
     <artifactId>demo-rest2-rest</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>Demo - Controller REST</name>
     <description>
@@ -56,6 +56,13 @@
             <artifactId>spring-boot-starter-data-rest</artifactId>
             <version>${spring-boot-starter.version}</version>
             <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <version>${spring-boot-starter.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- NOTE: how to exclude spring-boot-starter-logging from all modules
@@ -112,6 +119,9 @@
     </dependencies>
 
     <build>
+        <!-- Name of WAR file -->
+        <finalName>${artifactId}</finalName>
+
         <plugins>
             <!-- create springboot uber jar -->
             <plugin>
