@@ -6,6 +6,9 @@ import ca.mikegabelmann.demo2.service.AddressService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -14,6 +17,9 @@ import java.util.stream.Collectors;
 
 @RestController
 public class AddressRestController {
+    /** Path for REST endpoint. */
+    public static final String PATH_ADDRESS_SEARCH1 = "/addresses/search";
+
     /** Logger. */
     private static final Logger LOG = LogManager.getLogger(AddressRestController.class);
 
@@ -26,7 +32,16 @@ public class AddressRestController {
         this.addressService = addressService;
     }
 
-    //TODO: implement methods here
+    @GetMapping(path = AddressRestController.PATH_ADDRESS_SEARCH1)
+    public ResponseEntity<List<AddressDto>> getAddressByCountryAndProvAndCity(
+        @RequestParam(value="country") String country,
+        @RequestParam(value="prov") String prov,
+        @RequestParam(value="city") String city) {
+
+        List<Address> results = addressService.getAddressByCountryAndProvAndCity(country, prov, city);
+
+        return ResponseEntity.ok(AddressRestController.map(results));
+    }
 
     /**
      * Map a collection of domain objects to DTOs.

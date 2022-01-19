@@ -8,12 +8,19 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
+
+import static org.hamcrest.Matchers.startsWith;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 @WebMvcTest(AddressRestController.class)
@@ -59,6 +66,33 @@ public class AddressRestControllerTest {
         Assertions.assertEquals(address.getProv(), result.getProv());
         Assertions.assertEquals(address.getCountry(), result.getCountry());
         Assertions.assertEquals(address.getPostal(), result.getPostal());
+    }
+
+    @Test
+    @DisplayName("map list - value")
+    void test4_map() {
+        List<AddressDto> results = AddressRestController.map(List.of(address));
+
+        Assertions.assertNotNull(results);
+        Assertions.assertEquals(1, results.size());
+    }
+
+    @Test
+    @DisplayName("getAddressByCountryAndProvAndCity - with results")
+    void test1_getAddressByCountryAndProvAndCity() throws Exception {
+        Mockito.when(addressService.getAddressByCountryAndProvAndCity("country", "prov", "city")).thenReturn(List.of(address));
+
+        mvc.perform(
+                get(AddressRestController.PATH_ADDRESS_SEARCH1)
+                        .param("country", "country")
+                        .param("prov", "prov")
+                        .param("city", "city")
+
+                //).andDo(print()
+        ).andExpectAll(
+                status().isOk(),
+                content().string(startsWith("[{\"id\":1,\"attention\":null,\"streetAddress\":\"streetAddress\",\"city\":\"city\",\"prov\":\"prov\",\"country\":\"country\",\"postal\":\"postal\"}]"))
+        );
     }
 
 }
