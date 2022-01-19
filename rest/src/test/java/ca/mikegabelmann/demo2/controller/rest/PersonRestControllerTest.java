@@ -1,5 +1,6 @@
 package ca.mikegabelmann.demo2.controller.rest;
 
+import ca.mikegabelmann.demo2.dto.AddressDto;
 import ca.mikegabelmann.demo2.dto.PersonDto;
 import ca.mikegabelmann.demo2.codes.Sex;
 import ca.mikegabelmann.demo2.persistence.model.Person;
@@ -70,6 +71,14 @@ class PersonRestControllerTest {
         Assertions.assertEquals(person.getSexCode().getId(), result.getSex());
     }
 
+    @Test
+    @DisplayName("map list - value")
+    void test4_map() {
+        List<PersonDto> results = PersonRestController.map(List.of(person));
+
+        Assertions.assertNotNull(results);
+        Assertions.assertEquals(1, results.size());
+    }
 
     @Test
     @DisplayName("findBySexAndBirthDt - Sex/LocalDate - with results")
