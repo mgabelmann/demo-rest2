@@ -71,6 +71,19 @@ export default {
             this.person = {...response.data};
             this.person.middleName = response.data.middleName == null ? '' : response.data.middleName;
             console.log("received person");
+
+            this.loadSex(response.data._links.sexCode.href);
+          })
+          .catch(error => {
+            console.log(error)
+          })
+          .finally(() => this.loading = false);
+    },
+    async loadSex(uri) {
+      await axios.get(uri)
+          .then(response => {
+            this.person.sex = response.data.description;
+            console.log("received sex");
           })
           .catch(error => {
             console.log(error)
