@@ -120,7 +120,7 @@
 
     <build>
         <!-- Name of WAR file -->
-        <finalName>${artifactId}</finalName>
+        <finalName>${project.artifactId}</finalName>
 
         <plugins>
             <!-- create springboot uber jar -->
