@@ -5,8 +5,8 @@ import ca.mikegabelmann.demo2.persistence.model.Person;
 import ca.mikegabelmann.demo2.search.PersonSearch1;
 import ca.mikegabelmann.demo2.service.PersonService;
 import ca.mikegabelmann.demo2.dto.PersonDto;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +25,7 @@ public final class PersonRestController {
     public static final String PATH_PERSONS_SEARCH1 = "/persons/search1";
 
     /** Logger. */
-    private static final Logger LOG = LogManager.getLogger(PersonRestController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(PersonRestController.class);
 
     /** Person service. */
     private final PersonService personService;

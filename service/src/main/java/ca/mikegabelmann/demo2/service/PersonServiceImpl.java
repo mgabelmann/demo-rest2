@@ -2,8 +2,8 @@ package ca.mikegabelmann.demo2.service;
 
 import ca.mikegabelmann.demo2.persistence.model.Person;
 import ca.mikegabelmann.demo2.persistence.repository.PersonRepository;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 public class PersonServiceImpl implements PersonService {
     /** Logger. */
-    private static final Logger LOG = LogManager.getLogger(PersonServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(PersonServiceImpl.class);
 
     private final PersonRepository personRepository;
 

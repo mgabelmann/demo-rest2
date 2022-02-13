@@ -1,8 +1,8 @@
 package ca.mikegabelmann.demo2.controller.config;
 
 import ca.mikegabelmann.demo2.controller.rest.HelloWorldRestController;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -46,7 +46,7 @@ import javax.annotation.PostConstruct;
 @Configurable
 public class CorsConfig implements RepositoryRestConfigurer {
     /** Logger. */
-    private static final Logger LOG = LogManager.getLogger(CorsConfig.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CorsConfig.class);
 
     /** Enable or disable CORs filtering. */
     @Value("${app.cors.enabled:true}")
