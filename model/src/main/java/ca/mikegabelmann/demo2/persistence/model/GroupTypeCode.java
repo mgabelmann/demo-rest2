@@ -43,12 +43,12 @@ public class GroupTypeCode {
 
     /**
      * All args constructor.
-     * @param id
-     * @param description
-     * @param position
-     * @param effective
-     * @param groupCode
-     * @param groupTypeCode
+     * @param id identifier
+     * @param description description
+     * @param position custom order
+     * @param effective in use or not
+     * @param groupCode group
+     * @param groupTypeCode group type
      */
     public GroupTypeCode(
         final GroupTypeCodeId id,

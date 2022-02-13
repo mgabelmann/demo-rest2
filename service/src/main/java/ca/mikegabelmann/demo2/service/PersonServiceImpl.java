@@ -28,6 +28,8 @@ public class PersonServiceImpl implements PersonService {
     @Transactional(readOnly = true)
     @Override
     public List<Person> findBySexAndBirthDt(String sex, LocalDate date) {
+        LOG.debug("sex={}, date={}", sex, date);
+
         return personRepository.findBySexCodeIdAndBirthDt(sex, date);
     }
 

@@ -13,11 +13,11 @@ import java.util.List;
 public interface GroupTypeCodeRepository extends JpaRepository<GroupTypeCode, GroupTypeCodeId> {
 
     /**
-     *
-     * @param pGroupCode
-     * @param pGroupTypeCode
-     * @param groupCode
-     * @return
+     * Find group type codes.
+     * @param pGroupCode parent group
+     * @param pGroupTypeCode parent group type
+     * @param groupCode group
+     * @return records
      */
     @Query("SELECT g FROM GroupTypeCode g WHERE g.groupTypeCode.id.groupId = ?1 AND g.groupTypeCode.id.typeId = ?2 AND g.groupCode.groupId = ?3")
     List<GroupTypeCode> findGroupTypeCodesByParentType(String pGroupCode, String pGroupTypeCode, String groupCode);
