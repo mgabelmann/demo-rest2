@@ -3,6 +3,7 @@ package ca.mikegabelmann.demo2.controller.config;
 import ca.mikegabelmann.demo2.controller.rest.HelloWorldRestController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -56,6 +57,11 @@ public class CorsConfig implements RepositoryRestConfigurer {
     @Value("${app.cors.url:http://localhost:8081}")
     private String corsUrl;
 
+
+    @Autowired
+    public CorsConfig(ProfileType profileType) {
+        LOG.info("profile bean loaded = {}", profileType.getProfile());
+    }
 
     @PostConstruct
     private void postConstruct() {
