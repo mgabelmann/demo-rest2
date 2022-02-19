@@ -53,7 +53,7 @@ public class AddressRestController {
             return records.stream().map(AddressRestController::map).collect(Collectors.toList());
 
         } else {
-            return null;
+            return List.of();
         }
     }
 

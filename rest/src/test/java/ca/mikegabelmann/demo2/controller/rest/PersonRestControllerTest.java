@@ -53,7 +53,9 @@ class PersonRestControllerTest {
     @Test
     @DisplayName("map list - null")
     void test2_map() {
-        Assertions.assertNull(PersonRestController.map((List<Person>) null));
+        List<PersonDto> results = PersonRestController.map((List<Person>) null);
+        Assertions.assertNotNull(results);
+        Assertions.assertEquals(0, results.size());
     }
 
     @Test

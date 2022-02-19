@@ -49,7 +49,10 @@ public class AddressRestControllerTest {
     @Test
     @DisplayName("map list - null")
     void test2_map() {
-        Assertions.assertNull(AddressRestController.map((List<Address>) null));
+        List<AddressDto> results = AddressRestController.map((List<Address>) null);
+
+        Assertions.assertNotNull(results);
+        Assertions.assertEquals(0, results.size());
     }
 
     @Test

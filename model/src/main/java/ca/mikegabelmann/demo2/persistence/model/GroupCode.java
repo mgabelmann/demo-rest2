@@ -11,7 +11,7 @@ import javax.persistence.Table;
 public class GroupCode {
 
     @Id
-    @Column(name = "GROUP_ID", unique = true, nullable = false, length = 5)
+    @Column(name = "GROUP_ID", nullable = false, unique = true, length = 5)
     private String groupId;
 
     @Column(name = "DESCRIPTION", nullable = false, length = 64)

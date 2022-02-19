@@ -1,6 +1,10 @@
 package ca.mikegabelmann.demo2.persistence.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "SEX_CODE")

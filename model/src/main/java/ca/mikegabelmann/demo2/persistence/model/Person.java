@@ -1,6 +1,16 @@
 package ca.mikegabelmann.demo2.persistence.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +43,7 @@ public class Person {
     private SexCode sexCode;
 
     @OneToMany(mappedBy = "person")
-    private final List<Address> addresses = new ArrayList<>();
+    private List<Address> addresses = new ArrayList<>();
 
 
     /** No args constructor. */
@@ -100,6 +110,14 @@ public class Person {
 
     public void setSexCode(SexCode sexCode) {
         this.sexCode = sexCode;
+    }
+
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
     }
 
     @Override
