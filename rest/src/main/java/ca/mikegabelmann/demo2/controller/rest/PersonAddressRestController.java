@@ -19,6 +19,9 @@ import java.util.stream.Collectors;
 
 @RestController
 public class PersonAddressRestController {
+    /** Path for REST endpoint. */
+    public static final String PATH_GET_PERSONADDRESS = "/personAddress/{id}";
+
     /** Logger. */
     private static final Logger LOG = LoggerFactory.getLogger(PersonAddressRestController.class);
 
@@ -30,7 +33,7 @@ public class PersonAddressRestController {
         this.personFacade = personFacade;
     }
 
-    @GetMapping(path = "/personAddress/{id}")
+    @GetMapping(path = PersonAddressRestController.PATH_GET_PERSONADDRESS)
     public ResponseEntity<PersonAddressDto> getPersonAddress(@PathVariable("id") Long id) {
         Optional<PersonAddress> personAddress = personFacade.getPersonAddress(id);
 
