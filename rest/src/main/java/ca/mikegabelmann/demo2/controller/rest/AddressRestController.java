@@ -1,5 +1,6 @@
 package ca.mikegabelmann.demo2.controller.rest;
 
+import ca.mikegabelmann.demo2.controller.rest.mapper.DtoMapper;
 import ca.mikegabelmann.demo2.dto.AddressDto;
 import ca.mikegabelmann.demo2.persistence.model.Address;
 import ca.mikegabelmann.demo2.service.AddressService;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 @RestController
@@ -26,10 +26,13 @@ public class AddressRestController {
     /** Person service. */
     private final AddressService addressService;
 
+    private final DtoMapper dtoMapper;
+
 
     @Autowired
-    public AddressRestController(AddressService addressService) {
+    public AddressRestController(final AddressService addressService, final DtoMapper dtoMapper) {
         this.addressService = addressService;
+        this.dtoMapper = dtoMapper;
     }
 
     @GetMapping(path = AddressRestController.PATH_ADDRESS_SEARCH1)
@@ -40,39 +43,11 @@ public class AddressRestController {
 
         List<Address> results = addressService.getAddressByCountryAndProvAndCity(country, prov, city);
 
-        return ResponseEntity.ok(AddressRestController.map(results));
+        return ResponseEntity.ok(this.map(results));
     }
 
-    /**
-     * Map a collection of domain objects to DTOs.
-     * @param records domain records
-     * @return transfer records
-     */
-    public static List<AddressDto> map(List<Address> records) {
-        if (records != null) {
-            return records.stream().map(AddressRestController::map).collect(Collectors.toList());
-
-        } else {
-            return List.of();
-        }
-    }
-
-    /**
-     * Convert Address to AddressDto.
-     * @param a record
-     * @return mapped record
-     */
-    public static AddressDto map(Address a) {
-        AddressDto tmp;
-
-        if (a != null) {
-            tmp = new AddressDto(a.getId(), a.getAttention(), a.getStreetAddress(), a.getCity(), a.getProv(), a.getCountry(), a.getPostal());
-
-        } else {
-            tmp = null;
-        }
-
-        return tmp;
+    private List<AddressDto> map(final List<Address> records) {
+        return dtoMapper.mapListAddressDto(records);
     }
 
 }

@@ -43,6 +43,7 @@ public class PersonAddressRestControllerTest {
         personAddress.getPerson().setSexCode(new SexCode());
     }
 
+    /*
     @Test
     @DisplayName("map record - null")
     void test1_map() {
@@ -76,6 +77,7 @@ public class PersonAddressRestControllerTest {
         Assertions.assertNotNull(results);
         Assertions.assertEquals(1, results.size());
     }
+     */
 
     @Test
     @DisplayName("getPersonAddress - with results")

@@ -1,6 +1,5 @@
 package ca.mikegabelmann.demo2.controller.rest;
 
-import ca.mikegabelmann.demo2.dto.AddressDto;
 import ca.mikegabelmann.demo2.dto.PersonDto;
 import ca.mikegabelmann.demo2.codes.Sex;
 import ca.mikegabelmann.demo2.persistence.model.Person;
@@ -44,6 +43,7 @@ class PersonRestControllerTest {
         this.person = new Person(1L, "firstName", "lastName", LocalDate.of(2000, 1, 15), sexCode);
     }
 
+    /*
     @Test
     @DisplayName("map record - null")
     void test1_map() {
@@ -81,6 +81,7 @@ class PersonRestControllerTest {
         Assertions.assertNotNull(results);
         Assertions.assertEquals(1, results.size());
     }
+     */
 
     @Test
     @DisplayName("findBySexAndBirthDt - Sex/LocalDate - with results")

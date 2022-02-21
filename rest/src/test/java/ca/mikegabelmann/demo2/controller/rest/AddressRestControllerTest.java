@@ -40,6 +40,7 @@ public class AddressRestControllerTest {
         this.address = new Address(1L, "streetAddress", "city", "prov", "country", "postal", new Person());
     }
 
+    /*
     @Test
     @DisplayName("map record - null")
     void test1_map() {
@@ -79,6 +80,7 @@ public class AddressRestControllerTest {
         Assertions.assertNotNull(results);
         Assertions.assertEquals(1, results.size());
     }
+     */
 
     @Test
     @DisplayName("getAddressByCountryAndProvAndCity - with results")
