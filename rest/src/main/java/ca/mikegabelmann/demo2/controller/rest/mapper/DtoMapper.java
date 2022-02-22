@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * Construct mapper between DTO and JPA entities. This process is tricky and error prone so unit tests are required!
- *
+ * Implementation is a Spring Component.
  */
 @Mapper(componentModel = "spring")
 public interface DtoMapper {
@@ -44,4 +44,5 @@ public interface DtoMapper {
     @Mapping(source = "sex", target = "id")
     @Mapping(target = "description", ignore = true)
     SexCode mapSexCodeString(String sex);
+
 }

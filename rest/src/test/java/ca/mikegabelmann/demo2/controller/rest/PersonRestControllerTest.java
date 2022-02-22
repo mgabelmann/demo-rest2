@@ -1,11 +1,10 @@
 package ca.mikegabelmann.demo2.controller.rest;
 
-import ca.mikegabelmann.demo2.dto.PersonDto;
 import ca.mikegabelmann.demo2.codes.Sex;
+import ca.mikegabelmann.demo2.controller.rest.mapper.DtoMapper;
 import ca.mikegabelmann.demo2.persistence.model.Person;
 import ca.mikegabelmann.demo2.persistence.model.SexCode;
 import ca.mikegabelmann.demo2.service.PersonService;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,6 +12,7 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDate;
@@ -26,10 +26,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @WebMvcTest(PersonRestController.class)
+@ComponentScan(basePackageClasses = {
+    DtoMapper.class
+})
 class PersonRestControllerTest {
 
     @Autowired
     private MockMvc mvc;
+
+    @Autowired
+    private DtoMapper dtoMapper;
 
     @MockBean
     private PersonService personService;
@@ -42,46 +48,6 @@ class PersonRestControllerTest {
         SexCode sexCode = new SexCode(Sex.M.name(), Sex.M.toString());
         this.person = new Person(1L, "firstName", "lastName", LocalDate.of(2000, 1, 15), sexCode);
     }
-
-    /*
-    @Test
-    @DisplayName("map record - null")
-    void test1_map() {
-        Assertions.assertNull(PersonRestController.map((Person) null));
-    }
-
-    @Test
-    @DisplayName("map list - null")
-    void test2_map() {
-        List<PersonDto> results = PersonRestController.map((List<Person>) null);
-        Assertions.assertNotNull(results);
-        Assertions.assertEquals(0, results.size());
-    }
-
-    @Test
-    @DisplayName("map - value")
-    void test3_map() {
-        PersonDto result = PersonRestController.map(person);
-
-        Assertions.assertNotNull(result);
-
-        Assertions.assertEquals(person.getId(), result.getId());
-        Assertions.assertEquals(person.getFirstName(), result.getFirstName());
-        Assertions.assertEquals(person.getLastName(), result.getLastName());
-        Assertions.assertEquals(person.getMiddleName(), result.getMiddleName());
-        Assertions.assertEquals(person.getBirthDt(), result.getBirthDt());
-        Assertions.assertEquals(person.getSexCode().getId(), result.getSex());
-    }
-
-    @Test
-    @DisplayName("map list - value")
-    void test4_map() {
-        List<PersonDto> results = PersonRestController.map(List.of(person));
-
-        Assertions.assertNotNull(results);
-        Assertions.assertEquals(1, results.size());
-    }
-     */
 
     @Test
     @DisplayName("findBySexAndBirthDt - Sex/LocalDate - with results")
