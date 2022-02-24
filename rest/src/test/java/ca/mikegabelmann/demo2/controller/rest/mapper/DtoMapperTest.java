@@ -59,7 +59,7 @@ class DtoMapperTest {
         this.validate(person1, result);
     }
 
-    @Test
+    /*@Test
     @DisplayName("PersonDto > Person - null")
     void test1_mapPerson() {
         Person result = mapper.mapPerson(null);
@@ -74,7 +74,7 @@ class DtoMapperTest {
 
         Assertions.assertNotNull(result);
         this.validate(personDto1, result);
-    }
+    }*/
 
     @Test
     @DisplayName("List Person > PersonDto - null")
@@ -94,7 +94,7 @@ class DtoMapperTest {
         this.validate(person1, results.get(0));
     }
 
-    @Test
+    /*@Test
     @DisplayName("List PersonDto > Person - null")
     void test1_mapListPerson() {
         List<Person> results = mapper.mapListPerson(null);
@@ -145,7 +145,7 @@ class DtoMapperTest {
 
         Assertions.assertNotNull(result);
         this.validate(addressDto1, result);
-    }
+    }*/
 
     @Test
     @DisplayName("List Address > AddressDto - null")
@@ -165,7 +165,7 @@ class DtoMapperTest {
         this.validate(address1, results.get(0));
     }
 
-    @Test
+    /*@Test
     @DisplayName("List AddressDto > Address - null")
     void test1_mapListAddress() {
         List<Address> results = mapper.mapListAddress(null);
@@ -207,8 +207,9 @@ class DtoMapperTest {
         PersonAddressDto result = mapper.mapPersonAddressDto(null);
 
         Assertions.assertNull(result);
-    }
+    }*/
 
+    /*
     @Test
     @DisplayName("PersonAddressDto > PersonAddress - not null")
     void test2_mapPersonAddress() {
@@ -216,9 +217,9 @@ class DtoMapperTest {
 
         Assertions.assertNotNull(result);
         this.validate(personAddressDto1, result);
-    }
+    }*/
 
-    @Test
+    /*@Test
     @DisplayName("List PersonAdressDto > PersonAddress - null")
     void test1_mapListPersonAddress() {
         List<PersonAddress> results = mapper.mapListPersonAddressDto(null);
@@ -253,7 +254,7 @@ class DtoMapperTest {
         Assertions.assertNotNull(results);
         Assertions.assertEquals(1, results.size());
         this.validate(personAddress1, results.get(0));
-    }
+    }*/
 
 
     public void validate(Person expected, PersonDto result) {
@@ -294,7 +295,7 @@ class DtoMapperTest {
         Assertions.assertEquals(expected.getPostal(), result.getPostal());
     }
 
-    public void validate(PersonAddress expected, PersonAddressDto result) {
+    /*public void validate(PersonAddress expected, PersonAddressDto result) {
         this.validate(expected.getPerson(), result.getPerson());
         this.validate(expected.getPrimaryAddress().get(), result.getPrimary());
         this.validate(expected.getSecondaryAddress().get(), result.getSecondary());
@@ -302,5 +303,5 @@ class DtoMapperTest {
 
     public void validate(PersonAddressDto expected, PersonAddress result) {
 
-    }
+    }*/
 }
