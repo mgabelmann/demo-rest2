@@ -1,6 +1,7 @@
 package ca.mikegabelmann.demo2.controller.rest;
 
 import ca.mikegabelmann.demo2.codes.Sex;
+import ca.mikegabelmann.demo2.controller.rest.mapper.DtoMapper;
 import ca.mikegabelmann.demo2.persistence.model.Person;
 import ca.mikegabelmann.demo2.search.PersonSearch1;
 import ca.mikegabelmann.demo2.service.PersonService;
@@ -32,10 +33,13 @@ public final class PersonRestController {
     /** Person service. */
     private final PersonService personService;
 
+    private final DtoMapper dtoMapper;
+
 
     @Autowired
-    public PersonRestController(final PersonService personService) {
+    public PersonRestController(final PersonService personService, final DtoMapper dtoMapper) {
         this.personService = personService;
+        this.dtoMapper = dtoMapper;
     }
 
     @GetMapping(path = PersonRestController.PATH_PERSONS_SEARCH)
@@ -45,7 +49,7 @@ public final class PersonRestController {
 
         List<Person> results = personService.findBySexAndBirthDt(sex.name(), date);
 
-        return ResponseEntity.ok(PersonRestController.map(results));
+        return ResponseEntity.ok(this.map(results));
     }
 
     /* NOTE: Spring converts values inside PersonSearch1 into a PersonSearch1 for us which makes adding new parameters
@@ -59,39 +63,11 @@ public final class PersonRestController {
 
         List<Person> results = personService.findBySexAndBirthDt(search.getSex().name(), search.getDate());
 
-        return ResponseEntity.ok(PersonRestController.map(results));
+        return ResponseEntity.ok(this.map(results));
     }
 
-    /**
-     * Map a collection of domain objects to DTOs.
-     * @param records domain records
-     * @return transfer records
-     */
-    public static List<PersonDto> map(List<Person> records) {
-        if (records != null) {
-            return records.stream().map(PersonRestController::map).collect(Collectors.toList());
-
-        } else {
-            return List.of();
-        }
-    }
-
-    /**
-     * Convert Person to PersonDto.
-     * @param p record
-     * @return mapped record
-     */
-    public static PersonDto map(Person p) {
-        PersonDto tmp;
-
-        if (p != null) {
-            tmp = new PersonDto(p.getId(), p.getFirstName(), p.getLastName(), p.getMiddleName(), p.getBirthDt(), p.getSexCode().getId());
-
-        } else {
-            tmp = null;
-        }
-
-        return tmp;
+    private List<PersonDto> map(final List<Person> records) {
+        return dtoMapper.mapListPersonDto(records);
     }
 
 }

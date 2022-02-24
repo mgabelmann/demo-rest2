@@ -2,13 +2,13 @@ package ca.mikegabelmann.demo2.dto;
 
 
 public class AddressDto {
-    private final Long id;
-    private final String attention;
-    private final String streetAddress;
-    private final String city;
-    private final String prov;
-    private final String country;
-    private final String postal;
+    private Long id;
+    private String attention;
+    private String streetAddress;
+    private String city;
+    private String prov;
+    private String country;
+    private String postal;
 
 
     public AddressDto() {
@@ -29,28 +29,56 @@ public class AddressDto {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getAttention() {
         return attention;
+    }
+
+    public void setAttention(String attention) {
+        this.attention = attention;
     }
 
     public String getStreetAddress() {
         return streetAddress;
     }
 
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
+    }
+
     public String getCity() {
         return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getProv() {
         return prov;
     }
 
+    public void setProv(String prov) {
+        this.prov = prov;
+    }
+
     public String getCountry() {
         return country;
     }
 
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
     public String getPostal() {
         return postal;
+    }
+
+    public void setPostal(String postal) {
+        this.postal = postal;
     }
 
     @Override

@@ -1,6 +1,9 @@
 package ca.mikegabelmann.demo2.controller.rest;
 
+import ca.mikegabelmann.demo2.controller.rest.mapper.DtoMapper;
+import ca.mikegabelmann.demo2.dto.AddressDto;
 import ca.mikegabelmann.demo2.dto.PersonAddressDto;
+import ca.mikegabelmann.demo2.dto.PersonDto;
 import ca.mikegabelmann.demo2.service.dto.PersonAddress;
 import ca.mikegabelmann.demo2.service.facade.PersonFacade;
 import org.slf4j.Logger;
@@ -27,10 +30,13 @@ public class PersonAddressRestController {
 
     private final PersonFacade personFacade;
 
+    private final DtoMapper dtoMapper;
+
 
     @Autowired
-    public PersonAddressRestController(final PersonFacade personFacade) {
+    public PersonAddressRestController(final PersonFacade personFacade, final DtoMapper dtoMapper) {
         this.personFacade = personFacade;
+        this.dtoMapper = dtoMapper;
     }
 
     @GetMapping(path = PersonAddressRestController.PATH_GET_PERSONADDRESS)
@@ -38,33 +44,37 @@ public class PersonAddressRestController {
         Optional<PersonAddress> personAddress = personFacade.getPersonAddress(id);
 
         if (personAddress.isPresent()) {
-            return ResponseEntity.ok(PersonAddressRestController.map(personAddress.get()));
+            return ResponseEntity.ok(this.map(personAddress.get()));
 
         } else {
             throw new ResourceNotFoundException();
         }
     }
 
-    public static List<PersonAddressDto> map(List<PersonAddress> records) {
+
+    //NOTE: we have to do this because Mapstruct doesn't handle Optional<T> easily or well
+
+
+    public List<PersonAddressDto> map(List<PersonAddress> records) {
         if (records != null) {
-            return records.stream().map(PersonAddressRestController::map).collect(Collectors.toList());
+            return records.stream().map(a -> this.map(a)).collect(Collectors.toList());
 
         } else {
             return List.of();
         }
     }
 
-    public static PersonAddressDto map(PersonAddress pa) {
-        PersonAddressDto tmp;
-
+    public PersonAddressDto map(PersonAddress pa) {
         if (pa != null) {
-            tmp = new PersonAddressDto(PersonRestController.map(pa.getPerson()), AddressRestController.map(pa.getPrimaryAddress().orElse(null)), AddressRestController.map(pa.getSecondaryAddress().orElse(null)));
+            PersonDto p = dtoMapper.mapPersonDto(pa.getPerson());
+            AddressDto a1 = pa.getPrimaryAddress().isPresent() ? dtoMapper.mapAddressDto(pa.getPrimaryAddress().get()) : null;
+            AddressDto a2 = pa.getSecondaryAddress().isPresent() ? dtoMapper.mapAddressDto(pa.getSecondaryAddress().get()) : null;
+
+            return new PersonAddressDto(p, a1, a2);
 
         } else {
-            tmp = null;
+            return null;
         }
-
-        return tmp;
     }
 
 }

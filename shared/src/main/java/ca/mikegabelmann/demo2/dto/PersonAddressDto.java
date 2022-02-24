@@ -2,22 +2,14 @@ package ca.mikegabelmann.demo2.dto;
 
 
 public class PersonAddressDto {
-    private final PersonDto person;
-    private final AddressDto primary;
-    private final AddressDto secondary;
+    private PersonDto person;
+    private AddressDto primary;
+    private AddressDto secondary;
 
 
-    public PersonAddressDto(PersonDto person) {
-        this(person, null, null);
-    }
-
-    public PersonAddressDto(PersonDto person, AddressDto primary) {
-        this(person, primary, null);
-    }
+    public PersonAddressDto() {}
 
     public PersonAddressDto(PersonDto person, AddressDto primary, AddressDto secondary) {
-        if (person == null) throw new IllegalArgumentException("person required");
-
         this.person = person;
         this.primary = primary;
         this.secondary = secondary;
@@ -27,12 +19,24 @@ public class PersonAddressDto {
         return person;
     }
 
+    public void setPerson(PersonDto person) {
+        this.person = person;
+    }
+
     public AddressDto getPrimary() {
         return primary;
     }
 
+    public void setPrimary(AddressDto primary) {
+        this.primary = primary;
+    }
+
     public AddressDto getSecondary() {
         return secondary;
+    }
+
+    public void setSecondary(AddressDto secondary) {
+        this.secondary = secondary;
     }
 
     @Override

@@ -18,6 +18,11 @@ public class PersonSearch1 {
 
     }
 
+    public PersonSearch1(Sex sex, LocalDate date) {
+        this.sex = sex;
+        this.date = date;
+    }
+
     public Sex getSex() {
         return sex;
     }
@@ -32,6 +37,15 @@ public class PersonSearch1 {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("PersonSearch1{");
+        sb.append("sex=").append(sex);
+        sb.append(", date=").append(date);
+        sb.append('}');
+        return sb.toString();
     }
 
 }
