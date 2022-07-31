@@ -30,25 +30,22 @@ public class GroupCodeRepositoryTest {
     }
 
     @Test
-    @DisplayName("getById - with result")
-    void test1_getById() {
-        GroupCode result = groupCodeRepository.getById(gc1.getGroupId());
+    @DisplayName("getReferenceById - with result")
+    void test1_getReferenceById() {
+        GroupCode result = groupCodeRepository.getReferenceById(gc1.getGroupId());
 
         Assertions.assertNotNull(result);
     }
 
-    //NOTE: assertThrows is not working unless we include internal check. Why?
+    //NOTE: doesn't throw exception until you first try and access object
     @Test
-    @DisplayName("getById - without result")
-    void test2_getById() {
+    @DisplayName("getReferenceById - without result")
+    void test2_getReferenceById() {
         Assertions.assertThrows(EntityNotFoundException.class, () -> {
-            GroupCode result = this.getRecord("XXXX");
-            Assertions.assertNull(result);
+            GroupCode gc = groupCodeRepository.getReferenceById("XXXX");
+            gc.toString();
         });
     }
 
-    GroupCode getRecord(String id) throws Exception {
-        return groupCodeRepository.getById(id);
-    }
 
 }
