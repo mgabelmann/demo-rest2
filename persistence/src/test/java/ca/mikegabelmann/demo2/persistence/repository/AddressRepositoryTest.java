@@ -51,9 +51,9 @@ public class AddressRepositoryTest {
     }
 
     @Test
-    @DisplayName("getById - with result")
-    void test1_getById() {
-        Address result = addressRepository.getById(a.getId());
+    @DisplayName("getReferenceById - with result")
+    void test1_getReferenceById() {
+        Address result = addressRepository.getReferenceById(a.getId());
 
         Assertions.assertNotNull(result);
     }

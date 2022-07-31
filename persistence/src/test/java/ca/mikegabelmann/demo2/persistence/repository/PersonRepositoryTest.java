@@ -43,9 +43,9 @@ public class PersonRepositoryTest {
     }
 
     @Test
-    @DisplayName("getById - with result")
-    void test1_getById() {
-        Person result = personRepository.getById(p.getId());
+    @DisplayName("getReferenceById - with result")
+    void test1_getReferenceById() {
+        Person result = personRepository.getReferenceById(p.getId());
 
         Assertions.assertNotNull(result);
     }

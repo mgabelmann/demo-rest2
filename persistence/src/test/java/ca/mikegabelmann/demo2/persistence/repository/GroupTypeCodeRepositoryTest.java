@@ -40,9 +40,9 @@ public class GroupTypeCodeRepositoryTest {
     }
 
     @Test
-    @DisplayName("getById - with result")
-    void test1_getById() {
-        GroupTypeCode result = groupTypeCodeRepository.getById(gtc1.getId());
+    @DisplayName("getReferenceById - with result")
+    void test1_getReferenceById() {
+        GroupTypeCode result = groupTypeCodeRepository.getReferenceById(gtc1.getId());
 
         Assertions.assertNotNull(result);
     }

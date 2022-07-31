@@ -31,9 +31,9 @@ public class SexCodeRepositoryTest {
     }
 
     @Test
-    @DisplayName("getById - with result")
-    void test1_getById() {
-        SexCode result = sexCodeRepository.getById(s.getId());
+    @DisplayName("getReferenceById - with result")
+    void test1_getReferenceById() {
+        SexCode result = sexCodeRepository.getReferenceById(s.getId());
 
         Assertions.assertNotNull(result);
     }

@@ -9,7 +9,6 @@ import ca.mikegabelmann.demo2.persistence.model.SexCode;
 import ca.mikegabelmann.demo2.service.dto.PersonAddress;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -295,13 +294,13 @@ class DtoMapperTest {
         Assertions.assertEquals(expected.getPostal(), result.getPostal());
     }
 
-    /*public void validate(PersonAddress expected, PersonAddressDto result) {
+    public void validate(PersonAddress expected, PersonAddressDto result) {
         this.validate(expected.getPerson(), result.getPerson());
         this.validate(expected.getPrimaryAddress().get(), result.getPrimary());
         this.validate(expected.getSecondaryAddress().get(), result.getSecondary());
     }
 
-    public void validate(PersonAddressDto expected, PersonAddress result) {
+    /*public void validate(PersonAddressDto expected, PersonAddress result) {
 
     }*/
 }
