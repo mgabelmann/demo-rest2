@@ -57,7 +57,7 @@ public class PersonAddressRestController {
 
     public List<PersonAddressDto> map(List<PersonAddress> records) {
         if (records != null) {
-            return records.stream().map(a -> this.map(a)).collect(Collectors.toList());
+            return records.stream().map(this::map).collect(Collectors.toList());
 
         } else {
             return List.of();
