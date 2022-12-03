@@ -21,8 +21,8 @@ public interface DtoMapper {
     @Mapping(source = "record.sexCode.id", target = "sex")
     PersonDto mapPersonDto(Person record);
 
-    //@Mapping(source = "record.sex", target = "sexCode")
-    //Person mapPerson(PersonDto record);
+    @Mapping(source = "record.sex", target = "sexCode")
+    Person mapPerson(PersonDto record);
 
     List<PersonDto> mapListPersonDto(List<Person> records);
     //List<Person> mapListPerson(List<PersonDto> records);
