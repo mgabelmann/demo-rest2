@@ -14,7 +14,7 @@ public class GroupCode {
     @Column(name = "GROUP_ID", nullable = false, unique = true, length = 5)
     private String groupId;
 
-    @Column(name = "DESCRIPTION", nullable = false, length = 64)
+    @Column(name = "DESCRIPTION", nullable = false, length = 255)
     private String description;
 
 

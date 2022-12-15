@@ -25,7 +25,7 @@
     </description>
 
     <properties>
-        <mapstruct.version>1.5.0.Beta2</mapstruct.version>
+        <mapstruct.version>1.5.3.Final</mapstruct.version>
     </properties>
 
     <dependencies>
@@ -52,7 +52,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>${spring-boot-starter.version}</version>
+<!--            <version>${spring-boot-starter.version}</version>-->
             <scope>compile</scope>
         </dependency>
 
@@ -60,7 +60,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>
-            <version>${spring-boot-starter.version}</version>
+<!--            <version>${spring-boot-starter.version}</version>-->
             <scope>compile</scope>
         </dependency>
 
@@ -79,11 +79,14 @@
         </dependency>
         -->
 
+
+
         <!-- NOTE: returns diagnostics, health information -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
-            <version>${spring-boot-starter.version}</version>
+            <version>${spring-boot.version}</version>
+<!--            <version>${spring-boot-starter.version}</version>-->
             <scope>runtime</scope>
         </dependency>
 
@@ -111,7 +114,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring-boot-starter.version}</version>
+<!--            <version>${spring-boot-starter.version}</version>-->
             <scope>test</scope>
         </dependency>
 
@@ -123,7 +126,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot-starter.version}</version>
+                <version>${spring-boot.version}</version>
                 <configuration>
                     <mainClass>ca.mikegabelmann.demo2.Demo2Application</mainClass>
                     <layout>ZIP</layout>

@@ -33,4 +33,12 @@ public class PersonServiceImpl implements PersonService {
         return personRepository.findBySexCodeIdAndBirthDt(sex, date);
     }
 
+    @Transactional
+    @Override
+    public Person createOrUpdate(Person p) {
+        return personRepository.save(p);
+    }
+
+
+
 }

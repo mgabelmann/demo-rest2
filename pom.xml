@@ -26,7 +26,7 @@
     </scm>
 
     <properties>
-        <spring-boot-starter.version>2.7.2</spring-boot-starter.version>
+
     </properties>
 
     <modules>
@@ -35,8 +35,8 @@
         <module>persistence</module>
         <module>service</module>
         <module>rest</module>
-        <module>client</module>
-        <module>app</module>
+        <!--<module>client</module>
+        <module>app</module>-->
     </modules>
 
 </project>

@@ -1,18 +1,14 @@
 package ca.mikegabelmann.demo2.controller.rest.mapper;
 
 import ca.mikegabelmann.demo2.dto.AddressDto;
-import ca.mikegabelmann.demo2.dto.PersonAddressDto;
 import ca.mikegabelmann.demo2.dto.PersonDto;
 import ca.mikegabelmann.demo2.persistence.model.Address;
 import ca.mikegabelmann.demo2.persistence.model.Person;
 import ca.mikegabelmann.demo2.persistence.model.SexCode;
-import ca.mikegabelmann.demo2.service.dto.PersonAddress;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.Named;
 
 import java.util.List;
-import java.util.Optional;
 
 
 /**
@@ -25,8 +21,8 @@ public interface DtoMapper {
     @Mapping(source = "record.sexCode.id", target = "sex")
     PersonDto mapPersonDto(Person record);
 
-    //@Mapping(source = "record.sex", target = "sexCode")
-    //Person mapPerson(PersonDto record);
+    @Mapping(source = "record.sex", target = "sexCode")
+    Person mapPerson(PersonDto record);
 
     List<PersonDto> mapListPersonDto(List<Person> records);
     //List<Person> mapListPerson(List<PersonDto> records);

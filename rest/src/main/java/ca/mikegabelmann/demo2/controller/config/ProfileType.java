@@ -1,9 +1,9 @@
 package ca.mikegabelmann.demo2.controller.config;
 
 public class ProfileType {
-    private String profile;
+    private final String profile;
 
-    public ProfileType(String profile) {
+    public ProfileType(final String profile) {
         this.profile = profile;
     }
 

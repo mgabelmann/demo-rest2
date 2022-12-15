@@ -31,4 +31,14 @@ class BooleanConverterTest {
         Assertions.assertEquals(Boolean.FALSE, converter.convertToEntityAttribute('n'));
     }
 
+    @Test
+    @DisplayName("alternative true/false values")
+    void test3_convertToEntityAttribute() {
+        Assertions.assertEquals(Boolean.FALSE, converter.convertToEntityAttribute('T'));
+        Assertions.assertEquals(Boolean.FALSE, converter.convertToEntityAttribute('F'));
+
+        Assertions.assertEquals(Boolean.FALSE, converter.convertToEntityAttribute('t'));
+        Assertions.assertEquals(Boolean.FALSE, converter.convertToEntityAttribute('f'));
+    }
+
 }

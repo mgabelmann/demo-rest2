@@ -16,4 +16,5 @@ public interface PersonService {
      */
     List<Person> findBySexAndBirthDt(String sex, LocalDate date);
 
+    Person createOrUpdate(Person p);
 }
