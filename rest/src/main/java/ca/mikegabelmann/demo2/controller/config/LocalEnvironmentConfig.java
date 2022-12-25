@@ -23,7 +23,6 @@ public class LocalEnvironmentConfig {
     //TODO: add specialized beans here
 
     @Bean
-    @Profile("local")
     public ProfileType getProfileType() {
         return new ProfileType("LOCAL");
     }
