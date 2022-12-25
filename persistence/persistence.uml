@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>E:/_programming/demo-rest2/persistence/src/main/java/ca/mikegabelmann/demo2/persistence</OriginalElement>
+  <nodes>
+    <node x="-48.5" y="767.0">ca.mikegabelmann.demo2.persistence.service.PersonServiceImpl</node>
+    <node x="78.0" y="841.0">ca.mikegabelmann.demo2.persistence.model.GroupCode</node>
+    <node x="431.18014705882354" y="643.5">ca.mikegabelmann.demo2.persistence.service.AddressService</node>
+    <node x="781.0" y="841.0">ca.mikegabelmann.demo2.persistence.repository.SexCodeRepository</node>
+    <node x="237.18014705882354" y="643.5">ca.mikegabelmann.demo2.persistence.repository.AddressRepository</node>
+    <node x="-115.0" y="643.5">ca.mikegabelmann.demo2.persistence.service.PersonService</node>
+    <node x="656.1801470588235" y="-17.0">ca.mikegabelmann.demo2.persistence.model.SexCode</node>
+    <node x="600.3198529411766" y="349.0">ca.mikegabelmann.demo2.persistence.model.Address</node>
+    <node x="321.72426470588243" y="767.0">ca.mikegabelmann.demo2.persistence.service.AddressServiceImpl</node>
+    <node x="46.0" y="643.5">ca.mikegabelmann.demo2.persistence.repository.PersonRepository</node>
+    <node x="265.0" y="841.0">ca.mikegabelmann.demo2.persistence.repository.GroupTypeCodeRepository</node>
+    <node x="-115.0" y="841.0">ca.mikegabelmann.demo2.persistence.model.GroupTypeCodeId</node>
+    <node x="637.6801470588235" y="111.0">ca.mikegabelmann.demo2.persistence.model.Person</node>
+    <node x="539.0" y="841.0">ca.mikegabelmann.demo2.persistence.repository.GroupCodeRepository</node>
+    <node x="873.1801470588235" y="643.5">ca.mikegabelmann.demo2.persistence.facade.PersonFacade</node>
+    <node x="-115.0" y="567.0">ca.mikegabelmann.demo2.persistence.model.BooleanConverter</node>
+    <node x="601.1801470588235" y="609.0">ca.mikegabelmann.demo2.persistence.service.dto.PersonAddress</node>
+    <node x="-70.75" y="967.0">ca.mikegabelmann.demo2.persistence.model.GroupTypeCode</node>
+    <node x="635.5698529411766" y="767.0">ca.mikegabelmann.demo2.persistence.facade.PersonFacadeImpl</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ca.mikegabelmann.demo2.persistence.model.Person" target="ca.mikegabelmann.demo2.persistence.model.SexCode" relationship="TO_ONE">
+      <point x="0.0" y="-93.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="ca.mikegabelmann.demo2.persistence.facade.PersonFacadeImpl" target="ca.mikegabelmann.demo2.persistence.facade.PersonFacade" relationship="REALIZATION">
+      <point x="85.5" y="0.0" />
+      <point x="943.6801470588235" y="781.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="ca.mikegabelmann.demo2.persistence.service.AddressServiceImpl" target="ca.mikegabelmann.demo2.persistence.repository.AddressRepository" relationship="TO_ONE">
+      <point x="-2.647058824436499E-4" y="-14.5" />
+      <point x="411.724" y="705.0" />
+      <point x="324.18" y="705.0" />
+      <point x="-1.4705882352927802E-4" y="14.5" />
+    </edge>
+    <edge source="ca.mikegabelmann.demo2.persistence.service.PersonServiceImpl" target="ca.mikegabelmann.demo2.persistence.repository.PersonRepository" relationship="TO_ONE">
+      <point x="0.0" y="-14.5" />
+      <point x="37.0" y="737.0" />
+      <point x="128.5" y="737.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="ca.mikegabelmann.demo2.persistence.service.PersonServiceImpl" target="ca.mikegabelmann.demo2.persistence.service.PersonService" relationship="REALIZATION">
+      <point x="-78.0" y="-14.5" />
+      <point x="3.5" y="14.5" />
+    </edge>
+    <edge source="ca.mikegabelmann.demo2.persistence.service.dto.PersonAddress" target="ca.mikegabelmann.demo2.persistence.model.Address" relationship="TO_ONE">
+      <point x="44.639852941176514" y="-49.0" />
+      <point x="771.82" y="323.0" />
+      <point x="677.32" y="323.0" />
+      <point x="1.470588234724346E-4" y="-104.0" />
+    </edge>
+    <edge source="ca.mikegabelmann.demo2.persistence.service.dto.PersonAddress" target="ca.mikegabelmann.demo2.persistence.model.Person" relationship="TO_ONE">
+      <point x="-1.4705882358612143E-4" y="-49.0" />
+      <point x="727.18" y="583.0" />
+      <point x="786.82" y="583.0" />
+      <point x="59.639852941176514" y="93.0" />
+    </edge>
+    <edge source="ca.mikegabelmann.demo2.persistence.model.Address" target="ca.mikegabelmann.demo2.persistence.model.Person" relationship="TO_ONE">
+      <point x="1.470588234724346E-4" y="104.0" />
+      <point x="677.32" y="583.0" />
+      <point x="786.82" y="583.0" />
+      <point x="59.639852941176514" y="93.0" />
+    </edge>
+    <edge source="ca.mikegabelmann.demo2.persistence.model.GroupTypeCode" target="ca.mikegabelmann.demo2.persistence.model.GroupTypeCodeId" relationship="TO_ONE">
+      <point x="-88.75" y="-93.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="ca.mikegabelmann.demo2.persistence.service.AddressServiceImpl" target="ca.mikegabelmann.demo2.persistence.service.AddressService" relationship="REALIZATION">
+      <point x="82.5" y="-14.5" />
+      <point x="-11.955882352941103" y="14.5" />
+    </edge>
+    <edge source="ca.mikegabelmann.demo2.persistence.model.Person" target="ca.mikegabelmann.demo2.persistence.model.Address" relationship="TO_MANY">
+      <point x="-1.4705882358612143E-4" y="93.0" />
+      <point x="727.18" y="323.0" />
+      <point x="677.32" y="323.0" />
+      <point x="1.470588234724346E-4" y="-104.0" />
+    </edge>
+    <edge source="ca.mikegabelmann.demo2.persistence.facade.PersonFacadeImpl" target="ca.mikegabelmann.demo2.persistence.repository.AddressRepository" relationship="TO_ONE">
+      <point x="-85.49985294117653" y="0.0" />
+      <point x="546.5" y="781.5" />
+      <point x="546.5" y="705.0" />
+      <point x="324.18" y="705.0" />
+      <point x="-1.4705882352927802E-4" y="14.5" />
+    </edge>
+    <edge source="ca.mikegabelmann.demo2.persistence.facade.PersonFacadeImpl" target="ca.mikegabelmann.demo2.persistence.repository.PersonRepository" relationship="TO_ONE">
+      <point x="1.470588234724346E-4" y="-14.5" />
+      <point x="721.07" y="737.0" />
+      <point x="128.5" y="737.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="ca.mikegabelmann.demo2.persistence.model.GroupTypeCode" target="ca.mikegabelmann.demo2.persistence.model.GroupCode" relationship="TO_ONE">
+      <point x="88.75" y="-93.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="ca.mikegabelmann.demo2.persistence.facade.PersonFacadeImpl" target="ca.mikegabelmann.demo2.persistence.service.dto.PersonAddress" relationship="CREATE">
+      <point x="15.000147058823472" y="-14.5" />
+      <point x="8.889852941176514" y="49.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.7285714285714285" showDependencies="true" x="460.0" y="578.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

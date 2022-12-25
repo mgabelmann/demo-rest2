@@ -3,7 +3,7 @@ package ca.mikegabelmann.demo2.controller.rest;
 import ca.mikegabelmann.demo2.controller.rest.mapper.DtoMapper;
 import ca.mikegabelmann.demo2.dto.AddressDto;
 import ca.mikegabelmann.demo2.persistence.model.Address;
-import ca.mikegabelmann.demo2.service.AddressService;
+import ca.mikegabelmann.demo2.persistence.service.AddressService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

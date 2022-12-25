@@ -4,7 +4,7 @@ import ca.mikegabelmann.demo2.codes.Sex;
 import ca.mikegabelmann.demo2.controller.rest.mapper.DtoMapper;
 import ca.mikegabelmann.demo2.persistence.model.Person;
 import ca.mikegabelmann.demo2.persistence.model.SexCode;
-import ca.mikegabelmann.demo2.service.PersonService;
+import ca.mikegabelmann.demo2.persistence.service.PersonService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,7 +19,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 import static org.hamcrest.Matchers.startsWith;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;

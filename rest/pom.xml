@@ -14,7 +14,7 @@
     <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Demo - Controller REST</name>
+    <name>Demo - Controller - REST</name>
     <description>
         This module provides the transport layer and access to the services via REST endpoints. It handles security,
         and validation of objects received but only at a high level. All "business" related validation and logic will
@@ -32,7 +32,7 @@
 
         <dependency>
             <groupId>ca.mikegabelmann</groupId>
-            <artifactId>demo-rest2-service</artifactId>
+            <artifactId>demo-rest2-persistence</artifactId>
             <version>${project.parent.version}</version>
             <scope>compile</scope>
         </dependency>

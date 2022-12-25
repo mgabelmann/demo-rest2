@@ -1,6 +1,5 @@
 package ca.mikegabelmann.demo2.controller.rest;
 
-import ca.mikegabelmann.demo2.controller.rest.mapper.DtoMapper;
 import ca.mikegabelmann.demo2.persistence.model.Person;
 import ca.mikegabelmann.demo2.codes.Sex;
 import ca.mikegabelmann.demo2.persistence.model.SexCode;
