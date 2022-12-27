@@ -6,4 +6,4 @@
  *
  * @author mgabelmann
  */
-package ca.mikegabelmann.demo2.service;
+package ca.mikegabelmann.demo2.persistence.service;
