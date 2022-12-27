@@ -5,7 +5,7 @@ import ca.mikegabelmann.demo2.dto.AddressDto;
 import ca.mikegabelmann.demo2.dto.PersonAddressDto;
 import ca.mikegabelmann.demo2.dto.PersonDto;
 import ca.mikegabelmann.demo2.persistence.facade.PersonFacade;
-import ca.mikegabelmann.demo2.persistence.service.dto.PersonAddress;
+import ca.mikegabelmann.demo2.persistence.facade.dto.PersonAddress;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package ca.mikegabelmann.demo2.persistence.facade;
 
-import ca.mikegabelmann.demo2.persistence.service.dto.PersonAddress;
+import ca.mikegabelmann.demo2.persistence.facade.dto.PersonAddress;
 
 import java.util.Optional;
 

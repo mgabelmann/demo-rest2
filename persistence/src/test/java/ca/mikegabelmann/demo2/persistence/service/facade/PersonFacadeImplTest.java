@@ -5,7 +5,7 @@ import ca.mikegabelmann.demo2.persistence.model.Address;
 import ca.mikegabelmann.demo2.persistence.model.Person;
 import ca.mikegabelmann.demo2.persistence.repository.AddressRepository;
 import ca.mikegabelmann.demo2.persistence.repository.PersonRepository;
-import ca.mikegabelmann.demo2.persistence.service.dto.PersonAddress;
+import ca.mikegabelmann.demo2.persistence.facade.dto.PersonAddress;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

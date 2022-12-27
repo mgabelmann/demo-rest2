@@ -1,4 +1,4 @@
-package ca.mikegabelmann.demo2.persistence.service.dto;
+package ca.mikegabelmann.demo2.persistence.facade.dto;
 
 import ca.mikegabelmann.demo2.persistence.model.Address;
 import ca.mikegabelmann.demo2.persistence.model.Person;
