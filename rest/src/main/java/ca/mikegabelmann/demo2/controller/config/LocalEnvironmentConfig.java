@@ -8,6 +8,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 
+/**
+ * Example of how to use a spring Profile to construct different beans.
+ */
 @Profile("local")
 @Configuration
 public class LocalEnvironmentConfig {

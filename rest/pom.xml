@@ -117,6 +117,8 @@
     </dependencies>
 
     <build>
+        <finalName>demo2</finalName>
+
         <plugins>
             <!-- create springboot uber jar -->
             <plugin>

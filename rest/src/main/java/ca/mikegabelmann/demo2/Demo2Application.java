@@ -3,7 +3,9 @@ package ca.mikegabelmann.demo2;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 
 
 @SpringBootApplication
@@ -17,6 +19,9 @@ public class Demo2Application {
      * @param args command line arguments
      */
     public static void main(final String[] args) {
+        //change default application property name, useful for deploying to application container, instead of standalone
+        System.setProperty("spring.config.name", "application");
+
         SpringApplication.run(Demo2Application.class, args);
     }
 
