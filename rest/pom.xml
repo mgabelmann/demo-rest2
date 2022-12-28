@@ -14,7 +14,7 @@
     <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Demo - Controller REST</name>
+    <name>Demo - Controller - REST</name>
     <description>
         This module provides the transport layer and access to the services via REST endpoints. It handles security,
         and validation of objects received but only at a high level. All "business" related validation and logic will
@@ -32,7 +32,7 @@
 
         <dependency>
             <groupId>ca.mikegabelmann</groupId>
-            <artifactId>demo-rest2-service</artifactId>
+            <artifactId>demo-rest2-persistence</artifactId>
             <version>${project.parent.version}</version>
             <scope>compile</scope>
         </dependency>
@@ -52,7 +52,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-<!--            <version>${spring-boot-starter.version}</version>-->
             <scope>compile</scope>
         </dependency>
 
@@ -60,7 +59,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>
-<!--            <version>${spring-boot-starter.version}</version>-->
             <scope>compile</scope>
         </dependency>
 
@@ -86,7 +84,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
             <version>${spring-boot.version}</version>
-<!--            <version>${spring-boot-starter.version}</version>-->
             <scope>runtime</scope>
         </dependency>
 
@@ -101,26 +98,27 @@
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
             <artifactId>jakarta.xml.bind-api</artifactId>
-            <version>2.3.3</version>
+            <version>4.0.0</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
-            <version>2.3.5</version>
+            <version>4.0.0</version>
             <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-<!--            <version>${spring-boot-starter.version}</version>-->
             <scope>test</scope>
         </dependency>
 
     </dependencies>
 
     <build>
+        <finalName>demo2</finalName>
+
         <plugins>
             <!-- create springboot uber jar -->
             <plugin>

@@ -17,6 +17,9 @@ public class Demo2Application {
      * @param args command line arguments
      */
     public static void main(final String[] args) {
+        //change default application property name, useful for deploying to application container, instead of standalone
+        System.setProperty("spring.config.name", "application");
+
         SpringApplication.run(Demo2Application.class, args);
     }
 

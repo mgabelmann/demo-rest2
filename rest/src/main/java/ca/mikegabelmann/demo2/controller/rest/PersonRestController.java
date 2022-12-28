@@ -5,7 +5,7 @@ import ca.mikegabelmann.demo2.controller.rest.mapper.DtoMapper;
 import ca.mikegabelmann.demo2.persistence.model.Person;
 import ca.mikegabelmann.demo2.persistence.model.SexCode;
 import ca.mikegabelmann.demo2.search.PersonSearch1;
-import ca.mikegabelmann.demo2.service.PersonService;
+import ca.mikegabelmann.demo2.persistence.service.PersonService;
 import ca.mikegabelmann.demo2.dto.PersonDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

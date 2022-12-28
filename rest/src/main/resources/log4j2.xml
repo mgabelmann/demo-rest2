@@ -13,7 +13,7 @@
     </Appenders>
 
     <Loggers>
-        <Logger name="ca.example.demo" level="DEBUG" additivity="false">
+        <Logger name="ca.mikegabelmann.demo2" level="DEBUG" additivity="false">
             <AppenderRef ref="LogToFile"/>
             <AppenderRef ref="LogToConsole"/>
         </Logger>
