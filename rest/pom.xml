@@ -44,13 +44,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct</artifactId>
-            <version>${mapstruct.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <scope>compile</scope>
@@ -61,6 +54,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>
             <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>${mapstruct.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- NOTE: how to exclude spring-boot-starter-logging from all modules
@@ -78,9 +78,7 @@
         </dependency>
         -->
 
-
-
-        <!-- NOTE: returns diagnostics, health information -->
+        <!-- NOTE: returns diagnostics, health information, etc. -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -111,6 +109,7 @@
 
 
         <!-- TEST -->
+        <!-- NOTE: included to gain access to ModelFactory class -->
         <dependency>
             <groupId>ca.mikegabelmann</groupId>
             <artifactId>demo-rest2-persistence</artifactId>

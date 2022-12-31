@@ -31,6 +31,7 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
             <scope>compile</scope>
             <exclusions>
+                <!-- NOTE: excluded since we don't want to mix types and we would prefer the new jakarta ones -->
                 <exclusion>
                     <groupId>javax.persistence</groupId>
                     <artifactId>javax.persistence-api</artifactId>
@@ -40,7 +41,6 @@
         <dependency>
             <groupId>jakarta.persistence</groupId>
             <artifactId>jakarta.persistence-api</artifactId>
-            <version>3.1.0</version>
         </dependency>
 
         <!-- TEST -->
