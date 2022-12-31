@@ -9,7 +9,6 @@ import java.util.List;
 @Entity
 @Table(name = "GROUP_TYPE_CODE")
 public class GroupTypeCode {
-
     @EmbeddedId
     private GroupTypeCodeId id;
 
@@ -37,7 +36,8 @@ public class GroupTypeCode {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "groupTypeCode")
     private List<GroupTypeCode> groupTypeCodes;
 
-    /** No args constructor. */
+
+    /** No args constructor, used by JPA. */
     protected GroupTypeCode() {
         this(null, null, 0, null, null, null);
     }

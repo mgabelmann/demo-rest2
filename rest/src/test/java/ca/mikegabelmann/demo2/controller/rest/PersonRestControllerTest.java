@@ -2,6 +2,7 @@ package ca.mikegabelmann.demo2.controller.rest;
 
 import ca.mikegabelmann.demo2.codes.Sex;
 import ca.mikegabelmann.demo2.controller.rest.mapper.DtoMapper;
+import ca.mikegabelmann.demo2.persistence.model.ModelFactory;
 import ca.mikegabelmann.demo2.persistence.model.Person;
 import ca.mikegabelmann.demo2.persistence.model.SexCode;
 import ca.mikegabelmann.demo2.persistence.service.PersonService;
@@ -44,7 +45,7 @@ class PersonRestControllerTest {
 
     @BeforeEach
     void beforeEach() {
-        SexCode sexCode = new SexCode(Sex.M.name(), Sex.M.toString());
+        SexCode sexCode = ModelFactory.getSexCode_Male();
         this.person = new Person(1L, "firstName", "lastName", LocalDate.of(2000, 1, 15), sexCode);
     }
 

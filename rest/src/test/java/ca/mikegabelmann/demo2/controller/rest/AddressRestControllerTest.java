@@ -2,6 +2,7 @@ package ca.mikegabelmann.demo2.controller.rest;
 
 import ca.mikegabelmann.demo2.controller.rest.mapper.DtoMapper;
 import ca.mikegabelmann.demo2.persistence.model.Address;
+import ca.mikegabelmann.demo2.persistence.model.ModelFactory;
 import ca.mikegabelmann.demo2.persistence.model.Person;
 import ca.mikegabelmann.demo2.persistence.service.AddressService;
 import org.junit.jupiter.api.BeforeEach;
@@ -42,7 +43,9 @@ public class AddressRestControllerTest {
 
     @BeforeEach
     void beforeEach() {
-        this.address = new Address(1L, "streetAddress", "city", "prov", "country", "postal", new Person());
+        Person person1 = ModelFactory.getPerson_Male();
+        this.address = ModelFactory.getAddress(person1);
+        this.address.setId(1L);
     }
 
     @Test

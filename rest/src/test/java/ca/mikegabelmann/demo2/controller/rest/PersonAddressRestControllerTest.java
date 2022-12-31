@@ -2,8 +2,8 @@ package ca.mikegabelmann.demo2.controller.rest;
 
 import ca.mikegabelmann.demo2.controller.rest.mapper.DtoMapper;
 import ca.mikegabelmann.demo2.persistence.model.Address;
+import ca.mikegabelmann.demo2.persistence.model.ModelFactory;
 import ca.mikegabelmann.demo2.persistence.model.Person;
-import ca.mikegabelmann.demo2.persistence.model.SexCode;
 import ca.mikegabelmann.demo2.persistence.facade.PersonFacade;
 import ca.mikegabelmann.demo2.persistence.facade.dto.PersonAddress;
 import org.junit.jupiter.api.BeforeEach;
@@ -44,8 +44,10 @@ public class PersonAddressRestControllerTest {
 
     @BeforeEach
     void beforeEach() {
-        this.personAddress = new PersonAddress(new Person(), new Address(), new Address());
-        personAddress.getPerson().setSexCode(new SexCode());
+        Person person1 = ModelFactory.getPerson_Male();
+        Address address1 = ModelFactory.getAddress(person1);
+        Address address2 = ModelFactory.getAddress(person1);
+        this.personAddress = new PersonAddress(person1, address1, address2);
     }
 
     @Disabled("failing")
