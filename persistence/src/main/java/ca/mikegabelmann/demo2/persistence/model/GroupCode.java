@@ -10,7 +10,6 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "GROUP_CODE")
 public class GroupCode {
-
     @Id
     @Column(name = "GROUP_ID", nullable = false, unique = true, length = 5)
     private String groupId;
@@ -19,7 +18,7 @@ public class GroupCode {
     private String description;
 
 
-    /** No args constructor. */
+    /** No args constructor, used by JPA. */
     protected GroupCode() {
         this(null, null);
     }

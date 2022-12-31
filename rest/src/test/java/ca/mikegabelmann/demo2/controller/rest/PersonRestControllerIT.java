@@ -1,7 +1,7 @@
 package ca.mikegabelmann.demo2.controller.rest;
 
+import ca.mikegabelmann.demo2.persistence.model.ModelFactory;
 import ca.mikegabelmann.demo2.persistence.model.Person;
-import ca.mikegabelmann.demo2.codes.Sex;
 import ca.mikegabelmann.demo2.persistence.model.SexCode;
 import ca.mikegabelmann.demo2.persistence.repository.PersonRepository;
 import ca.mikegabelmann.demo2.persistence.repository.SexCodeRepository;
@@ -42,10 +42,10 @@ public class PersonRestControllerIT {
     void beforeEach() {
         this.now = LocalDate.now();
 
-        SexCode sTmp = new SexCode(Sex.F.name(), Sex.F.toString());
+        SexCode sTmp = ModelFactory.getSexCode_Male();
         this.s = sexCodeRepository.save(sTmp);
 
-        Person pTmp = new Person(null, "firstName", "lastName", now, s);
+        Person pTmp = ModelFactory.getPerson(s);
         this.p = personRepository.save(pTmp);
     }
 

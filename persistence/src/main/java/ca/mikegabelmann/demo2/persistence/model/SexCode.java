@@ -1,15 +1,14 @@
 package ca.mikegabelmann.demo2.persistence.model;
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+
 @Entity
 @Table(name = "SEX_CODE")
 public class SexCode {
-
     @Id
     @Column(name = "ID", length = 1, nullable = false, unique = true)
     private String id;
@@ -18,8 +17,8 @@ public class SexCode {
     private String description;
 
 
-    /** No args constructor. */
-    public SexCode() {
+    /** No args constructor, used by JPA. */
+    protected SexCode() {
         this(null, null);
     }
 

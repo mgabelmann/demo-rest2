@@ -1,7 +1,7 @@
-package ca.mikegabelmann.demo2.persistence.service.facade;
+package ca.mikegabelmann.demo2.persistence.facade;
 
-import ca.mikegabelmann.demo2.persistence.facade.PersonFacadeImpl;
 import ca.mikegabelmann.demo2.persistence.model.Address;
+import ca.mikegabelmann.demo2.persistence.model.ModelFactory;
 import ca.mikegabelmann.demo2.persistence.model.Person;
 import ca.mikegabelmann.demo2.persistence.repository.AddressRepository;
 import ca.mikegabelmann.demo2.persistence.repository.PersonRepository;
@@ -37,8 +37,8 @@ public class PersonFacadeImplTest {
 
     @BeforeEach
     void beforeEach() {
-        this.person = new Person();
-        this.address = new Address();
+        this.person = ModelFactory.getPerson_Male();
+        this.address = ModelFactory.getAddress(person);
         person.getAddresses().add(address);
     }
 

@@ -1,18 +1,27 @@
 package ca.mikegabelmann.demo2.persistence.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+import org.springframework.lang.Nullable;
 
 
 @Entity
 @Table(name = "ADDRESS")
 public class Address {
-
     @Id
     @SequenceGenerator(name = "seq_address", sequenceName = "address_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_address")
     @Column(name = "ADDRESS_ID", nullable = false, unique = true)
     private Long id;
 
+    @Nullable
     @Column(name = "ATTENTION", length = 100)
     private String attention;
 
@@ -31,13 +40,14 @@ public class Address {
     @Column(name = "POSTAL", nullable = false, length = 25)
     private String postal;
 
+    @Nullable
     @ManyToOne
     @JoinColumn(name = "PERSON_ID")
     private Person person;
 
 
-    /** No args constructor. */
-    public Address() {}
+    /** No args constructor, used by JPA. */
+    protected Address() {}
 
     /** Required args constructor. */
     public Address(

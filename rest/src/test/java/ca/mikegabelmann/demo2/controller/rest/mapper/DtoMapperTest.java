@@ -3,16 +3,15 @@ package ca.mikegabelmann.demo2.controller.rest.mapper;
 import ca.mikegabelmann.demo2.dto.AddressDto;
 import ca.mikegabelmann.demo2.dto.PersonAddressDto;
 import ca.mikegabelmann.demo2.dto.PersonDto;
-import ca.mikegabelmann.demo2.persistence.model.Address;
-import ca.mikegabelmann.demo2.persistence.model.Person;
-import ca.mikegabelmann.demo2.persistence.model.SexCode;
 import ca.mikegabelmann.demo2.persistence.facade.dto.PersonAddress;
+import ca.mikegabelmann.demo2.persistence.model.Address;
+import ca.mikegabelmann.demo2.persistence.model.ModelFactory;
+import ca.mikegabelmann.demo2.persistence.model.Person;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
 import java.util.List;
 
 
@@ -20,25 +19,26 @@ import java.util.List;
  * Unit tests for bean mapping.
  */
 class DtoMapperTest {
-
     private final DtoMapper mapper = new DtoMapperImpl();
 
     private Person person1;
-    private PersonDto personDto1;
     private Address address1;
-    private AddressDto addressDto1;
     private PersonAddress personAddress1;
-    private PersonAddressDto personAddressDto1;
+
+    //private PersonDto personDto1;
+    //private AddressDto addressDto1;
+    //private PersonAddressDto personAddressDto1;
 
 
     @BeforeEach
     void setUp() {
-        this.person1 = new Person(1L, "firstName", "lastName", LocalDate.now(), new SexCode("M", "Male"));
-        this.personDto1 = new PersonDto(1L, "firstName", "lastName", "middleName", LocalDate.now(), "M");
-        this.address1 = new Address(1L, "streetAddress", "city", "prov", "country", "postal", person1);
-        this.addressDto1 = new AddressDto(1L, "attention", "streetAddress", "city", "prov", "country", "postal");
+        this.person1 = ModelFactory.getPerson_Male();
+        this.address1 = ModelFactory.getAddress(person1);
         this.personAddress1 = new PersonAddress(person1, address1, address1);
-        this.personAddressDto1 = new PersonAddressDto(personDto1, addressDto1, addressDto1);
+
+        //this.addressDto1 = new AddressDto(1L, "attention", "streetAddress", "city", "prov", "country", "postal");
+        //this.personDto1 = new PersonDto(1L, "firstName", "lastName", "middleName", LocalDate.now(), "M");
+        //this.personAddressDto1 = new PersonAddressDto(personDto1, addressDto1, addressDto1);
     }
 
     @Test
@@ -58,23 +58,6 @@ class DtoMapperTest {
         this.validate(person1, result);
     }
 
-    /*@Test
-    @DisplayName("PersonDto > Person - null")
-    void test1_mapPerson() {
-        Person result = mapper.mapPerson(null);
-
-        Assertions.assertNull(result);
-    }
-
-    @Test
-    @DisplayName("PersonDto > Person - not null")
-    void test2_mapPerson() {
-        Person result = mapper.mapPerson(personDto1);
-
-        Assertions.assertNotNull(result);
-        this.validate(personDto1, result);
-    }*/
-
     @Test
     @DisplayName("List Person > PersonDto - null")
     void test1_mapListPersonDto() {
@@ -92,6 +75,41 @@ class DtoMapperTest {
         Assertions.assertEquals(1, results.size());
         this.validate(person1, results.get(0));
     }
+
+    @Test
+    @DisplayName("List Address > AddressDto - null")
+    void test1_mapListAddressDto() {
+        List<AddressDto> results = mapper.mapListAddressDto(null);
+
+        Assertions.assertNull(results);
+    }
+
+    @Test
+    @DisplayName("List Address > AddressDto - not null")
+    void test2_mapListAddressDto() {
+        List<AddressDto> results = mapper.mapListAddressDto(List.of(address1));
+
+        Assertions.assertNotNull(results);
+        Assertions.assertEquals(1, results.size());
+        this.validate(address1, results.get(0));
+    }
+
+    /*@Test
+    @DisplayName("PersonDto > Person - null")
+    void test1_mapPerson() {
+        Person result = mapper.mapPerson(null);
+
+        Assertions.assertNull(result);
+    }
+
+    @Test
+    @DisplayName("PersonDto > Person - not null")
+    void test2_mapPerson() {
+        Person result = mapper.mapPerson(personDto1);
+
+        Assertions.assertNotNull(result);
+        this.validate(personDto1, result);
+    }*/
 
     /*@Test
     @DisplayName("List PersonDto > Person - null")
@@ -145,24 +163,6 @@ class DtoMapperTest {
         Assertions.assertNotNull(result);
         this.validate(addressDto1, result);
     }*/
-
-    @Test
-    @DisplayName("List Address > AddressDto - null")
-    void test1_mapListAddressDto() {
-        List<AddressDto> results = mapper.mapListAddressDto(null);
-
-        Assertions.assertNull(results);
-    }
-
-    @Test
-    @DisplayName("List Address > AddressDto - not null")
-    void test2_mapListAddressDto() {
-        List<AddressDto> results = mapper.mapListAddressDto(List.of(address1));
-
-        Assertions.assertNotNull(results);
-        Assertions.assertEquals(1, results.size());
-        this.validate(address1, results.get(0));
-    }
 
     /*@Test
     @DisplayName("List AddressDto > Address - null")

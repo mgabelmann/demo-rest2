@@ -8,7 +8,6 @@ import java.io.Serializable;
 
 @Embeddable
 public class GroupTypeCodeId implements Serializable {
-
     @Column(name = "GROUP_ID", nullable = false, length = 5)
     private String groupId;
 
@@ -16,7 +15,7 @@ public class GroupTypeCodeId implements Serializable {
     private String typeId;
 
 
-    /** No args constructor. */
+    /** No args constructor, used by JPA. */
     protected GroupTypeCodeId() {
         this(null, null);
     }
