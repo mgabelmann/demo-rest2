@@ -1,15 +1,13 @@
 package ca.mikegabelmann.demo2.persistence.model;
 
-import ca.mikegabelmann.demo2.persistence.model.SexCode;
-
 import java.time.LocalDate;
 
 /**
  * Used to construct Model/JPA objects with 'sane' defaults.
  */
-public class ModelFactory {
+public class ModelTestFactory {
     /** Do not instantiate this class. */
-    private ModelFactory() {}
+    private ModelTestFactory() {}
 
     public static SexCode getSexCode_Male() {
         return new SexCode("M", "Male");

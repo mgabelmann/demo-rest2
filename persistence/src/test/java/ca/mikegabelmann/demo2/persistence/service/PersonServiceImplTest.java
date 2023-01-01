@@ -1,7 +1,7 @@
 package ca.mikegabelmann.demo2.persistence.service;
 
+import ca.mikegabelmann.demo2.persistence.model.ModelTestFactory;
 import ca.mikegabelmann.demo2.persistence.model.Person;
-import ca.mikegabelmann.demo2.persistence.model.SexCode;
 import ca.mikegabelmann.demo2.persistence.repository.PersonRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -31,8 +31,7 @@ class PersonServiceImplTest {
 
     @BeforeEach
     void beforeEach() {
-        SexCode sex = new SexCode("M", "Male");
-        this.p = new Person(1L, "firstName", "lastName", LocalDate.now(), sex);
+        this.p = ModelTestFactory.getPerson_Male();
     }
 
     @Test
@@ -46,4 +45,14 @@ class PersonServiceImplTest {
         Assertions.assertEquals(1, results.size());
     }
 
+    /*@Test
+    @DisplayName("createOrUpdate - with result")
+    void test1_createOrUpdate() {
+        //NOTE: this test is effectively useless since it doesn't exercise any logic and only returns mocked results.
+        Mockito.when(personRepository.save(p)).thenReturn(p);
+
+        Person tmp = service.createOrUpdate(p);
+
+        Assertions.assertNotNull(tmp);
+    }*/
 }

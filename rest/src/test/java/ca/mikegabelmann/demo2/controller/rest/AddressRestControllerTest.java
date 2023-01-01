@@ -2,7 +2,7 @@ package ca.mikegabelmann.demo2.controller.rest;
 
 import ca.mikegabelmann.demo2.controller.rest.mapper.DtoMapper;
 import ca.mikegabelmann.demo2.persistence.model.Address;
-import ca.mikegabelmann.demo2.persistence.model.ModelFactory;
+import ca.mikegabelmann.demo2.persistence.model.ModelTestFactory;
 import ca.mikegabelmann.demo2.persistence.model.Person;
 import ca.mikegabelmann.demo2.persistence.service.AddressService;
 import org.junit.jupiter.api.BeforeEach;
@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ComponentScan(basePackageClasses = {
     DtoMapper.class
 })
-public class AddressRestControllerTest {
+class AddressRestControllerTest {
 
     @Autowired
     private MockMvc mvc;
@@ -43,8 +43,8 @@ public class AddressRestControllerTest {
 
     @BeforeEach
     void beforeEach() {
-        Person person1 = ModelFactory.getPerson_Male();
-        this.address = ModelFactory.getAddress(person1);
+        Person person1 = ModelTestFactory.getPerson_Male();
+        this.address = ModelTestFactory.getAddress(person1);
         this.address.setId(1L);
     }
 

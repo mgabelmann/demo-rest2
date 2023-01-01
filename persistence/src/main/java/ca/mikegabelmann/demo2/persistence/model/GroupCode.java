@@ -1,6 +1,5 @@
 package ca.mikegabelmann.demo2.persistence.model;
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

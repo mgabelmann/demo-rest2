@@ -1,7 +1,7 @@
 package ca.mikegabelmann.demo2.persistence.facade.dto;
 
 import ca.mikegabelmann.demo2.persistence.model.Address;
-import ca.mikegabelmann.demo2.persistence.model.ModelFactory;
+import ca.mikegabelmann.demo2.persistence.model.ModelTestFactory;
 import ca.mikegabelmann.demo2.persistence.model.Person;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -18,7 +18,7 @@ class PersonAddressTest {
 
     @Test
     void getPerson() {
-        Person person1 = ModelFactory.getPerson_Male();
+        Person person1 = ModelTestFactory.getPerson_Male();
         PersonAddress personAddress1 = new PersonAddress(person1, null, null);
 
         Assertions.assertNotNull(personAddress1.getPerson());
@@ -26,8 +26,8 @@ class PersonAddressTest {
 
     @Test
     void getPrimaryAddress() {
-        Person person1 = ModelFactory.getPerson_Male();
-        Address address1 = ModelFactory.getAddress(person1);
+        Person person1 = ModelTestFactory.getPerson_Male();
+        Address address1 = ModelTestFactory.getAddress(person1);
         PersonAddress personAddress1 = new PersonAddress(person1, address1, null);
 
         Assertions.assertTrue(personAddress1.getPrimaryAddress().isPresent());
@@ -36,8 +36,8 @@ class PersonAddressTest {
 
     @Test
     void getSecondaryAddress() {
-        Person person1 = ModelFactory.getPerson_Male();
-        Address address1 = ModelFactory.getAddress(person1);
+        Person person1 = ModelTestFactory.getPerson_Male();
+        Address address1 = ModelTestFactory.getAddress(person1);
         PersonAddress personAddress1 = new PersonAddress(person1, null, address1);
 
         Assertions.assertTrue(personAddress1.getPrimaryAddress().isEmpty());
