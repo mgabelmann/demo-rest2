@@ -1,8 +1,8 @@
 package ca.mikegabelmann.demo2.persistence.service;
 
 import ca.mikegabelmann.demo2.persistence.model.Address;
+import ca.mikegabelmann.demo2.persistence.model.ModelTestFactory;
 import ca.mikegabelmann.demo2.persistence.model.Person;
-import ca.mikegabelmann.demo2.persistence.model.SexCode;
 import ca.mikegabelmann.demo2.persistence.repository.AddressRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,7 +14,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.time.LocalDate;
 import java.util.List;
 
 
@@ -32,9 +31,8 @@ class AddressServiceImplTest {
 
     @BeforeEach
     void beforeEach() {
-        SexCode sex = new SexCode("M", "Male");
-        this.p = new Person(1L, "firstName", "lastName", LocalDate.now(), sex);
-        this.a = new Address(1L, "streetAddress", "city", "prov", "country", "postal", p);
+        this.p = ModelTestFactory.getPerson_Male();
+        this.a = ModelTestFactory.getAddress(p);
     }
 
     @Test

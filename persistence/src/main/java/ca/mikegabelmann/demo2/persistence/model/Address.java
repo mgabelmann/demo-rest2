@@ -47,7 +47,9 @@ public class Address {
 
 
     /** No args constructor, used by JPA. */
-    protected Address() {}
+    protected Address() {
+        this(null, null, null, null, null, null, null);
+    }
 
     /** Required args constructor. */
     public Address(

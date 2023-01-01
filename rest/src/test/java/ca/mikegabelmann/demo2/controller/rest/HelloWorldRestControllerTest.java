@@ -13,7 +13,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @WebMvcTest(HelloWorldRestController.class)
-public class HelloWorldRestControllerTest {
+class HelloWorldRestControllerTest {
     @Autowired
     private MockMvc mvc;
 

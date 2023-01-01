@@ -2,7 +2,7 @@ package ca.mikegabelmann.demo2.controller.rest;
 
 import ca.mikegabelmann.demo2.controller.rest.mapper.DtoMapper;
 import ca.mikegabelmann.demo2.persistence.model.Address;
-import ca.mikegabelmann.demo2.persistence.model.ModelFactory;
+import ca.mikegabelmann.demo2.persistence.model.ModelTestFactory;
 import ca.mikegabelmann.demo2.persistence.model.Person;
 import ca.mikegabelmann.demo2.persistence.facade.PersonFacade;
 import ca.mikegabelmann.demo2.persistence.facade.dto.PersonAddress;
@@ -29,7 +29,7 @@ import java.util.Optional;
 @ComponentScan(basePackageClasses = {
     DtoMapper.class
 })
-public class PersonAddressRestControllerTest {
+class PersonAddressRestControllerTest {
     @Autowired
     private MockMvc mvc;
 
@@ -44,9 +44,9 @@ public class PersonAddressRestControllerTest {
 
     @BeforeEach
     void beforeEach() {
-        Person person1 = ModelFactory.getPerson_Male();
-        Address address1 = ModelFactory.getAddress(person1);
-        Address address2 = ModelFactory.getAddress(person1);
+        Person person1 = ModelTestFactory.getPerson_Male();
+        Address address1 = ModelTestFactory.getAddress(person1);
+        Address address2 = ModelTestFactory.getAddress(person1);
         this.personAddress = new PersonAddress(person1, address1, address2);
     }
 

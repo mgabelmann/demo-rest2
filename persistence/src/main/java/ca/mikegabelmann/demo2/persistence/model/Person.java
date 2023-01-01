@@ -21,7 +21,6 @@ import java.util.List;
 @Entity
 @Table(name = "PERSON")
 public class Person {
-
     @Id
     @SequenceGenerator(name = "seq_person", sequenceName = "person_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_person")
@@ -50,7 +49,9 @@ public class Person {
 
 
     /** No args constructor, used by JPA. */
-    protected Person() {}
+    protected Person() {
+        this(null, null, null, null, null);
+    }
 
     /** Required args constructor. */
     public Person(

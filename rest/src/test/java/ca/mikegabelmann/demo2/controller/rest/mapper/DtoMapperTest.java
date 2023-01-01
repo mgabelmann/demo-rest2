@@ -5,7 +5,7 @@ import ca.mikegabelmann.demo2.dto.PersonAddressDto;
 import ca.mikegabelmann.demo2.dto.PersonDto;
 import ca.mikegabelmann.demo2.persistence.facade.dto.PersonAddress;
 import ca.mikegabelmann.demo2.persistence.model.Address;
-import ca.mikegabelmann.demo2.persistence.model.ModelFactory;
+import ca.mikegabelmann.demo2.persistence.model.ModelTestFactory;
 import ca.mikegabelmann.demo2.persistence.model.Person;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,8 +32,8 @@ class DtoMapperTest {
 
     @BeforeEach
     void setUp() {
-        this.person1 = ModelFactory.getPerson_Male();
-        this.address1 = ModelFactory.getAddress(person1);
+        this.person1 = ModelTestFactory.getPerson_Male();
+        this.address1 = ModelTestFactory.getAddress(person1);
         this.personAddress1 = new PersonAddress(person1, address1, address1);
 
         //this.addressDto1 = new AddressDto(1L, "attention", "streetAddress", "city", "prov", "country", "postal");
