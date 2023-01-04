@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>E:/_programming/demo-rest2/rest</OriginalElement>
+  <nodes>
+    <node x="43.0" y="56.9609375000002">ca.mikegabelmann.demo2.controller.rest.PersonRestController</node>
+    <node x="-134.0" y="56.9609375000002">ca.mikegabelmann.demo2.controller.rest.mapper.DtoMapperImpl</node>
+    <node x="251.00000000000006" y="56.9609375000002">ca.mikegabelmann.demo2.controller.rest.AddressRestController</node>
+    <node x="-134.0" y="205.921875">ca.mikegabelmann.demo2.controller.rest.SexConverter</node>
+    <node x="468.0" y="56.9609375000002">ca.mikegabelmann.demo2.controller.rest.PersonAddressRestControllerTest</node>
+    <node x="684.0" y="131.921875">ca.mikegabelmann.demo2.controller.config.LocalEnvironmentConfig</node>
+    <node x="1186.0" y="131.921875">ca.mikegabelmann.demo2.controller.rest.LocalDateConverter</node>
+    <node x="1000.0" y="56.9609375000002">ca.mikegabelmann.demo2.controller.rest.PersonRestControllerTest</node>
+    <node x="756.0" y="56.9609375000002">ca.mikegabelmann.demo2.controller.rest.AddressRestControllerTest</node>
+    <node x="1409.0" y="56.9609375000002">ca.mikegabelmann.demo2.controller.rest.PersonAddressRestController</node>
+    <node x="286.00000000000006" y="-14.039062499999801">ca.mikegabelmann.demo2.controller.rest.mapper.DtoMapper</node>
+    <node x="1412.0" y="131.921875">ca.mikegabelmann.demo2.Demo2Application</node>
+    <node x="1235.0" y="56.9609375000002">ca.mikegabelmann.demo2.controller.rest.mapper.DtoMapperTest</node>
+    <node x="-134.0" y="131.921875">ca.mikegabelmann.demo2.controller.rest.HelloWorldRestControllerTest</node>
+    <node x="159.0" y="131.921875">ca.mikegabelmann.demo2.controller.rest.HelloWorldRestController</node>
+    <node x="48.0" y="205.921875">ca.mikegabelmann.demo2.controller.config.ProfileType</node>
+    <node x="425.0" y="131.921875">ca.mikegabelmann.demo2.controller.config.OtherEnvironmentConfig</node>
+    <node x="218.0" y="205.921875">ca.mikegabelmann.demo2.controller.config.CorsConfig</node>
+    <node x="941.0" y="131.921875">ca.mikegabelmann.demo2.controller.rest.PersonRestControllerIT</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ca.mikegabelmann.demo2.controller.rest.PersonRestControllerTest" target="ca.mikegabelmann.demo2.controller.rest.mapper.DtoMapper" relationship="TO_ONE">
+      <point x="0.0" y="-14.4999375000002" />
+      <point x="1107.5" y="36.0" />
+      <point x="349.5" y="36.0" />
+      <point x="-5.6843418860808015E-14" y="14.500062499999801" />
+    </edge>
+    <edge source="ca.mikegabelmann.demo2.controller.rest.PersonAddressRestController" target="ca.mikegabelmann.demo2.controller.rest.mapper.DtoMapper" relationship="TO_ONE">
+      <point x="0.0" y="-14.4999375000002" />
+      <point x="1529.5" y="36.0" />
+      <point x="349.5" y="36.0" />
+      <point x="-5.6843418860808015E-14" y="14.500062499999801" />
+    </edge>
+    <edge source="ca.mikegabelmann.demo2.controller.rest.PersonRestController" target="ca.mikegabelmann.demo2.controller.rest.mapper.DtoMapper" relationship="TO_ONE">
+      <point x="0.0" y="-14.4999375000002" />
+      <point x="137.0" y="36.0" />
+      <point x="349.5" y="36.0" />
+      <point x="-5.6843418860808015E-14" y="14.500062499999801" />
+    </edge>
+    <edge source="ca.mikegabelmann.demo2.controller.rest.PersonAddressRestControllerTest" target="ca.mikegabelmann.demo2.controller.rest.mapper.DtoMapper" relationship="TO_ONE">
+      <point x="0.0" y="-14.4999375000002" />
+      <point x="602.0" y="36.0" />
+      <point x="349.5" y="36.0" />
+      <point x="-5.6843418860808015E-14" y="14.500062499999801" />
+    </edge>
+    <edge source="ca.mikegabelmann.demo2.controller.rest.AddressRestControllerTest" target="ca.mikegabelmann.demo2.controller.rest.mapper.DtoMapper" relationship="TO_ONE">
+      <point x="0.0" y="-14.4999375000002" />
+      <point x="868.0" y="36.0" />
+      <point x="349.5" y="36.0" />
+      <point x="-5.6843418860808015E-14" y="14.500062499999801" />
+    </edge>
+    <edge source="ca.mikegabelmann.demo2.controller.rest.mapper.DtoMapperImpl" target="ca.mikegabelmann.demo2.controller.rest.mapper.DtoMapper" relationship="REALIZATION">
+      <point x="0.0" y="-14.5" />
+      <point x="-55.5" y="0.46093750000019895" />
+      <point x="-63.5" y="0.0" />
+    </edge>
+    <edge source="ca.mikegabelmann.demo2.controller.rest.AddressRestController" target="ca.mikegabelmann.demo2.controller.rest.mapper.DtoMapper" relationship="TO_ONE">
+      <point x="-5.6843418860808015E-14" y="-14.4999375000002" />
+      <point x="-5.6843418860808015E-14" y="14.500062499999801" />
+    </edge>
+    <edge source="ca.mikegabelmann.demo2.controller.rest.mapper.DtoMapperTest" target="ca.mikegabelmann.demo2.controller.rest.mapper.DtoMapper" relationship="TO_ONE">
+      <point x="0.0" y="-14.4999375000002" />
+      <point x="1312.0" y="36.0" />
+      <point x="349.5" y="36.0" />
+      <point x="-5.6843418860808015E-14" y="14.500062499999801" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.8403547671840355" showDependencies="true" x="758.0" y="110.0" />
+  <SelectedNodes>
+    <node>ca.mikegabelmann.demo2.controller.rest.mapper.DtoMapper</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
