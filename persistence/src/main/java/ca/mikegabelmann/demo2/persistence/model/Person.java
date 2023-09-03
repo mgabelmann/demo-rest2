@@ -11,7 +11,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import org.springframework.lang.Nullable;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -33,7 +32,6 @@ public class Person {
     @Column(name = "LAST_NAME", length = 75, nullable = false)
     private String lastName;
 
-    @Nullable
     @Column(name = "MIDDLE_NAME", length = 75)
     private String middleName;
 

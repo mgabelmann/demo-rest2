@@ -9,7 +9,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import org.springframework.lang.Nullable;
 
 
 @Entity
@@ -21,7 +20,6 @@ public class Address {
     @Column(name = "ADDRESS_ID", nullable = false, unique = true)
     private Long id;
 
-    @Nullable
     @Column(name = "ATTENTION", length = 100)
     private String attention;
 
@@ -40,7 +38,6 @@ public class Address {
     @Column(name = "POSTAL", nullable = false, length = 25)
     private String postal;
 
-    @Nullable
     @ManyToOne
     @JoinColumn(name = "PERSON_ID")
     private Person person;

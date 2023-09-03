@@ -4,7 +4,7 @@ import ca.mikegabelmann.demo2.persistence.model.Address;
 import ca.mikegabelmann.demo2.persistence.model.Person;
 import ca.mikegabelmann.demo2.persistence.repository.AddressRepository;
 import ca.mikegabelmann.demo2.persistence.repository.PersonRepository;
-import ca.mikegabelmann.demo2.persistence.facade.dto.PersonAddress;
+import ca.mikegabelmann.demo2.persistence.facade.bean.PersonAddress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

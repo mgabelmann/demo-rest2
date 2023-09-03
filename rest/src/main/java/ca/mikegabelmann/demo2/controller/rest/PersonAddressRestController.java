@@ -5,7 +5,7 @@ import ca.mikegabelmann.demo2.dto.AddressDto;
 import ca.mikegabelmann.demo2.dto.PersonAddressDto;
 import ca.mikegabelmann.demo2.dto.PersonDto;
 import ca.mikegabelmann.demo2.persistence.facade.PersonFacade;
-import ca.mikegabelmann.demo2.persistence.facade.dto.PersonAddress;
+import ca.mikegabelmann.demo2.persistence.facade.bean.PersonAddress;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,7 +57,7 @@ public class PersonAddressRestController {
 
     public List<PersonAddressDto> map(List<PersonAddress> records) {
         if (records != null) {
-            return records.stream().map(this::map).collect(Collectors.toList());
+            return records.stream().map(this::map).toList();
 
         } else {
             return List.of();

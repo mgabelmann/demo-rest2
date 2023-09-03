@@ -29,16 +29,7 @@ public class BooleanConverter implements AttributeConverter<Boolean, Character> 
 
     @Override
     public Boolean convertToEntityAttribute(Character character) {
-        final Boolean b;
-
-        if (character != null) {
-            b = character.equals(BOOLEAN_Y);
-
-        } else {
-            b = null;
-        }
-
-        return b;
+        return character == null ? null : character.equals(BOOLEAN_Y);
     }
 
 }

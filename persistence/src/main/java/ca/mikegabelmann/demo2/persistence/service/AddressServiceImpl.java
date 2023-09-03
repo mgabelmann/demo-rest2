@@ -26,7 +26,7 @@ public class AddressServiceImpl implements AddressService {
 
     @Transactional(readOnly = true)
     @Override
-    public List<Address> getAddressByCountryAndProvAndCity(String country, String prov, String city) {
+    public List<Address> getAddressByCountryAndProvAndCity(final String country, final String prov, final String city) {
         LOG.debug("country={}, prov={}, city={}", country, prov, city);
 
         return addressRepository.getAddressByCountryAndProvAndCity(country, prov, city);

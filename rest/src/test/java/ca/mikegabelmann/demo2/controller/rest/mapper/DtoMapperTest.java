@@ -3,7 +3,7 @@ package ca.mikegabelmann.demo2.controller.rest.mapper;
 import ca.mikegabelmann.demo2.dto.AddressDto;
 import ca.mikegabelmann.demo2.dto.PersonAddressDto;
 import ca.mikegabelmann.demo2.dto.PersonDto;
-import ca.mikegabelmann.demo2.persistence.facade.dto.PersonAddress;
+import ca.mikegabelmann.demo2.persistence.facade.bean.PersonAddress;
 import ca.mikegabelmann.demo2.persistence.model.Address;
 import ca.mikegabelmann.demo2.persistence.model.ModelTestFactory;
 import ca.mikegabelmann.demo2.persistence.model.Person;

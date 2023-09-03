@@ -29,7 +29,7 @@ public class PersonServiceImpl implements PersonService {
 
     @Transactional(readOnly = true)
     @Override
-    public List<Person> findBySexAndBirthDt(String sex, LocalDate date) {
+    public List<Person> findBySexAndBirthDt(final String sex, final LocalDate date) {
         LOG.debug("sex={}, date={}", sex, date);
 
         return personRepository.findBySexCodeIdAndBirthDt(sex, date);
@@ -38,7 +38,7 @@ public class PersonServiceImpl implements PersonService {
     @Transactional
     @Override
     @IgnoreCoverageReportGenerated
-    public Person createOrUpdate(Person p) {
+    public Person createOrUpdate(final Person p) {
         return personRepository.save(p);
     }
 
