@@ -6,7 +6,4 @@
  * <p>These are also called POJOs or Java Beans, but they are not DTOs as they are not used to communicate across
  * a network boundary or between processes.</p>
  */
-@NonNullFields
 package ca.mikegabelmann.demo2.persistence.facade.bean;
-
-import org.springframework.lang.NonNullFields;
