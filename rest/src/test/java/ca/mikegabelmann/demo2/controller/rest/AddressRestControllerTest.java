@@ -22,7 +22,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-
+/**
+ * We mock the service layer since we don't care about how it works, we are just testing the operations and responses
+ * from the service. This is a unit test not an integration test!
+ */
 @WebMvcTest(AddressRestController.class)
 @ComponentScan(basePackageClasses = {
     DtoMapper.class
@@ -51,18 +54,18 @@ class AddressRestControllerTest {
     @Test
     @DisplayName("getAddressByCountryAndProvAndCity - with results")
     void test1_getAddressByCountryAndProvAndCity() throws Exception {
-        Mockito.when(addressService.getAddressByCountryAndProvAndCity("CA", "BC", "city")).thenReturn(List.of(address));
+        Mockito.when(addressService.getAddressByCountryAndProvAndCity("co", "pr", "city")).thenReturn(List.of(address));
 
         mvc.perform(
                 get(AddressRestController.PATH_ADDRESS_SEARCH1)
-                        .param("country", "CA")
-                        .param("prov", "BC")
+                        .param("country", "co")
+                        .param("prov", "pr")
                         .param("city", "city")
 
                 //).andDo(print()
         ).andExpectAll(
                 status().isOk(),
-                content().string(startsWith("[{\"id\":1,\"attention\":\"firstName lastName\",\"deliveryInfo\":null,\"civicAddress\":null,\"postalInfo\":null,\"city\":\"city\",\"prov\":\"prov\",\"postal\":\"postal\",\"country\":\"CA\",\"primary\":true}]"))
+                content().string(startsWith("[{\"id\":1,\"attention\":\"firstName lastName\",\"deliveryInfo\":null,\"civicAddress\":null,\"postalInfo\":null,\"city\":\"city\",\"prov\":\"pr\",\"postal\":\"postal\",\"country\":\"co\",\"primary\":true}]"))
         );
     }
 

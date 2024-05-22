@@ -21,7 +21,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-
+/**
+ * This is an integration test as it mocks the REST calls, but the controller, service, repository and DB layers
+ * are all functional. We are using an in-memory DB instead of a persistent one.
+ */
 @SpringBootTest
 @AutoConfigureMockMvc
 //FIXME: for some reason I need to include this otherwise I get an error stating that the Repository beans are already registered.

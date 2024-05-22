@@ -10,9 +10,9 @@ import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * This annotation is used so that Jacoco will ignore classes, methods, constructors in calculation of
+ * <p>This annotation is used so that Jacoco will ignore classes, methods, constructors in calculation of
  * test coverage. You can also use @Generated, essentially the annotation must include 'Generated' in
- * the name.
+ * the name.</p>
  */
 @Documented
 @Retention(RUNTIME)
