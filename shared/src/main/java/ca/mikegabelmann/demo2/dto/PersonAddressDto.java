@@ -7,8 +7,8 @@ import lombok.Value;
 @Builder
 @Value
 public class PersonAddressDto {
-    private PersonDto person;
-    private AddressDto primary;
-    private AddressDto secondary;
+    PersonDto person;
+    AddressDto primary;
+    AddressDto secondary;
 
 }

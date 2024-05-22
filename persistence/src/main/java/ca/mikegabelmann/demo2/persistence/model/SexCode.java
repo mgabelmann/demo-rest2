@@ -46,7 +46,10 @@ public class SexCode {
 
     @Override
     public String toString() {
-        return String.format("SexCode{id='%s', description='%s'}", id, description);
+        return "SexCode{" +
+                "id='" + id + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 
 }

@@ -50,7 +50,10 @@ public class GroupCode {
 
     @Override
     public String toString() {
-        return String.format("GroupCode{groupId='%s', description='%s'}", groupId, description);
+        return "GroupCode{" +
+                "groupId='" + groupId + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 
 }

@@ -1,6 +1,7 @@
 package ca.mikegabelmann.demo2.persistence.model;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,56 +15,78 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "ADDRESS")
 public class Address {
+    //TODO: change to use UUID
     @Id
     @SequenceGenerator(name = "seq_address", sequenceName = "address_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_address")
     @Column(name = "ADDRESS_ID", nullable = false, unique = true)
     private Long id;
 
-    @Column(name = "ATTENTION", length = 100)
+    /** Addressee. eg: John Jones */
+    @Column(name = "ATTENTION", nullable = false, length = 100)
     private String attention;
 
-    @Column(name = "STREET_ADDRESS", nullable = false, length = 100)
-    private String streetAddress;
+    /** Additional delivery Information. eg: Marketing Dept */
+    @Column(name = "DELIVERY_INFO", length = 100)
+    private String deliveryInfo;
 
+    /** Civic Address. eg: 1425 James St */
+    @Column(name = "CIVIC_ADDRESS", length = 100)
+    private String civicAddress;
+
+    /** Postal box number and station information. eg: PO BOX 4001 STN A */
+    @Column(name = "POSTAL_INFO", length = 100)
+    private String postalInfo;
+
+    /** Municipality name. eg: Victoria */
     @Column(name = "CITY", nullable = false, length = 100)
     private String city;
 
-    @Column(name = "PROV", nullable = false, length = 100)
+    /** Province, State or Territory. eg: BC */
+    @Column(name = "PROV", nullable = false, length = 8)
     private String prov;
 
-    @Column(name = "COUNTRY", nullable = false, length = 100)
-    private String country;
-
-    @Column(name = "POSTAL", nullable = false, length = 25)
+    /** Postal code, ZIP code, etc. eg: V8X 3X4 */
+    @Column(name = "POSTAL", nullable = false, length = 16)
     private String postal;
 
+    /** Country. eg: CA */
+    @Column(name = "COUNTRY", nullable = false, length = 2)
+    private String country;
+
+    /** Primary or secondary address. */
+    @Convert(converter = BooleanConverter.class)
+    @Column(name = "PRIMARY_ADDRESS", nullable = false, length = 1)
+    private Boolean primary;
+
+
     @ManyToOne
-    @JoinColumn(name = "PERSON_ID")
+    @JoinColumn(name = "PERSON_ID", nullable = false)
     private Person person;
 
 
     /** No args constructor, used by JPA. */
     protected Address() {
-        this(null, null, null, null, null, null, null);
+        this(null, null, null, null, null, null, null, null);
     }
 
     /** Required args constructor. */
-    public Address(
-        final Long id,
-        final String streetAddress,
-        final String city,
-        final String prov,
-        final String country,
-        final String postal,
-        final Person person) {
+    public Address(Long id, String attention, String city, String prov, String postal, String country, Boolean primary, Person person) {
+        this(id, attention, null, null, null, city, prov, postal, country, primary, person);
+    }
 
+    /** All args constructor. */
+    public Address(Long id, String attention, String deliveryInfo, String civicAddress, String postalInfo, String city, String prov, String postal, String country, Boolean primary, Person person) {
         this.id = id;
-        this.streetAddress = streetAddress;
+        this.attention = attention;
+        this.deliveryInfo = deliveryInfo;
+        this.civicAddress = civicAddress;
+        this.postalInfo = postalInfo;
         this.city = city;
         this.prov = prov;
-        this.country = country;
         this.postal = postal;
+        this.country = country;
+        this.primary = primary;
         this.person = person;
     }
 
@@ -83,12 +106,28 @@ public class Address {
         this.attention = attention;
     }
 
-    public String getStreetAddress() {
-        return streetAddress;
+    public String getDeliveryInfo() {
+        return deliveryInfo;
     }
 
-    public void setStreetAddress(String streetAddress) {
-        this.streetAddress = streetAddress;
+    public void setDeliveryInfo(String deliveryInfo) {
+        this.deliveryInfo = deliveryInfo;
+    }
+
+    public String getCivicAddress() {
+        return civicAddress;
+    }
+
+    public void setCivicAddress(String civicAddress) {
+        this.civicAddress = civicAddress;
+    }
+
+    public String getPostalInfo() {
+        return postalInfo;
+    }
+
+    public void setPostalInfo(String postalInfo) {
+        this.postalInfo = postalInfo;
     }
 
     public String getCity() {
@@ -107,6 +146,14 @@ public class Address {
         this.prov = prov;
     }
 
+    public String getPostal() {
+        return postal;
+    }
+
+    public void setPostal(String postal) {
+        this.postal = postal;
+    }
+
     public String getCountry() {
         return country;
     }
@@ -115,12 +162,12 @@ public class Address {
         this.country = country;
     }
 
-    public String getPostal() {
-        return postal;
+    public Boolean getPrimary() {
+        return primary;
     }
 
-    public void setPostal(String postal) {
-        this.postal = postal;
+    public void setPrimary(Boolean primary) {
+        this.primary = primary;
     }
 
     public Person getPerson() {
@@ -131,20 +178,25 @@ public class Address {
         this.person = person;
     }
 
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("Address{");
-        sb.append("id=").append(id);
-        sb.append(", attention='").append(attention).append('\'');
-        sb.append(", streetAddress='").append(streetAddress).append('\'');
-        sb.append(", city='").append(city).append('\'');
-        sb.append(", prov='").append(prov).append('\'');
-        sb.append(", country='").append(country).append('\'');
-        sb.append(", postal='").append(postal).append('\'');
-        sb.append(", person=").append(person);
-        sb.append('}');
-
-        return sb.toString();
+    /** Is this the primary address? */
+    public boolean isPrimary() {
+        return primary;
     }
 
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", attention='" + attention + '\'' +
+                ", deliveryInfo='" + deliveryInfo + '\'' +
+                ", civicAddress='" + civicAddress + '\'' +
+                ", postalInfo='" + postalInfo + '\'' +
+                ", city='" + city + '\'' +
+                ", prov='" + prov + '\'' +
+                ", postal='" + postal + '\'' +
+                ", country='" + country + '\'' +
+                ", primary=" + primary +
+                ", person=" + person +
+                '}';
+    }
 }

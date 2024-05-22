@@ -42,7 +42,7 @@ public class AddressRepositoryTest {
         Person pTmp = new Person(null, "firstName", "lastName", LocalDate.now(), s);
         this.p = personRepository.save(pTmp);
 
-        Address aTmp = new Address(null, "streetAddress", "city", "prov", "country", "postal", p);
+        Address aTmp = new Address(null, "firstName lastName", "city", "prov", "postal", "CA", true, p);
         this.a = addressRepository.save(aTmp);
 
         //sexcode does not have a generated ID
@@ -61,7 +61,7 @@ public class AddressRepositoryTest {
     @Test
     @DisplayName("getAddressByCountryAndProvAndCity - with results")
     void test1_getAddressByCountryAndProvAndCity() {
-        List<Address> results = addressRepository.getAddressByCountryAndProvAndCity("country", "prov", "city");
+        List<Address> results = addressRepository.getAddressByCountryAndProvAndCity("CA", "prov", "city");
 
         Assertions.assertNotNull(results);
         Assertions.assertEquals(1, results.size());

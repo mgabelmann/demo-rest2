@@ -9,11 +9,11 @@ import java.time.LocalDate;
 @Builder
 @Value
 public class PersonDto {
-    private Long id;
-    private String firstName;
-    private String lastName;
-    private String middleName;
-    private LocalDate birthDt;
-    private String sex;
+    Long id;
+    String firstName;
+    String lastName;
+    String middleName;
+    LocalDate birthDt;
+    String sex;
 
 }

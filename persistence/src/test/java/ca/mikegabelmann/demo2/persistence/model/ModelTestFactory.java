@@ -30,7 +30,7 @@ public class ModelTestFactory {
     }
 
     public static Address getAddress(final Person person) {
-        return new Address(null, "streetAddress", "city", "prov", "country", "postal", person);
+        return new Address(null, "firstName lastName", "city", "prov", "postal", "CA", true, person);
     }
 
 }

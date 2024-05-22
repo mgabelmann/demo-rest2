@@ -277,21 +277,27 @@ class DtoMapperTest {
     public void validate(Address expected, AddressDto result) {
         Assertions.assertEquals(expected.getId(), result.getId());
         Assertions.assertEquals(expected.getAttention(), result.getAttention());
-        Assertions.assertEquals(expected.getStreetAddress(), result.getStreetAddress());
+        Assertions.assertEquals(expected.getDeliveryInfo(), result.getDeliveryInfo());
+        Assertions.assertEquals(expected.getCivicAddress(), result.getCivicAddress());
+        Assertions.assertEquals(expected.getPostalInfo(), result.getPostalInfo());
         Assertions.assertEquals(expected.getCity(), result.getCity());
         Assertions.assertEquals(expected.getProv(), result.getProv());
-        Assertions.assertEquals(expected.getCountry(), result.getCountry());
         Assertions.assertEquals(expected.getPostal(), result.getPostal());
+        Assertions.assertEquals(expected.getCountry(), result.getCountry());
+        Assertions.assertEquals(expected.getPrimary(), result.getPrimary());
     }
 
     public void validate(AddressDto expected, Address result) {
         Assertions.assertEquals(expected.getId(), result.getId());
         Assertions.assertEquals(expected.getAttention(), result.getAttention());
-        Assertions.assertEquals(expected.getStreetAddress(), result.getStreetAddress());
+        Assertions.assertEquals(expected.getDeliveryInfo(), result.getDeliveryInfo());
+        Assertions.assertEquals(expected.getCivicAddress(), result.getCivicAddress());
+        Assertions.assertEquals(expected.getPostalInfo(), result.getPostalInfo());
         Assertions.assertEquals(expected.getCity(), result.getCity());
         Assertions.assertEquals(expected.getProv(), result.getProv());
-        Assertions.assertEquals(expected.getCountry(), result.getCountry());
         Assertions.assertEquals(expected.getPostal(), result.getPostal());
+        Assertions.assertEquals(expected.getCountry(), result.getCountry());
+        Assertions.assertEquals(expected.getPrimary(), result.getPrimary());
     }
 
     public void validate(PersonAddress expected, PersonAddressDto result) {

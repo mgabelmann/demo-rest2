@@ -5,7 +5,9 @@ import ca.mikegabelmann.demo2.persistence.model.Person;
 
 import java.util.Optional;
 
-
+/**
+ *
+ */
 public class PersonAddress {
     private final Person person;
 
@@ -40,4 +42,12 @@ public class PersonAddress {
         return Optional.ofNullable(secondaryAddress);
     }
 
+    @Override
+    public String toString() {
+        return "PersonAddress{" +
+                "person=" + person +
+                ", primaryAddress=" + primaryAddress +
+                ", secondaryAddress=" + secondaryAddress +
+                '}';
+    }
 }

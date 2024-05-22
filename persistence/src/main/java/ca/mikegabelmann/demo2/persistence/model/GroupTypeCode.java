@@ -136,17 +136,14 @@ public class GroupTypeCode {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("GroupTypeCode{");
-        sb.append("id=").append(id);
-        sb.append(", description='").append(description).append('\'');
-        sb.append(", position=").append(position);
-        sb.append(", effective=").append(effective);
-        sb.append(", groupCode=").append(groupCode);
-        sb.append(", groupTypeCode=").append(groupTypeCode);
-        sb.append(", groupTypeCodes=").append(groupTypeCodes);
-        sb.append('}');
-
-        return sb.toString();
+        return "GroupTypeCode{" + "id=" + id +
+                ", description='" + description + '\'' +
+                ", position=" + position +
+                ", effective=" + effective +
+                ", groupCode=" + groupCode +
+                ", groupTypeCode=" + groupTypeCode +
+                ", groupTypeCodes=" + groupTypeCodes +
+                '}';
     }
 
 }

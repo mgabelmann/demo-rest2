@@ -51,18 +51,18 @@ class AddressRestControllerTest {
     @Test
     @DisplayName("getAddressByCountryAndProvAndCity - with results")
     void test1_getAddressByCountryAndProvAndCity() throws Exception {
-        Mockito.when(addressService.getAddressByCountryAndProvAndCity("country", "prov", "city")).thenReturn(List.of(address));
+        Mockito.when(addressService.getAddressByCountryAndProvAndCity("CA", "BC", "city")).thenReturn(List.of(address));
 
         mvc.perform(
                 get(AddressRestController.PATH_ADDRESS_SEARCH1)
-                        .param("country", "country")
-                        .param("prov", "prov")
+                        .param("country", "CA")
+                        .param("prov", "BC")
                         .param("city", "city")
 
                 //).andDo(print()
         ).andExpectAll(
                 status().isOk(),
-                content().string(startsWith("[{\"id\":1,\"attention\":null,\"streetAddress\":\"streetAddress\",\"city\":\"city\",\"prov\":\"prov\",\"country\":\"country\",\"postal\":\"postal\"}]"))
+                content().string(startsWith("[{\"id\":1,\"attention\":\"firstName lastName\",\"deliveryInfo\":null,\"civicAddress\":null,\"postalInfo\":null,\"city\":\"city\",\"prov\":\"prov\",\"postal\":\"postal\",\"country\":\"CA\",\"primary\":true}]"))
         );
     }
 

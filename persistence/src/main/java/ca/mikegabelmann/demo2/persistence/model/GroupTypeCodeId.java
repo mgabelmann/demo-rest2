@@ -48,7 +48,10 @@ public class GroupTypeCodeId implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("GenericTypeCodeId{groupId='%s', typeId='%s'}", groupId, typeId);
+        return "GroupTypeCodeId{" +
+                "groupId='" + groupId + '\'' +
+                ", typeId='" + typeId + '\'' +
+                '}';
     }
 
     @Override
