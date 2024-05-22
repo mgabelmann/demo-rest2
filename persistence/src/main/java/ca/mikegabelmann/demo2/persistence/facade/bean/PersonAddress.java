@@ -1,19 +1,18 @@
-package ca.mikegabelmann.demo2.persistence.facade.dto;
+package ca.mikegabelmann.demo2.persistence.facade.bean;
 
 import ca.mikegabelmann.demo2.persistence.model.Address;
 import ca.mikegabelmann.demo2.persistence.model.Person;
-import org.springframework.lang.Nullable;
 
 import java.util.Optional;
 
-
+/**
+ *
+ */
 public class PersonAddress {
     private final Person person;
 
-    @Nullable
     private final Address primaryAddress;
 
-    @Nullable
     private final Address secondaryAddress;
 
 
@@ -43,4 +42,12 @@ public class PersonAddress {
         return Optional.ofNullable(secondaryAddress);
     }
 
+    @Override
+    public String toString() {
+        return "PersonAddress{" +
+                "person=" + person +
+                ", primaryAddress=" + primaryAddress +
+                ", secondaryAddress=" + secondaryAddress +
+                '}';
+    }
 }

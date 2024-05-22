@@ -3,7 +3,6 @@ package ca.mikegabelmann.demo2.persistence.service;
 import ca.mikegabelmann.demo2.persistence.model.Person;
 import ca.mikegabelmann.demo2.persistence.repository.PersonRepository;
 import ca.mikegabelmann.demo2.persistence.util.IgnoreCoverageReportGenerated;
-import jakarta.annotation.Generated;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +28,7 @@ public class PersonServiceImpl implements PersonService {
 
     @Transactional(readOnly = true)
     @Override
-    public List<Person> findBySexAndBirthDt(String sex, LocalDate date) {
+    public List<Person> findBySexAndBirthDt(final String sex, final LocalDate date) {
         LOG.debug("sex={}, date={}", sex, date);
 
         return personRepository.findBySexCodeIdAndBirthDt(sex, date);
@@ -38,7 +37,7 @@ public class PersonServiceImpl implements PersonService {
     @Transactional
     @Override
     @IgnoreCoverageReportGenerated
-    public Person createOrUpdate(Person p) {
+    public Person createOrUpdate(final Person p) {
         return personRepository.save(p);
     }
 

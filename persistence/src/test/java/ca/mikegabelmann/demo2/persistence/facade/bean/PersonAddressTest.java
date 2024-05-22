@@ -1,4 +1,4 @@
-package ca.mikegabelmann.demo2.persistence.facade.dto;
+package ca.mikegabelmann.demo2.persistence.facade.bean;
 
 import ca.mikegabelmann.demo2.persistence.model.Address;
 import ca.mikegabelmann.demo2.persistence.model.ModelTestFactory;

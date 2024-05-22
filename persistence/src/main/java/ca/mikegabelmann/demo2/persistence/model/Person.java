@@ -11,7 +11,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import org.springframework.lang.Nullable;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -21,6 +20,7 @@ import java.util.List;
 @Entity
 @Table(name = "PERSON")
 public class Person {
+    //TODO: change to use UUID
     @Id
     @SequenceGenerator(name = "seq_person", sequenceName = "person_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_person")
@@ -33,7 +33,6 @@ public class Person {
     @Column(name = "LAST_NAME", length = 75, nullable = false)
     private String lastName;
 
-    @Nullable
     @Column(name = "MIDDLE_NAME", length = 75)
     private String middleName;
 
@@ -126,16 +125,15 @@ public class Person {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Person{");
-        sb.append("id=").append(id);
-        sb.append(", firstName='").append(firstName).append('\'');
-        sb.append(", lastName='").append(lastName).append('\'');
-        sb.append(", middleName='").append(middleName).append('\'');
-        sb.append(", birthDt=").append(birthDt);
-        sb.append(", sexCode=").append(sexCode);
-        sb.append('}');
-
-        return sb.toString();
+        return "Person{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", birthDt=" + birthDt +
+                ", sexCode=" + sexCode +
+                ", addresses=" + addresses +
+                '}';
     }
 
 }

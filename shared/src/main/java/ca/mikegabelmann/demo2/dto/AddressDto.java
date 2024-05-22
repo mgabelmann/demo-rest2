@@ -8,12 +8,14 @@ import lombok.Value;
 @Builder
 @Value
 public class AddressDto {
-    private Long id;
-    private String attention;
-    private String streetAddress;
-    private String city;
-    private String prov;
-    private String country;
-    private String postal;
-
+    Long id;
+    String attention;
+    String deliveryInfo;
+    String civicAddress;
+    String postalInfo;
+    String city;
+    String prov;
+    String postal;
+    String country;
+    Boolean primary;
 }

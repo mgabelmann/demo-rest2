@@ -5,7 +5,7 @@ import ca.mikegabelmann.demo2.persistence.model.ModelTestFactory;
 import ca.mikegabelmann.demo2.persistence.model.Person;
 import ca.mikegabelmann.demo2.persistence.repository.AddressRepository;
 import ca.mikegabelmann.demo2.persistence.repository.PersonRepository;
-import ca.mikegabelmann.demo2.persistence.facade.dto.PersonAddress;
+import ca.mikegabelmann.demo2.persistence.facade.bean.PersonAddress;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -24,9 +24,6 @@ public class PersonFacadeImplTest {
 
     @Mock
     private PersonRepository personRepository;
-
-    @Mock
-    private AddressRepository addressRepository;
 
     @InjectMocks
     private PersonFacadeImpl personFacade;
@@ -57,9 +54,12 @@ public class PersonFacadeImplTest {
 
         Optional<PersonAddress> result = personFacade.getPersonAddress(1L);
         Assertions.assertTrue(result.isPresent());
-        Assertions.assertNotNull(result.get().getPerson());
-        Assertions.assertNotNull(result.get().getPrimaryAddress());
-        Assertions.assertNotNull(result.get().getSecondaryAddress());
+
+        PersonAddress personAddress = result.get();
+        Assertions.assertNotNull(personAddress.getPerson());
+
+        Assertions.assertTrue(personAddress.getPrimaryAddress().isPresent());
+        Assertions.assertTrue(personAddress.getSecondaryAddress().isEmpty());
     }
 
 }

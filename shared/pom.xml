@@ -35,6 +35,14 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- NOTE: to fix [WARNING] unknown enum constant javax.annotation.meta.When.MAYBE -->
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>3.0.2</version>
+            <scope>test</scope>
+        </dependency>
+
         <!-- NOTE: validation annotations to be used by DTOs -->
         <!--
         <dependency>
