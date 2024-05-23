@@ -18,6 +18,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 import static org.hamcrest.Matchers.startsWith;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -46,7 +47,7 @@ class PersonRestControllerTest {
     @BeforeEach
     void beforeEach() {
         SexCode sexCode = ModelTestFactory.getSexCode_Male();
-        this.person = new Person(1L, "firstName", "lastName", LocalDate.of(2000, 1, 15), sexCode);
+        this.person = new Person(UUID.randomUUID(), "firstName", "lastName", LocalDate.of(2000, 1, 15), sexCode);
     }
 
     @Test
@@ -62,7 +63,7 @@ class PersonRestControllerTest {
         //).andDo(print()
         ).andExpectAll(
                 status().isOk(),
-                content().string(startsWith("[{\"id\":1,\"firstName\":\"firstName\",\"lastName\":\"lastName\",\"middleName\":null,\"birthDt\":\"2000-01-15\",\"sex\":\"M\"}]"))
+                content().string(startsWith("[{\"id\":\"" + person.getId() + "\",\"firstName\":\"firstName\",\"lastName\":\"lastName\",\"middleName\":null,\"birthDt\":\"2000-01-15\",\"sex\":\"M\"}]"))
         );
     }
 
@@ -81,7 +82,6 @@ class PersonRestControllerTest {
         );
     }
 
-
     @Test
     @DisplayName("findBySexAndBirthDt - PersonSearch1 - with results")
     void test3_findBySexAndBirthDt() throws Exception {
@@ -95,7 +95,7 @@ class PersonRestControllerTest {
         //).andDo(print()
         ).andExpectAll(
                 status().isOk(),
-                content().string(startsWith("[{\"id\":1,\"firstName\":\"firstName\",\"lastName\":\"lastName\",\"middleName\":null,\"birthDt\":\"2000-01-15\",\"sex\":\"M\"}]"))
+                content().string(startsWith("[{\"id\":\"" + person.getId() + "\",\"firstName\":\"firstName\",\"lastName\":\"lastName\",\"middleName\":null,\"birthDt\":\"2000-01-15\",\"sex\":\"M\"}]"))
         );
     }
 

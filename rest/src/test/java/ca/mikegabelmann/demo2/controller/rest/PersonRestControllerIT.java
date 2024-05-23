@@ -68,7 +68,7 @@ class PersonRestControllerIT {
                 //).andDo(print()
         ).andExpectAll(
                 status().isOk(),
-                content().string(startsWith("[{\"id\":" + p.getId() + ",\"firstName\":\"firstName\",\"lastName\":\"lastName\",\"middleName\":null,\"birthDt\":\"" + now.toString() + "\",\"sex\":\"F\"}]"))
+                content().string(startsWith("[{\"id\":\"" + p.getId() + "\",\"firstName\":\"firstName\",\"lastName\":\"lastName\",\"middleName\":null,\"birthDt\":\"" + now.toString() + "\",\"sex\":\"F\"}]"))
         );
     }
 

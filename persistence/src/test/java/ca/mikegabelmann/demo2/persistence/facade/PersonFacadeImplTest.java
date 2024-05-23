@@ -3,7 +3,6 @@ package ca.mikegabelmann.demo2.persistence.facade;
 import ca.mikegabelmann.demo2.persistence.model.Address;
 import ca.mikegabelmann.demo2.persistence.model.ModelTestFactory;
 import ca.mikegabelmann.demo2.persistence.model.Person;
-import ca.mikegabelmann.demo2.persistence.repository.AddressRepository;
 import ca.mikegabelmann.demo2.persistence.repository.PersonRepository;
 import ca.mikegabelmann.demo2.persistence.facade.bean.PersonAddress;
 import org.junit.jupiter.api.Assertions;
@@ -17,6 +16,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
+import java.util.UUID;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -42,7 +42,7 @@ public class PersonFacadeImplTest {
     @Test
     @DisplayName("getPersonAddress - without results")
     void test1_getPersonAddress() {
-        Optional<PersonAddress> result = personFacade.getPersonAddress(1L);
+        Optional<PersonAddress> result = personFacade.getPersonAddress(UUID.randomUUID());
 
         Assertions.assertFalse(result.isPresent());
     }
@@ -50,9 +50,10 @@ public class PersonFacadeImplTest {
     @Test
     @DisplayName("getPersonAddress - with results")
     void test2_getPersonAddress() {
-        Mockito.when(personRepository.findById(1L)).thenReturn(Optional.of(person));
 
-        Optional<PersonAddress> result = personFacade.getPersonAddress(1L);
+        Mockito.when(personRepository.findById(person.getId())).thenReturn(Optional.of(person));
+
+        Optional<PersonAddress> result = personFacade.getPersonAddress(person.getId());
         Assertions.assertTrue(result.isPresent());
 
         PersonAddress personAddress = result.get();

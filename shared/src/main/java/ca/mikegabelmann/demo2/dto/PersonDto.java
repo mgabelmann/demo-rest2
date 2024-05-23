@@ -4,12 +4,13 @@ import lombok.Builder;
 import lombok.Value;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 
 @Builder
 @Value
 public class PersonDto {
-    Long id;
+    UUID id;
     String firstName;
     String lastName;
     String middleName;

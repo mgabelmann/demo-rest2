@@ -23,6 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.Optional;
+import java.util.UUID;
 
 
 @WebMvcTest(PersonAddressRestController.class)
@@ -54,10 +55,10 @@ class PersonAddressRestControllerTest {
     @Test
     @DisplayName("getPersonAddress - with results")
     void test1_getPersonAddress() throws Exception {
-        Mockito.when(personFacade.getPersonAddress(1L)).thenReturn(Optional.of(personAddress));
+        Mockito.when(personFacade.getPersonAddress(personAddress.getPerson().getId())).thenReturn(Optional.of(personAddress));
 
         mvc.perform(
-                get(PersonAddressRestController.PATH_GET_PERSONADDRESS, 1L))
+                get(PersonAddressRestController.PATH_GET_PERSONADDRESS, personAddress.getPerson().getId()))
                 //.andDo(print())
                 .andExpectAll(
                     status().isOk(),
@@ -68,10 +69,10 @@ class PersonAddressRestControllerTest {
     @Test
     @DisplayName("getPersonAddress - without results")
     void test2_getPersonAddress() throws Exception {
-        Mockito.when(personFacade.getPersonAddress(1L)).thenReturn(Optional.of(personAddress));
+        Mockito.when(personFacade.getPersonAddress(personAddress.getPerson().getId())).thenReturn(Optional.of(personAddress));
 
         mvc.perform(
-                get(PersonAddressRestController.PATH_GET_PERSONADDRESS, 2L))
+                get(PersonAddressRestController.PATH_GET_PERSONADDRESS, UUID.randomUUID()))
                 //.andDo(print())
                 .andExpect(
                     status().isNotFound()

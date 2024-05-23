@@ -4,11 +4,13 @@ package ca.mikegabelmann.demo2.dto;
 import lombok.Builder;
 import lombok.Value;
 
+import java.util.UUID;
+
 
 @Builder
 @Value
 public class AddressDto {
-    Long id;
+    UUID id;
     String attention;
     String deliveryInfo;
     String civicAddress;

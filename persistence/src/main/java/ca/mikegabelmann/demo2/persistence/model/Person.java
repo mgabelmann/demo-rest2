@@ -3,29 +3,26 @@ package ca.mikegabelmann.demo2.persistence.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import org.hibernate.annotations.UuidGenerator;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 
 @Entity
 @Table(name = "PERSON")
 public class Person {
-    //TODO: change to use UUID
     @Id
-    @SequenceGenerator(name = "seq_person", sequenceName = "person_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_person")
+    @UuidGenerator
     @Column(name = "PERSON_ID", nullable = false, unique = true)
-    private Long id;
+    private UUID id;
 
     @Column(name = "FIRST_NAME", length = 75, nullable = false)
     private String firstName;
@@ -54,7 +51,7 @@ public class Person {
 
     /** Required args constructor. */
     public Person(
-        final Long id,
+        final UUID id,
         final String firstName,
         final String lastName,
         final LocalDate birthDt,
@@ -67,11 +64,11 @@ public class Person {
         this.sexCode = sexCode;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -132,7 +129,7 @@ public class Person {
                 ", middleName='" + middleName + '\'' +
                 ", birthDt=" + birthDt +
                 ", sexCode=" + sexCode +
-                ", addresses=" + addresses +
+                //", addresses=" + addresses +
                 '}';
     }
 

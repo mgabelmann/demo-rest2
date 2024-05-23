@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 
 @Service
@@ -26,7 +27,7 @@ public class PersonFacadeImpl implements PersonFacade {
     }
 
     @Override
-    public Optional<PersonAddress> getPersonAddress(final Long id) {
+    public Optional<PersonAddress> getPersonAddress(final UUID id) {
         Optional<Person> record = personRepository.findById(id);
 
         if (record.isPresent()) {
