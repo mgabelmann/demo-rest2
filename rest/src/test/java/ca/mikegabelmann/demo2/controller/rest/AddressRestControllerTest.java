@@ -16,6 +16,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
+import java.util.UUID;
 
 import static org.hamcrest.Matchers.startsWith;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -48,7 +49,7 @@ class AddressRestControllerTest {
     void beforeEach() {
         Person person1 = ModelTestFactory.getPerson_Male();
         this.address = ModelTestFactory.getAddress(person1);
-        this.address.setId(1L);
+        this.address.setId(UUID.randomUUID());
     }
 
     @Test
@@ -65,7 +66,7 @@ class AddressRestControllerTest {
                 //).andDo(print()
         ).andExpectAll(
                 status().isOk(),
-                content().string(startsWith("[{\"id\":1,\"attention\":\"firstName lastName\",\"deliveryInfo\":null,\"civicAddress\":null,\"postalInfo\":null,\"city\":\"city\",\"prov\":\"pr\",\"postal\":\"postal\",\"country\":\"co\",\"primary\":true}]"))
+                content().string(startsWith("[{\"id\":\"" + address.getId() + "\",\"attention\":\"firstName lastName\",\"deliveryInfo\":null,\"civicAddress\":null,\"postalInfo\":null,\"city\":\"city\",\"prov\":\"pr\",\"postal\":\"postal\",\"country\":\"co\",\"primary\":true}]"))
         );
     }
 

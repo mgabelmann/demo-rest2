@@ -17,8 +17,9 @@
     <name>Demo - Persistence</name>
     <description>
         This module provides a way to query the database using the JPA entities provided by the model module. Unit tests
-        use an in-memory H2 database. IF you need data added to it you can add it via import.sql and/or use your test
-        code.
+        use an in-memory H2 database. For DDL (database objects) use schema.sql, otherwise DML (data) use data.sql. If
+        you have multiple database types then you can change to data-&lt;DB&gt;.sql or schema-&lt;DB&gt;.sql.
+        Note /* */ comments DO NOT WORK in these files.
     </description>
 
     <properties>

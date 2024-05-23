@@ -3,24 +3,22 @@ package ca.mikegabelmann.demo2.persistence.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import org.hibernate.annotations.UuidGenerator;
+
+import java.util.UUID;
 
 
 @Entity
 @Table(name = "ADDRESS")
 public class Address {
-    //TODO: change to use UUID
     @Id
-    @SequenceGenerator(name = "seq_address", sequenceName = "address_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_address")
+    @UuidGenerator
     @Column(name = "ADDRESS_ID", nullable = false, unique = true)
-    private Long id;
+    private UUID id;
 
     /** Addressee. eg: John Jones */
     @Column(name = "ATTENTION", nullable = false, length = 100)
@@ -71,12 +69,12 @@ public class Address {
     }
 
     /** Required args constructor. */
-    public Address(Long id, String attention, String city, String prov, String postal, String country, Boolean primary, Person person) {
+    public Address(UUID id, String attention, String city, String prov, String postal, String country, Boolean primary, Person person) {
         this(id, attention, null, null, null, city, prov, postal, country, primary, person);
     }
 
     /** All args constructor. */
-    public Address(Long id, String attention, String deliveryInfo, String civicAddress, String postalInfo, String city, String prov, String postal, String country, Boolean primary, Person person) {
+    public Address(UUID id, String attention, String deliveryInfo, String civicAddress, String postalInfo, String city, String prov, String postal, String country, Boolean primary, Person person) {
         this.id = id;
         this.attention = attention;
         this.deliveryInfo = deliveryInfo;
@@ -90,11 +88,11 @@ public class Address {
         this.person = person;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -196,7 +194,7 @@ public class Address {
                 ", postal='" + postal + '\'' +
                 ", country='" + country + '\'' +
                 ", primary=" + primary +
-                ", person=" + person +
+                //", person=" + person +
                 '}';
     }
 }

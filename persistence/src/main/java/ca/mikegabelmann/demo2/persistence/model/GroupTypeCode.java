@@ -142,7 +142,7 @@ public class GroupTypeCode {
                 ", effective=" + effective +
                 ", groupCode=" + groupCode +
                 ", groupTypeCode=" + groupTypeCode +
-                ", groupTypeCodes=" + groupTypeCodes +
+                //", groupTypeCodes=" + groupTypeCodes +
                 '}';
     }
 

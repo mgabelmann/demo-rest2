@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 
 @RestController
@@ -39,7 +40,7 @@ public class PersonAddressRestController {
     }
 
     @GetMapping(path = PersonAddressRestController.PATH_GET_PERSONADDRESS)
-    public ResponseEntity<PersonAddressDto> getPersonAddress(@PathVariable("id") Long id) {
+    public ResponseEntity<PersonAddressDto> getPersonAddress(@PathVariable("id") UUID id) {
         Optional<PersonAddress> personAddress = personFacade.getPersonAddress(id);
 
         if (personAddress.isPresent()) {
