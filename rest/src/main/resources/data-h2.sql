@@ -7,3 +7,4 @@ INSERT INTO PERSON(person_id, first_name, last_name, middle_name, birth_dt, sex_
 INSERT INTO ADDRESS(address_id, attention, delivery_info, civic_address, postal_info, city, prov, postal, country, primary_address, person_id) VALUES (RANDOM_UUID(), 'Barney Rubble', null, '123 Bedrock St', null, 'Bedrock City', 'BC', '123456', 'CA', 'Y', (SELECT person_id FROM PERSON WHERE first_name = 'Barney' AND last_name = 'Rubble'));
 
 COMMIT;
+
