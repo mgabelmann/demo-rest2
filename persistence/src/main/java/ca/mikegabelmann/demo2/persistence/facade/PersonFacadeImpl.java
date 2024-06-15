@@ -14,7 +14,7 @@ import java.util.UUID;
 
 
 @Service
-public class PersonFacadeImpl implements PersonFacade {
+public final class PersonFacadeImpl implements PersonFacade {
 
     private final PersonRepository personRepository;
     private final AddressRepository addressRepository;
