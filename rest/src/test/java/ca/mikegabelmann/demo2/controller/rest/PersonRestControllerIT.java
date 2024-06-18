@@ -61,7 +61,7 @@ class PersonRestControllerIT {
     @DisplayName("findBySexAndBirthDt - Sex/LocalDate - with results")
     void test1_findBySexAndBirthDt() throws Exception {
         mvc.perform(
-                get(PersonRestController.PATH_PERSONS_SEARCH)
+                get(PersonRestController.PATH_SEARCH1)
                         .param("sex", "F")
                         .param("date", now.toString())
 
@@ -76,7 +76,7 @@ class PersonRestControllerIT {
     @DisplayName("findBySexAndBirthDt - PersonSearch1 - with results")
     void test3_findBySexAndBirthDt() throws Exception {
         mvc.perform(
-                get(PersonRestController.PATH_PERSONS_SEARCH1)
+                get(PersonRestController.PATH_SEARCH1)
                         .param("sex", "F")
                         .param("date", now.toString())
 

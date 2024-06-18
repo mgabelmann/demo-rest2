@@ -18,14 +18,15 @@ public class GroupTypeCodeRepositoryTest {
     private GroupTypeCodeRepository groupTypeCodeRepository;
 
     private GroupCode gc1;
+    private GroupCode gc2;
     private GroupTypeCode gtc1;
 
 
     @SuppressWarnings("SpringJavaAutowiredMembersInspection")
     @Autowired
     public GroupTypeCodeRepositoryTest(
-        GroupCodeRepository groupCodeRepository,
-        GroupTypeCodeRepository groupTypeCodeRepository) {
+        final GroupCodeRepository groupCodeRepository,
+        final GroupTypeCodeRepository groupTypeCodeRepository) {
 
         this.groupCodeRepository = groupCodeRepository;
         this.groupTypeCodeRepository = groupTypeCodeRepository;
@@ -33,9 +34,10 @@ public class GroupTypeCodeRepositoryTest {
 
     @BeforeEach
     void beforeEach() {
-        this.gc1 = groupCodeRepository.save(new GroupCode("CNTRY", "Country"));
+        this.gc1 = groupCodeRepository.save(new GroupCode("CNT", "Country"));
+        this.gc2 = groupCodeRepository.save(new GroupCode("PRO", "Province or State"));
 
-        GroupTypeCode tmpGtc1 = new GroupTypeCode(new GroupTypeCodeId("CNTRY", "CAN"), "Canada", 1, Boolean.TRUE, gc1, null);
+        GroupTypeCode tmpGtc1 = new GroupTypeCode(new GroupTypeCodeId("CNT", "CAN"), "Canada", 1, Boolean.TRUE, gc1, null);
         this.gtc1 = groupTypeCodeRepository.save(tmpGtc1);
     }
 
@@ -51,7 +53,7 @@ public class GroupTypeCodeRepositoryTest {
     @Test
     @DisplayName("no duplicate created, updates instead")
     void test2_duplicateId() {
-        GroupTypeCode tmpGtc1 = new GroupTypeCode(new GroupTypeCodeId("CNTRY", "CAN"), "Canbodia", 2, Boolean.FALSE, gc1, null);
+        GroupTypeCode tmpGtc1 = new GroupTypeCode(new GroupTypeCodeId("CNT", "CAN"), "Canbodia", 2, Boolean.FALSE, gc1, null);
         groupTypeCodeRepository.save(tmpGtc1);
 
         Assertions.assertEquals("Canbodia", gtc1.getDescription());
@@ -62,26 +64,24 @@ public class GroupTypeCodeRepositoryTest {
     @Test
     @DisplayName("findGroupTypeCodesByParentType - with result")
     void test1_findGroupTypeCodesByParentType() {
-        GroupCode gc2 = groupCodeRepository.save(new GroupCode("PRO", "Province or State"));
-
         //link this record to another GroupTypeCode
         GroupTypeCode tmpGtc2 = new GroupTypeCode(new GroupTypeCodeId("PRO", "BC"), "British Columbia", 2, Boolean.TRUE, gc2, gtc1);
         groupTypeCodeRepository.save(tmpGtc2);
 
-        GroupTypeCode tmpGtc3 = new GroupTypeCode(new GroupTypeCodeId("CNTRY", "USA"), "United States", 2, Boolean.TRUE, gc1, null);
+        GroupTypeCode tmpGtc3 = new GroupTypeCode(new GroupTypeCodeId("CNT", "USA"), "United States", 2, Boolean.TRUE, gc1, null);
         groupTypeCodeRepository.save(tmpGtc3);
 
         GroupTypeCode tmpGtc4 = new GroupTypeCode(new GroupTypeCodeId("PRO", "CA"), "California", 3, Boolean.TRUE, gc2, tmpGtc3);
         groupTypeCodeRepository.save(tmpGtc4);
 
         {
-            List<GroupTypeCode> results = groupTypeCodeRepository.findGroupTypeCodesByParentType("CNTRY", "CAN", "PRO");
+            List<GroupTypeCode> results = groupTypeCodeRepository.findGroupTypeCodesByParentType("CNT", "CAN", "PRO");
             Assertions.assertNotNull(results);
             Assertions.assertEquals(1, results.size());
             Assertions.assertEquals(tmpGtc2.getId(), results.get(0).getId());
         }
         {
-            List<GroupTypeCode> results = groupTypeCodeRepository.findGroupTypeCodesByParentType("CNTRY", "USA", "PRO");
+            List<GroupTypeCode> results = groupTypeCodeRepository.findGroupTypeCodesByParentType("CNT", "USA", "PRO");
             Assertions.assertNotNull(results);
             Assertions.assertEquals(1, results.size());
             Assertions.assertEquals(tmpGtc4.getId(), results.get(0).getId());

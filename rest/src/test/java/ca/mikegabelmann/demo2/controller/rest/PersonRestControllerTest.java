@@ -56,7 +56,7 @@ class PersonRestControllerTest {
         Mockito.when(personService.findBySexAndBirthDt(Sex.M.name(), person.getBirthDt())).thenReturn(List.of(person));
 
         mvc.perform(
-                get(PersonRestController.PATH_PERSONS_SEARCH)
+                get(PersonRestController.PATH_SEARCH1)
                     .param("sex", "M")
                     .param("date", "2000-01-15")
 
@@ -71,7 +71,7 @@ class PersonRestControllerTest {
     @DisplayName("findBySexAndBirthDt - Sex/LocalDate - without results")
     void test2_findBySexAndBirthDt() throws Exception {
         mvc.perform(
-                get(PersonRestController.PATH_PERSONS_SEARCH)
+                get(PersonRestController.PATH_SEARCH1)
                         .param("sex", "M")
                         .param("date", "2000-01-15")
 
@@ -88,7 +88,7 @@ class PersonRestControllerTest {
         Mockito.when(personService.findBySexAndBirthDt(Sex.M.name(), person.getBirthDt())).thenReturn(List.of(person));
 
         mvc.perform(
-                get(PersonRestController.PATH_PERSONS_SEARCH1)
+                get(PersonRestController.PATH_SEARCH1)
                         .param("sex", "M")
                         .param("date", "2000-01-15")
 
@@ -103,7 +103,7 @@ class PersonRestControllerTest {
     @DisplayName("findBySexAndBirthDt - PersonSearch1 - without results")
     void test4_findBySexAndBirthDt() throws Exception {
         mvc.perform(
-                get(PersonRestController.PATH_PERSONS_SEARCH1)
+                get(PersonRestController.PATH_SEARCH1)
                         .param("sex", "M")
                         .param("date", "2000-01-15")
 
