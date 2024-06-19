@@ -9,8 +9,9 @@ INSERT INTO ADDRESS(address_id, attention, delivery_info, civic_address, postal_
 INSERT INTO GROUP_CODE(group_id, description) VALUES ('CNT', 'Country');
 INSERT INTO GROUP_CODE(group_id, description) VALUES ('PRO', 'Province or State');
 
-INSERT INTO GROUP_TYPE_CODE(group_id, type_id, description, position, effective, p_group_id, p_type_id) VALUES ('CNT', 'CA', 'Canada', 1, 'Y', 'CNT', 'CA');
-INSERT INTO GROUP_TYPE_CODE(group_id, type_id, description, position, effective, p_group_id, p_type_id) VALUES ('CNT', 'US', 'United States', 0, 'Y', 'CNT', 'US');
+--FIXME: parent nodes dont need to reference themselves
+INSERT INTO GROUP_TYPE_CODE(group_id, type_id, description, position, effective, p_group_id, p_type_id) VALUES ('CNT', 'CA', 'Canada', 1, 'Y', null, null);
+INSERT INTO GROUP_TYPE_CODE(group_id, type_id, description, position, effective, p_group_id, p_type_id) VALUES ('CNT', 'US', 'United States', 0, 'Y', null, null);
 
 INSERT INTO GROUP_TYPE_CODE(group_id, type_id, description, position, effective, p_group_id, p_type_id) VALUES ('PRO', 'BC', 'British Columbia', 0, 'Y', 'CNT', 'CA');
 INSERT INTO GROUP_TYPE_CODE(group_id, type_id, description, position, effective, p_group_id, p_type_id) VALUES ('PRO', 'AB', 'Alberta', 1, 'Y', 'CNT', 'CA');

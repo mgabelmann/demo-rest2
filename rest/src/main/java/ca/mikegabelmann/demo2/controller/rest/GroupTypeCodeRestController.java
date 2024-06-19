@@ -21,7 +21,9 @@ public class GroupTypeCodeRestController {
     private static final Logger LOG = LoggerFactory.getLogger(GroupTypeCodeRestController.class);
 
     /** Path for REST endpoint. */
-    public static final String PATH_SEARCH1 = "/groupTypeCodes/search1";
+    public static final String PATH_SEARCH0 = "/groupTypeCodes/search";
+    public static final String PATH_SEARCH1 = "/groupTypeCodes/countries";
+    public static final String PATH_SEARCH2 = "/groupTypeCodes/provincesByCountry";
 
     private final GroupTypeCodeService groupTypeCodeService;
 
@@ -34,13 +36,19 @@ public class GroupTypeCodeRestController {
         this.dtoMapper = dtoMapper;
     }
 
-    @GetMapping(path = "/groupTypeCodes/countries")
+    @GetMapping(path = GroupTypeCodeRestController.PATH_SEARCH0)
+    public ResponseEntity<Map<String, String>> getGroupTypeCodes(@RequestParam(value="groupId") String groupId) {
+        List<GroupTypeCode> results = groupTypeCodeService.findGroupTypeCodesByGroupId(groupId);
+        return ResponseEntity.ok(results.stream().collect(Collectors.toMap(x -> x.getId().getTypeId(), GroupTypeCode::getDescription)));
+    }
+
+    @GetMapping(path = GroupTypeCodeRestController.PATH_SEARCH1)
     public ResponseEntity<Map<String, String>> getCountries() {
         List<GroupTypeCode> results = groupTypeCodeService.findGroupTypeCodesByGroupId("CNT");
         return ResponseEntity.ok(results.stream().collect(Collectors.toMap(x -> x.getId().getTypeId(), GroupTypeCode::getDescription)));
     }
 
-    @GetMapping(path = "/groupTypeCodes/provincesByCountry")
+    @GetMapping(path = GroupTypeCodeRestController.PATH_SEARCH2)
     public ResponseEntity<Map<String, String>> getProvincesByCountry(@RequestParam(value="country") String country) {
         List<GroupTypeCode> results = groupTypeCodeService.findGroupTypeCodesByParentType("CNT", country, "PRO");
         return ResponseEntity.ok(results.stream().collect(Collectors.toMap(x -> x.getId().getTypeId(), GroupTypeCode::getDescription)));
