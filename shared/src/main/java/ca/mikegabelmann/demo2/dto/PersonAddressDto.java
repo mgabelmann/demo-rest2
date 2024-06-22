@@ -1,14 +1,13 @@
 package ca.mikegabelmann.demo2.dto;
 
-import lombok.Builder;
-import lombok.Value;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 
-@Builder
-@Value
+@AllArgsConstructor
+@Data
 public class PersonAddressDto {
-    PersonDto person;
-    AddressDto primary;
-    AddressDto secondary;
-
+    private PersonDto person;
+    private AddressDto primary;
+    private AddressDto secondary;
 }

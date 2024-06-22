@@ -1,23 +1,22 @@
 package ca.mikegabelmann.demo2.dto;
 
-
-import lombok.Builder;
-import lombok.Value;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 import java.util.UUID;
 
 
-@Builder
-@Value
+@AllArgsConstructor
+@Data
 public class AddressDto {
-    UUID id;
-    String attention;
-    String deliveryInfo;
-    String civicAddress;
-    String postalInfo;
-    String city;
-    String prov;
-    String postal;
-    String country;
-    Boolean primary;
+    private UUID id;
+    private String attention;
+    private String deliveryInfo;
+    private String civicAddress;
+    private String postalInfo;
+    private String city;
+    private String prov;
+    private String postal;
+    private String country;
+    private Boolean primary;
 }
