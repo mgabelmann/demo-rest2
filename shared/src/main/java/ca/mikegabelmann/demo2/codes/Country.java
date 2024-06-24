@@ -1,17 +1,13 @@
 package ca.mikegabelmann.demo2.codes;
 
-public enum Sex {
-    M("Male"),
-    F("Female"),
+public enum Country {
+    CA("Canada"),
+    US("United States of America"),
     ;
 
     private final String name;
 
-    /**
-     * Constructor.
-     * @param name biological sex
-     */
-    Sex(final String name) {
+    Country(final String name) {
         this.name = name;
     }
 
