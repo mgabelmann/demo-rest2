@@ -1,7 +1,7 @@
 package ca.mikegabelmann.demo2.search;
 
 import ca.mikegabelmann.demo2.codes.Sex;
-import lombok.Value;
+import lombok.Data;
 
 import java.time.LocalDate;
 
@@ -10,7 +10,7 @@ import java.time.LocalDate;
  * any clients. Just update this class with the new property or properties, and you are done, except for your service.
  * </p>
  */
-@Value
+@Data
 public class PersonSearch1 {
     Sex sex;
     LocalDate date;

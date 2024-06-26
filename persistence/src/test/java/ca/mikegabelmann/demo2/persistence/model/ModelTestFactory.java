@@ -19,6 +19,7 @@ public class ModelTestFactory {
 
     public static Person getPerson(final SexCode sexCode) {
         assert sexCode != null;
+
         return new Person(null, "firstName", "lastName", LocalDate.now(), sexCode);
     }
 

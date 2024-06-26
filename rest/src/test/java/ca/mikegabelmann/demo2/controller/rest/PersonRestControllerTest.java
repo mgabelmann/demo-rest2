@@ -26,6 +26,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
+/**
+ * <p>This is a unit test. HTTP/REST calls are made to the controller but the service layer is mocked.</p>
+ */
 @WebMvcTest(PersonRestController.class)
 @ComponentScan(basePackageClasses = {
     DtoMapper.class
@@ -37,6 +40,9 @@ class PersonRestControllerTest {
 
     @Autowired
     private DtoMapper dtoMapper;
+
+    //@Autowired
+    //private ObjectMapper objectMapper;
 
     @MockBean
     private PersonService personService;
@@ -88,7 +94,7 @@ class PersonRestControllerTest {
         Mockito.when(personService.findBySexAndBirthDt(Sex.M.name(), person.getBirthDt())).thenReturn(List.of(person));
 
         mvc.perform(
-                get(PersonRestController.PATH_SEARCH1)
+                get(PersonRestController.PATH_SEARCH2)
                         .param("sex", "M")
                         .param("date", "2000-01-15")
 
@@ -103,7 +109,7 @@ class PersonRestControllerTest {
     @DisplayName("findBySexAndBirthDt - PersonSearch1 - without results")
     void test4_findBySexAndBirthDt() throws Exception {
         mvc.perform(
-                get(PersonRestController.PATH_SEARCH1)
+                get(PersonRestController.PATH_SEARCH2)
                         .param("sex", "M")
                         .param("date", "2000-01-15")
 
