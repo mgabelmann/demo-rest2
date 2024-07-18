@@ -44,4 +44,15 @@ class PersonAddressTest {
         Assertions.assertTrue(personAddress1.getSecondaryAddress().isPresent());
     }
 
+    @Test
+    void toStringTest() {
+        Person person1 = ModelTestFactory.getPerson_Male();
+        Address address1 = ModelTestFactory.getAddress(person1);
+        PersonAddress personAddress1 = new PersonAddress(person1, address1, null);
+        String result = personAddress1.toString();
+
+        Assertions.assertNotNull(result);
+        Assertions.assertEquals("PersonAddress{person=Person{id=null, firstName='firstName', lastName='lastName', middleName='null', birthDt=2024-06-26, sexCode=SexCode{id='M', description='Male'}}, primaryAddress=Address{id=null, attention='firstName lastName', deliveryInfo='null', civicAddress='null', postalInfo='null', city='city', prov='pr', postal='postal', country='co', primary=true}, secondaryAddress=null}", result);
+    }
+
 }

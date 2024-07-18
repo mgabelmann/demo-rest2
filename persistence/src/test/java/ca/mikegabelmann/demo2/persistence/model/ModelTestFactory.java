@@ -18,6 +18,8 @@ public class ModelTestFactory {
     }
 
     public static Person getPerson(final SexCode sexCode) {
+        assert sexCode != null;
+
         return new Person(null, "firstName", "lastName", LocalDate.now(), sexCode);
     }
 
@@ -30,7 +32,31 @@ public class ModelTestFactory {
     }
 
     public static Address getAddress(final Person person) {
+        assert person != null;
         return new Address(null, "firstName lastName", "city", "pr", "postal", "co", true, person);
+    }
+
+    public static GroupCode getGroupCode(final String groupId, final String description) {
+        assert groupId != null;
+        assert description != null;
+
+        return new GroupCode(groupId, description);
+    }
+
+    public static GroupTypeCode getGroupTypeCode(
+            final String typeId,
+            final String description,
+            final int position,
+            final boolean effective,
+            final GroupCode groupCode,
+            final GroupTypeCode groupTypeCode) {
+
+        assert typeId != null;
+        assert description != null;
+        assert position >= 0;
+        assert groupCode != null;
+
+        return new GroupTypeCode(new GroupTypeCodeId(groupCode.getGroupId(), typeId), description, position, effective, groupCode, groupTypeCode);
     }
 
 }

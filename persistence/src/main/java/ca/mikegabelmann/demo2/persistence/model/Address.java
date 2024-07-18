@@ -57,7 +57,6 @@ public class Address {
     @Column(name = "PRIMARY_ADDRESS", nullable = false, length = 1)
     private Boolean primary;
 
-
     @ManyToOne
     @JoinColumn(name = "PERSON_ID", nullable = false)
     private Person person;

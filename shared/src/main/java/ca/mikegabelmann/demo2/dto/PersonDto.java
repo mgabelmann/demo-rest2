@@ -1,20 +1,19 @@
 package ca.mikegabelmann.demo2.dto;
 
-import lombok.Builder;
-import lombok.Value;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 import java.time.LocalDate;
 import java.util.UUID;
 
 
-@Builder
-@Value
+@AllArgsConstructor
+@Data
 public class PersonDto {
-    UUID id;
-    String firstName;
-    String lastName;
-    String middleName;
-    LocalDate birthDt;
-    String sex;
-
+    private UUID id;
+    private String firstName;
+    private String lastName;
+    private String middleName;
+    private LocalDate birthDt;
+    private String sex;
 }

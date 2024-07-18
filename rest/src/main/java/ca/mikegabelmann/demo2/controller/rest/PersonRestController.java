@@ -24,10 +24,10 @@ import java.util.List;
 @RestController
 public final class PersonRestController {
     /** Path for REST endpoint. */
-    public static final String PATH_PERSONS_SEARCH = "/persons/search";
+    public static final String PATH_SEARCH1 = "/persons/search1";
 
     /** Path for REST endpoint. */
-    public static final String PATH_PERSONS_SEARCH1 = "/persons/search1";
+    public static final String PATH_SEARCH2 = "/persons/search2";
 
     /** Logger. */
     private static final Logger LOG = LoggerFactory.getLogger(PersonRestController.class);
@@ -44,7 +44,7 @@ public final class PersonRestController {
         this.dtoMapper = dtoMapper;
     }
 
-    @GetMapping(path = PersonRestController.PATH_PERSONS_SEARCH)
+    @GetMapping(path = PersonRestController.PATH_SEARCH1)
     public ResponseEntity<List<PersonDto>> findBySexAndBirthDt(
         @RequestParam(value="sex") Sex sex,
         @RequestParam(value="date") LocalDate date) {
@@ -59,7 +59,7 @@ public final class PersonRestController {
      *
      * NOTE: can't use a @RequestParam here since Spring is doing some magic here
      */
-    @GetMapping(path = PersonRestController.PATH_PERSONS_SEARCH1)
+    @GetMapping(path = PersonRestController.PATH_SEARCH2)
     public ResponseEntity<List<PersonDto>> findBySexAndBirthDt(
         PersonSearch1 search) {
 

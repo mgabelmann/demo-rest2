@@ -70,7 +70,7 @@ public class PersonAddressRestController {
             AddressDto a1 = pa.getPrimaryAddress().isPresent() ? dtoMapper.mapAddressDto(pa.getPrimaryAddress().get()) : null;
             AddressDto a2 = pa.getSecondaryAddress().isPresent() ? dtoMapper.mapAddressDto(pa.getSecondaryAddress().get()) : null;
 
-            return PersonAddressDto.builder().person(p).primary(a1).secondary(a2).build();
+            return new PersonAddressDto(p, a1, a2);
 
         } else {
             return null;

@@ -22,8 +22,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * This is an integration test as it mocks the REST calls, but the controller, service, repository and DB layers
- * are all functional. We are using an in-memory DB instead of a persistent one.
+ * <p>This is an integration test. HTTP/REST calls are made to the controller and all other objects (service, repository,
+ * and in-memory database) are used.</p>
  */
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -61,7 +61,7 @@ class PersonRestControllerIT {
     @DisplayName("findBySexAndBirthDt - Sex/LocalDate - with results")
     void test1_findBySexAndBirthDt() throws Exception {
         mvc.perform(
-                get(PersonRestController.PATH_PERSONS_SEARCH)
+                get(PersonRestController.PATH_SEARCH1)
                         .param("sex", "F")
                         .param("date", now.toString())
 
@@ -76,7 +76,7 @@ class PersonRestControllerIT {
     @DisplayName("findBySexAndBirthDt - PersonSearch1 - with results")
     void test3_findBySexAndBirthDt() throws Exception {
         mvc.perform(
-                get(PersonRestController.PATH_PERSONS_SEARCH1)
+                get(PersonRestController.PATH_SEARCH1)
                         .param("sex", "F")
                         .param("date", now.toString())
 

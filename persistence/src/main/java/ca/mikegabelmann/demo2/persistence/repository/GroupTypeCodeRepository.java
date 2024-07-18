@@ -19,7 +19,15 @@ public interface GroupTypeCodeRepository extends JpaRepository<GroupTypeCode, Gr
      * @param groupCode group
      * @return records
      */
-    @Query("SELECT g FROM GroupTypeCode g WHERE g.groupTypeCode.id.groupId = ?1 AND g.groupTypeCode.id.typeId = ?2 AND g.groupCode.groupId = ?3")
+    @Query("SELECT g FROM GroupTypeCode g WHERE g.groupTypeCode.id.groupId = ?1 AND g.groupTypeCode.id.typeId = ?2 AND g.groupCode.groupId = ?3 ORDER BY g.position, g.description")
     List<GroupTypeCode> findGroupTypeCodesByParentType(String pGroupCode, String pGroupTypeCode, String groupCode);
+
+    /**
+     * Find group type codes.
+     * @param groupId group
+     * @return records
+     */
+    @Query("SELECT g FROM GroupTypeCode g WHERE g.id.groupId = ?1 ORDER BY g.position, g.description")
+    List<GroupTypeCode> findGroupTypeCodesByGroupId(String groupId);
 
 }

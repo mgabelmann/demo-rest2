@@ -30,6 +30,11 @@ Accessible endpoints using Data REST are:
 
     localhost:8080/groupTypeCodes
 
+    localhost:8080/groupTypeCodes/searchByGroup?groupId=PRO
+    localhost:8080/groupTypeCodes/searchByParentAndGroup?pGroupId=CNT&pTypeId=CA&groupId=PRO
+    localhost:8080/groupTypeCodes/countries
+    localhost:8080/groupTypeCodes/provincesByCountry?country=CA
+
     localhost:8080/personAddress/X
 
 ## Local Usage
