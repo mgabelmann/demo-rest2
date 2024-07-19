@@ -22,12 +22,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  *
  * <p><b>Allowed</b></p>
  * <pre>
- * curl -X GET -H "Origin: http://localhost:8081" --head http://localhost:8080/helloworld
+ * curl -X GET -H "Origin: http://localhost:8080" --head http://localhost:8080/helloworld
  * HTTP/1.1 200
  * Vary: Origin
  * Vary: Access-Control-Request-Method
  * Vary: Access-Control-Request-Headers
- * Access-Control-Allow-Origin: http://localhost:8081
+ * Access-Control-Allow-Origin: http://localhost:8080
  * Content-Type: text/plain;charset=UTF-8
  * Content-Length: 11
  * </pre>
@@ -53,7 +53,7 @@ public class CorsConfig implements RepositoryRestConfigurer {
     private boolean corsEnabled;
 
     /** Application CORS URI with default value. */
-    @Value("${app.cors.url:http://localhost:8081}")
+    @Value("${app.cors.url:http://localhost:8080}")
     private String corsUrl;
 
 
