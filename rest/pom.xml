@@ -26,6 +26,7 @@
 
     <properties>
         <mapstruct.version>1.5.3.Final</mapstruct.version>
+        <maven.antrun.plugin.version>3.1.0</maven.antrun.plugin.version>
     </properties>
 
     <dependencies>
@@ -130,24 +131,6 @@
         <finalName>demo2</finalName>
 
         <plugins>
-            <!-- create springboot uber jar -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot.version}</version>
-                <configuration>
-                    <mainClass>ca.mikegabelmann.demo2.Demo2Application</mainClass>
-                    <layout>ZIP</layout>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -172,6 +155,46 @@
                     -->
                     <classesDirectory>${project.build.directory}/${project.build.finalName}.jar.original</classesDirectory>
                 </configuration>
+            </plugin>
+
+            <!-- create springboot uber jar, must be after plugins that run in same phase -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+                <configuration>
+                    <mainClass>ca.mikegabelmann.demo2.Demo2Application</mainClass>
+                    <layout>ZIP</layout>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- unzip the Spring uber jar so that we can use it to build a more efficient Docker image -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>${maven.antrun.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>unpack-jar</id>
+                        <phase>package</phase>
+                        <configuration>
+                            <target>
+                                <echo>unzip jar file</echo>
+                                <unzip src="target/demo2.jar" dest="target/exploded/"/>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
         </plugins>
