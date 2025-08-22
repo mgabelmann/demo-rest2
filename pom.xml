@@ -30,12 +30,12 @@
 
     </properties>
 
-    <modules>
-        <module>shared</module>
-        <module>persistence</module>
-        <module>rest</module>
-        <!--<module>client</module>-->
-        <!--<module>app</module>-->
-    </modules>
+    <subprojects>
+        <subproject>shared</subproject>
+        <subproject>persistence</subproject>
+        <subproject>rest</subproject>
+        <!--<subproject>client</subproject>-->
+        <!--<subproject>app</subproject>-->
+    </subprojects>
 
 </project>
