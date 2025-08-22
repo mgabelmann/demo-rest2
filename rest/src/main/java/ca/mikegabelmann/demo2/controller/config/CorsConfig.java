@@ -59,7 +59,7 @@ public class CorsConfig implements RepositoryRestConfigurer {
 
     @Autowired
     public CorsConfig(ProfileType profileType) {
-        LOG.info("profile bean loaded = {}", profileType.getProfile());
+        LOG.info("profile bean loaded = {}", profileType.profile());
     }
 
     @PostConstruct

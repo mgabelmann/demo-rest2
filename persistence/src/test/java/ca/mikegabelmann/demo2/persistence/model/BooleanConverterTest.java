@@ -6,12 +6,12 @@ import org.junit.jupiter.api.Test;
 
 
 class BooleanConverterTest {
-    private BooleanConverter converter = new BooleanConverter();
+    private final BooleanConverter converter = new BooleanConverter();
 
     @Test
     @DisplayName("convert to database")
     void convertToDatabaseColumn() {
-        Assertions.assertEquals(null, converter.convertToDatabaseColumn(null));
+        Assertions.assertNull(converter.convertToDatabaseColumn(null));
         Assertions.assertEquals('Y', converter.convertToDatabaseColumn(Boolean.TRUE));
         Assertions.assertEquals('N', converter.convertToDatabaseColumn(Boolean.FALSE));
     }
@@ -19,7 +19,7 @@ class BooleanConverterTest {
     @Test
     @DisplayName("convert to entity")
     void test1_convertToEntityAttribute() {
-        Assertions.assertEquals(null, converter.convertToEntityAttribute(null));
+        Assertions.assertNull(converter.convertToEntityAttribute(null));
         Assertions.assertEquals(Boolean.TRUE, converter.convertToEntityAttribute('Y'));
         Assertions.assertEquals(Boolean.FALSE, converter.convertToEntityAttribute('N'));
     }

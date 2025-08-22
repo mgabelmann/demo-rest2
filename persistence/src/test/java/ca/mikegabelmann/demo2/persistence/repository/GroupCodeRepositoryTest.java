@@ -13,7 +13,7 @@ import jakarta.persistence.EntityNotFoundException;
 
 @DataJpaTest
 public class GroupCodeRepositoryTest {
-    private GroupCodeRepository groupCodeRepository;
+    private final GroupCodeRepository groupCodeRepository;
 
     private GroupCode gc1;
 

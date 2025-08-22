@@ -14,8 +14,8 @@ import java.util.List;
 
 @DataJpaTest
 public class GroupTypeCodeRepositoryTest {
-    private GroupCodeRepository groupCodeRepository;
-    private GroupTypeCodeRepository groupTypeCodeRepository;
+    private final GroupCodeRepository groupCodeRepository;
+    private final GroupTypeCodeRepository groupTypeCodeRepository;
 
     private GroupCode gc1;
     private GroupCode gc2;
